@@ -22,7 +22,6 @@ public class FragmentTabHostActivity extends AppCompatActivity implements TabHos
         setContentView(R.layout.layout);
         mFragments = DataGenerator.getFragments("FragmentTabHost Tab");
         initView();
-
     }
 
     private void initView(){
