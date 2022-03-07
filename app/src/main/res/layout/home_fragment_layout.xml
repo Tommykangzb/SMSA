@@ -1,26 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <TextView
-        android:id="@+id/title_from"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="#FF0000"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        />
-    <TextView
-        android:id="@+id/fragment_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HomeFragment"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:layout_centerInParent="true"
-        />
-</RelativeLayout>
+        android:orientation="vertical"
+        android:background="@color/yellow_top_home"
+        >
+        <LinearLayout
+            android:id="@+id/top_message_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/top_school_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center_vertical">
+
+            </TextView>
+            <ImageView
+                android:id="@+id/top_school_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_top_school_more"
+                android:layout_gravity="center_vertical"
+                >
+            </ImageView>
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_bar"
+                android:layout_marginStart="20dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/corner_gray">
+
+            </androidx.appcompat.widget.SearchView>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/bottom_layout_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleView_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="46dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+            </androidx.recyclerview.widget.RecyclerView>
+            <ImageView
+                android:id="@+id/category_selector"
+                android:layout_width="36dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="10dp"
+                android:minWidth="36dp"
+                android:src="@drawable/ic_icon_category_more"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@color/yellow_top_home"
+                >
+            </ImageView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/recycleView_home_contain"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_marginTop="2dp">
+
+       </androidx.recyclerview.widget.RecyclerView>
+
+       <ImageView
+           android:id="@+id/imageView_create_sub"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/ic_icon_create_subject"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="100dp"
+           android:layout_alignParentEnd="true"
+           android:layout_marginEnd="10dp">
+
+       </ImageView>
+   </RelativeLayout>
+
+
+
+</LinearLayout>

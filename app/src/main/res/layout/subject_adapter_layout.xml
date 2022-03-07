@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/corner_gray">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white">
+            <TextView
+                android:id="@+id/contain_subject_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:maxWidth="250dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="20sp"
+                android:text="酒文化鉴赏与啤酒的酿造工艺讲解11222222"
+                android:textColor="@color/black">
+            </TextView>
+
+            <TextView
+                android:id="@+id/contain_subject_grades"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="5dp"
+                android:paddingStart="200dp"
+                android:text="评分:95"
+                android:textColor="@color/black"
+                android:textSize="20sp">
+            </TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:paddingTop="5dp">
+            <TextView
+                android:id="@+id/contain_subject_teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:maxWidth="250dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="20sp"
+                android:text="酒文化鉴赏与啤酒的酿造工艺讲解11222222"
+                android:textColor="@color/black">
+            </TextView>
+
+            <TextView
+                android:id="@+id/contain_subject_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="5dp"
+                android:paddingStart="200dp"
+                android:text="评分:95"
+                android:textColor="@color/black"
+                android:textSize="20sp">
+
+            </TextView>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/white">
+    </View>
+
+</LinearLayout>

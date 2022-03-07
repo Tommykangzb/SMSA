@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.campus.view.HomeFragment;
+
 
 /**
  * Created by zhouwei on 17/4/23.
@@ -14,7 +16,7 @@ import android.widget.TextView;
 
 public class DataGenerator {
 
-    public static final int []mTabRes = new int[]{R.drawable.tab_home_selector,R.drawable.tab_book_deal_selector,R.drawable.tab_chat_selector,R.drawable.tab_profile_selector};
+    public static final int []mTabRes = new int[]{R.drawable.tab_home_selector,R.drawable.tab_deal_selector,R.drawable.tab_chat_selector,R.drawable.tab_profile_selector};
     public static final int []mTabResPressed = new int[]{R.drawable.ic_icon_tab_sub_on,R.drawable.ic_icon_tab_deal_on,R.drawable.ic_icon_tab_chat_on,R.drawable.ic_icon_tab_profile_on};
     public static final String []mTabTitle = new String[]{"首页","发现","关注","我的"};
 

@@ -1,4 +1,4 @@
-package com.example.campus;
+package com.example.campus.view;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -11,6 +11,8 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import com.example.campus.DataGenerator;
+import com.example.campus.R;
 
 
 public class FragmentTabHostActivity extends AppCompatActivity implements TabHost.OnTabChangeListener{
