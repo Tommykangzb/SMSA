@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/chat_option"
+        layout="@layout/layout_chat_fragment_option">
+
+    </include>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray">
+    </View>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingLeft="16dp"
+        android:id="@+id/recycleView_chat_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/chatGray">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

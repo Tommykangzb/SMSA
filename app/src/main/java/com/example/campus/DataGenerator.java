@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.campus.view.HomeFragment;
+import com.example.campus.view.navigate.ChatFragment;
+import com.example.campus.view.navigate.HomeFragment;
+import com.example.campus.view.navigate.UserCenterFragment;
 
 
 /**
@@ -18,14 +20,14 @@ public class DataGenerator {
 
     public static final int []mTabRes = new int[]{R.drawable.tab_home_selector,R.drawable.tab_deal_selector,R.drawable.tab_chat_selector,R.drawable.tab_profile_selector};
     public static final int []mTabResPressed = new int[]{R.drawable.ic_icon_tab_sub_on,R.drawable.ic_icon_tab_deal_on,R.drawable.ic_icon_tab_chat_on,R.drawable.ic_icon_tab_profile_on};
-    public static final String []mTabTitle = new String[]{"首页","发现","关注","我的"};
+    public static final String []mTabTitle = new String[]{"选课","市场","消息","我的"};
 
     public static Fragment[] getFragments(String from){
         Fragment fragments[] = new Fragment[4];
         fragments[0] = HomeFragment.newInstance(from);
         fragments[1] = HomeFragment.newInstance(from);
-        fragments[2] = HomeFragment.newInstance(from);
-        fragments[3] = HomeFragment.newInstance(from);
+        fragments[2] = ChatFragment.newInstance();
+        fragments[3] = UserCenterFragment.newInstance();
         return fragments;
     }
 

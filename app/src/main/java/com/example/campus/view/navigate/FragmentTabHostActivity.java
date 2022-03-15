@@ -1,4 +1,4 @@
-package com.example.campus.view;
+package com.example.campus.view.navigate;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -27,7 +27,7 @@ public class FragmentTabHostActivity extends AppCompatActivity implements TabHos
     }
 
     private void initView(){
-        mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
+        mTabHost = findViewById(android.R.id.tabhost);
 
         // 关联TabHost
         mTabHost.setup(this,getSupportFragmentManager(),R.id.home_container);

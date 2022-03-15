@@ -1,9 +1,11 @@
 package com.example.campus.model;
 
+import static com.example.campus.view.RecyclerViewHelper.setViewText;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,27 +31,18 @@ public class subjectRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        View viewName = holder.itemView.findViewById(R.id.contain_subject_name);
-        if (viewName instanceof TextView){
-            ((TextView) viewName).setText(dataList.get(position));
-        }
-        View viewGrades = holder.itemView.findViewById(R.id.contain_subject_grades);
-        if (viewGrades instanceof TextView){
-            ((TextView) viewGrades).setText(dataListGrades.get(position));
-        }
-        View viewTeacher = holder.itemView.findViewById(R.id.contain_subject_teacher);
-        if (viewTeacher instanceof TextView){
-            ((TextView) viewTeacher).setText(dataListTeacher.get(position));
-        }
-        View viewCategory = holder.itemView.findViewById(R.id.contain_subject_category);
-        if (viewCategory instanceof TextView){
-            ((TextView) viewCategory).setText(dataListCategory.get(position));
-        }
-
+        ImageView imageView = holder.itemView.findViewById(R.id.chat_contain_avatar);
+        //imageView.setImageBitmap();
+        setViewText(holder, R.id.contain_subject_name, dataList.get(position));
+        setViewText(holder, R.id.contain_subject_grades, dataListGrades.get(position));
+        setViewText(holder, R.id.contain_subject_teacher, dataListTeacher.get(position));
+        setViewText(holder, R.id.contain_subject_category, dataListCategory.get(position));
     }
 
     @Override
     public int getItemCount() {
         return mSize;
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.campus.view;
+package com.example.campus.view.navigate;
 
 import androidx.fragment.app.Fragment;
 import android.os.Bundle;
@@ -6,22 +6,35 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.*;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.campus.R;
+import com.example.campus.helper.RetrofitHelper;
 import com.example.campus.model.CategoryRecycleViewAdapter;
 import com.example.campus.model.subjectRecycleViewAdapter;
+import com.example.campus.retrofit.requestApi.ISubjectApi;
+import com.example.campus.retrofit.response.HelloResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment {
+    private static final String TAG = "HomeFragment";
+    private static HomeFragment fragment;
     private String mFrom;
-   public static HomeFragment newInstance(String from){
-        HomeFragment fragment = new HomeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("from",from);
-        fragment.setArguments(bundle);
+
+    public static HomeFragment newInstance(String from) {
+        if (fragment == null) {
+            fragment = new HomeFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("from", from);
+            fragment.setArguments(bundle);
+        }
         return fragment;
     }
 
@@ -46,6 +59,22 @@ public class HomeFragment extends Fragment {
         recyclerViewContain.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
         recyclerViewContain.setAdapter(new subjectRecycleViewAdapter());
         //ImageView imageView = view.findViewById(R.id.category_selector);
+        ISubjectApi subjectApi = RetrofitHelper.getService(ISubjectApi.class);
+        //对 发送请求 进行封装
+        Call<HelloResponse> call = subjectApi.getTest();
+        call.enqueue(new Callback<HelloResponse>() {
+            @Override
+            public void onResponse(Call<HelloResponse> call, Response<HelloResponse> response) {
+                Toast.makeText(getContext(),"suc",Toast.LENGTH_LONG).show();
+                Log.e("HomeFragment",response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<HelloResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "fail", Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Retrofit request fail" + t.toString());
+            }
+        });
 
         return view;
     }

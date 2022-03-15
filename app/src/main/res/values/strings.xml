@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Campus</string>
+    <string name="chat_fragment_friends">我的好友</string>
 </resources>

@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1965" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/corner_gray.xml" value="0.1725" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/ic_avatar.xml" value="0.1965" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/ic_icon_chat_option_add.xml" value="0.1675" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/ic_icon_menu.xml" value="0.1955" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/ic_icon_tab_sub_off.xml" value="0.1935" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/ic_icon_tab_sub_on.xml" value="0.1935" />
@@ -19,6 +22,12 @@
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/corner_gray.xml" value="0.14895833333333333" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/home_fragment_layout.xml" value="0.22" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/home_tab_content.xml" value="0.1875" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_chat_fragment.xml" value="0.21" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_chat_fragment_contain.xml" value="0.14375" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_chat_fragment_contain_adpater.xml" value="0.2" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_chat_fragment_contain_word.xml" value="0.22" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_chat_fragment_option.xml" value="0.15" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_user_center_fragment.xml" value="0.33" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/subject_adapter_layout.xml" value="0.25" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/top_navigate_layout.xml" value="0.22708333333333333" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1955" />

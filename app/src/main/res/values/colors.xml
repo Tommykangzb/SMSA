@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow_top_home">#FFFFEB3B</color>
     <color name="gray">#FFE5E5E5</color>
+    <color name="chatGray">#FFEEEEEE</color>
 </resources>
