@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Campus</string>
     <string name="chat_fragment_friends">我的好友</string>
+    <string name="user_center_setting">Settings</string>
+    <string name="user_center_account">Account</string>
+    <string name="user_name_over_length">名字过长，请重新设置！</string>
 </resources>

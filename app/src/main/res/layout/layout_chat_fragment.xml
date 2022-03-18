@@ -6,7 +6,6 @@
     <include
         android:id="@+id/chat_option"
         layout="@layout/layout_chat_fragment_option">
-
     </include>
     <View
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
         android:id="@+id/recycleView_chat_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/chatGray">
+        android:background="@color/chat_gray">
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

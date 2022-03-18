@@ -1,6 +1,7 @@
 package com.example.campus.view.navigate;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campus.R;
-import com.example.campus.model.CategoryRecycleViewAdapter;
+import com.example.campus.helper.ScreenHelp;
 import com.example.campus.model.ChatFragmentContainAdapter;
+
+import java.util.Objects;
 
 public class ChatFragment extends Fragment {
     private static ChatFragment fragment;
@@ -29,7 +32,6 @@ public class ChatFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
@@ -39,6 +41,8 @@ public class ChatFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycleView_chat_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(new ChatFragmentContainAdapter());
+        ScreenHelp.setStatusBarColor(Objects.requireNonNull(getActivity()), ScreenHelp.stateBarColorValueWhite);
+        ScreenHelp.setAndroidNativeLightStatusBar(Objects.requireNonNull(getActivity()),true);
         return view;
     }
 

@@ -13,10 +13,13 @@ import android.widget.Toast;
 
 import com.example.campus.R;
 import com.example.campus.helper.RetrofitHelper;
+import com.example.campus.helper.ScreenHelp;
 import com.example.campus.model.CategoryRecycleViewAdapter;
 import com.example.campus.model.subjectRecycleViewAdapter;
 import com.example.campus.retrofit.requestApi.ISubjectApi;
 import com.example.campus.retrofit.response.HelloResponse;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -65,17 +68,14 @@ public class HomeFragment extends Fragment {
         call.enqueue(new Callback<HelloResponse>() {
             @Override
             public void onResponse(Call<HelloResponse> call, Response<HelloResponse> response) {
-                Toast.makeText(getContext(),"suc",Toast.LENGTH_LONG).show();
-                Log.e("HomeFragment",response.body().toString());
             }
 
             @Override
             public void onFailure(Call<HelloResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "fail", Toast.LENGTH_LONG).show();
-                Log.e(TAG, "Retrofit request fail" + t.toString());
             }
         });
-
+        ScreenHelp.setStatusBarColor(Objects.requireNonNull(getActivity()), ScreenHelp.stateBarColorValueYellow);
+        ScreenHelp.setAndroidNativeLightStatusBar(getActivity(),true);
         return view;
     }
 }

@@ -9,5 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow_top_home">#FFFFEB3B</color>
     <color name="gray">#FFE5E5E5</color>
-    <color name="chatGray">#FFEEEEEE</color>
+    <color name="gray_user_center">#FFF5F7F9</color>
+    <color name="chat_gray">#FFEEEEEE</color>
+    <color name="setting_gray">#FFC1C1C1</color>
+    <color name="deep_blue">#FF00264B</color>
+    <color name="light_blue">#FF54A2EF</color>
 </resources>

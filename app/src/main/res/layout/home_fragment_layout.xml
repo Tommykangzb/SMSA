@@ -9,51 +9,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/yellow_top_home"
         >
+
         <LinearLayout
             android:id="@+id/top_message_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:background="@color/yellow_top_home">
 
             <TextView
                 android:id="@+id/top_school_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
-                android:layout_gravity="center_vertical">
+                android:textColor="@color/black"
+                android:textSize="16sp">
 
             </TextView>
+
             <ImageView
                 android:id="@+id/top_school_selector"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="15dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:src="@drawable/ic_top_school_more"
-                android:layout_gravity="center_vertical"
-                >
+                android:src="@drawable/ic_top_school_more">
+
             </ImageView>
+
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_bar"
-                android:layout_marginStart="20dp"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:background="@drawable/corner_gray">
 
             </androidx.appcompat.widget.SearchView>
 
         </LinearLayout>
+
         <RelativeLayout
             android:id="@+id/bottom_layout_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/yellow_top_home">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleView_category"
@@ -66,22 +71,37 @@
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
             </androidx.recyclerview.widget.RecyclerView>
+
             <ImageView
                 android:id="@+id/category_selector"
                 android:layout_width="36dp"
                 android:layout_height="35dp"
-                android:layout_marginEnd="10dp"
-                android:minWidth="36dp"
-                android:src="@drawable/ic_icon_category_more"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
                 android:background="@color/yellow_top_home"
-                >
+                android:minWidth="36dp"
+                android:src="@drawable/ic_icon_category_more">
+
             </ImageView>
 
         </RelativeLayout>
 
     </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/linear_popular_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+        </LinearLayout>
+
+    </ScrollView>
 
    <RelativeLayout
        android:layout_width="match_parent"

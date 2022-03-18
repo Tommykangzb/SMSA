@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.campus.view.navigate.BookDealFragment;
 import com.example.campus.view.navigate.ChatFragment;
 import com.example.campus.view.navigate.HomeFragment;
 import com.example.campus.view.navigate.UserCenterFragment;
@@ -23,11 +24,11 @@ public class DataGenerator {
     public static final String []mTabTitle = new String[]{"选课","市场","消息","我的"};
 
     public static Fragment[] getFragments(String from){
-        Fragment fragments[] = new Fragment[4];
+        Fragment[] fragments = new Fragment[4];
         fragments[0] = HomeFragment.newInstance(from);
-        fragments[1] = HomeFragment.newInstance(from);
+        fragments[1] = new BookDealFragment();
         fragments[2] = ChatFragment.newInstance();
-        fragments[3] = UserCenterFragment.newInstance();
+        fragments[3] = new UserCenterFragment();
         return fragments;
     }
 
