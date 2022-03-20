@@ -1,4 +1,4 @@
-package com.example.campus.model;
+package com.example.campus.adaptar;
 
 import static com.example.campus.view.RecyclerViewHelper.setViewText;
 

@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.campus.R;
 import com.example.campus.helper.ScreenHelp;
+
 import java.util.Objects;
 
 public class UserCenterFragment extends Fragment {
@@ -35,6 +36,7 @@ public class UserCenterFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(TAG, "onCreate");
     }
 
     @Nullable
@@ -53,12 +55,12 @@ public class UserCenterFragment extends Fragment {
         return view;
     }
 
-    private void initView(){
-        addContent("修改密码", accountLinearLayout, getActivity(),(v -> Log.e(TAG,"click")));
-        addContent("绑定邮箱", accountLinearLayout, getActivity(),(v -> Log.e(TAG,"click")));
-        addContent("个人信息", settingLinearLayout, getActivity(),(v -> Log.e(TAG,"click")));
+    private void initView() {
+        addContent("修改密码", accountLinearLayout, getActivity(), (v -> Log.e(TAG, "click")));
+        addContent("绑定邮箱", accountLinearLayout, getActivity(), (v -> Log.e(TAG, "click")));
+        addContent("个人信息", settingLinearLayout, getActivity(), (v -> Log.e(TAG, "click")));
         updateName("康智波");
-        updateUniversity("华南理工大学","2018级");
+        updateUniversity("华南理工大学", "2018级");
     }
 
 
@@ -123,8 +125,8 @@ public class UserCenterFragment extends Fragment {
         linearLayout.addView(line);
     }
 
-    public void updateName(@NonNull String name){
-        if (name.length() > 20){
+    public void updateName(@NonNull String name) {
+        if (name.length() > 20) {
             Toast.makeText(getActivity(), R.string.user_name_over_length, Toast.LENGTH_SHORT).show();
             return;
         }

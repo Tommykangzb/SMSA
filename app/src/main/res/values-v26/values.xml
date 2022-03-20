@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="boldFont">
+        <item name="android:fontWeight">700</item>
+    </style>
+    <style name="normalFont">
+        <item name="android:fontWeight">400</item>
+    </style>
+</resources>

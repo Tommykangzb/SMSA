@@ -26,7 +26,7 @@ public class DataGenerator {
     public static Fragment[] getFragments(String from){
         Fragment[] fragments = new Fragment[4];
         fragments[0] = HomeFragment.newInstance(from);
-        fragments[1] = new BookDealFragment();
+        fragments[1] = BookDealFragment.newInstance();
         fragments[2] = ChatFragment.newInstance();
         fragments[3] = new UserCenterFragment();
         return fragments;

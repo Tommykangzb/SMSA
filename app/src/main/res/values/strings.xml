@@ -4,4 +4,5 @@
     <string name="user_center_setting">Settings</string>
     <string name="user_center_account">Account</string>
     <string name="user_name_over_length">名字过长，请重新设置！</string>
+    <string name="current_popular_text">当前热门商品</string>
 </resources>

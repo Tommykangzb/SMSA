@@ -14,5 +14,8 @@
         <item name="cornerSizeBottomLeft">20%</item>
         <item name="cornerSizeBottomRight">20%</item>
     </style>
+    <style name="boldFont">
+        <item name="android:fontWeight">700</item>
+    </style>
 
 </resources>

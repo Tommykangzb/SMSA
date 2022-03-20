@@ -46,9 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                android:textColor="@color/black">
+                android:textColor="@color/black"/>
 
-            </TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

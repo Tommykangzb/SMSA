@@ -1,7 +1,6 @@
 package com.example.campus.view.navigate;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campus.R;
 import com.example.campus.helper.ScreenHelp;
-import com.example.campus.model.ChatFragmentContainAdapter;
+import com.example.campus.adaptar.ChatFragmentContainAdapter;
 
 import java.util.Objects;
 

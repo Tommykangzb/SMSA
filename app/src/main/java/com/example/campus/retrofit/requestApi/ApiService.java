@@ -1,16 +1,16 @@
 package com.example.campus.retrofit.requestApi;
 
-import com.example.campus.model.Test;
+import com.example.campus.protoModel.CategoryResponseOuterClass;
 import com.example.campus.retrofit.response.HelloResponse;
-import com.google.gson.annotations.SerializedName;
-
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 
-public interface ISubjectApi {
+
+public interface ApiService {
     @GET("bookDeal/index")
     Call<HelloResponse> getTest();
+
+    @GET("bookDeal/index")
+    Call<CategoryResponseOuterClass.CategoryResponse> getCategoryView();
 }

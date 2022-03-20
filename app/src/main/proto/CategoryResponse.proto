@@ -1,0 +1,8 @@
+syntax = "proto3";
+package tutorial;
+
+message CategoryResponse {
+  string          currentSchool = 1;
+  int32           count         = 2;
+  repeated string category      = 3;
+}

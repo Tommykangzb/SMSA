@@ -1,0 +1,22 @@
+syntax = "proto3";
+package tutorial;
+
+message CategoryContainRequest{
+  int32  startIndex = 1;
+  int32  limitCount = 2;
+  string type       = 3;
+}
+
+message CategoryContainResponse{
+  int32                   startIndex = 1;
+  int32                   count      = 2;
+  bool                    isLoadAll  = 3;
+  repeated CategoryResult results    = 4;
+}
+
+message CategoryResult{
+  string courseName    = 1;
+  string courseGrades  = 2;
+  string courseTeacher = 3;
+  string courseType    = 4;
+}
