@@ -80,7 +80,7 @@ public class BookDealFragment extends Fragment {
     @SuppressLint("UseCompatLoadingForDrawables")
     public void initView(View view) {
         //隐藏学校以及课程分类等View
-        view.findViewById(R.id.top_school_text).setVisibility(View.GONE);
+        //view.findViewById(R.id.top_school_text).setVisibility(View.GONE);
         //view.findViewById(R.id.category_selector).setVisibility(View.GONE);
         view.findViewById(R.id.top_school_selector).setVisibility(View.GONE);
         view.findViewById(R.id.imageView_create_sub).setVisibility(View.GONE);

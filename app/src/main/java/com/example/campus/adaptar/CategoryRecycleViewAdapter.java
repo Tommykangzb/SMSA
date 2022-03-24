@@ -13,13 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campus.R;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CategoryRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = "CategoryAdapter";
     private int mSize;
+    private int lastSize = 0;
     private List<String> dataList;
     TextView lastToughView;
 
@@ -66,9 +65,10 @@ public class CategoryRecycleViewAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
     public void updateData(int count, @NonNull List<String> data) {
-        mSize = count;
+        mSize += count;
         dataList = data;
-        notifyItemRangeChanged(0, mSize);
+        notifyItemRangeChanged(lastSize, count);
+        lastSize += mSize;
         Log.i(TAG, "updateData" + count);
     }
 

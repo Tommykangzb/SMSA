@@ -18,34 +18,23 @@
             android:paddingTop="10dp"
             android:background="@color/yellow_top_home">
 
-            <TextView
-                android:id="@+id/top_school_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="20dp"
-                android:textColor="@color/black"
-                android:textSize="16sp">
 
-            </TextView>
-
-            <ImageView
+            <Spinner
                 android:id="@+id/top_school_selector"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:src="@drawable/ic_top_school_more">
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@null"
+                />
 
-            </ImageView>
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_bar"
-                android:layout_width="250dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/corner_gray">
 

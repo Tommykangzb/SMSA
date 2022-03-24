@@ -16,6 +16,7 @@
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/ic_icon_tab_sub_off.xml" value="0.1935" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/ic_icon_tab_sub_on.xml" value="0.1935" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1955" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/ic_top_school_more.xml" value="0.212" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/tab_attention_selector.xml" value="0.1955" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/tab_book_deal_selector.xml" value="0.1955" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/drawable/tab_chat_selector.xml" value="0.1955" />
@@ -28,7 +29,7 @@
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/activity_main.xml" value="0.1875" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/category_adapter_layout.xml" value="0.15715579710144928" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/corner_gray.xml" value="0.14895833333333333" />
-        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/home_fragment_layout.xml" value="0.33" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/home_fragment_layout.xml" value="0.5228215767634855" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/home_tab_content.xml" value="0.1875" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_book_deal_contain_adpatar.xml" value="0.2" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_book_deal_contain_adpater.xml" value="0.18854166666666666" />
@@ -38,6 +39,7 @@
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_chat_fragment_contain_adpater.xml" value="0.5228215767634855" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_chat_fragment_contain_word.xml" value="0.22" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_chat_fragment_option.xml" value="0.15" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_school_selector.xml" value="0.75" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_user_center_fragment.xml" value="0.18" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/subject_adapter_layout.xml" value="0.5228215767634855" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/top_navigate_layout.xml" value="0.22708333333333333" />
@@ -53,6 +55,7 @@
         <entry key="..\:/NewFile/Campus/app/src/main/res/layout/home_fragment_layout.xml" value="0.1875" />
         <entry key="..\:/NewFile/Campus/app/src/main/res/layout/home_tab_content.xml" value="0.1875" />
         <entry key="..\:/NewFile/Campus/app/src/main/res/layout/layout.xml" value="0.1875" />
+        <entry key="..\:/SDK/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.19947916666666668" />
       </map>
     </option>
   </component>
