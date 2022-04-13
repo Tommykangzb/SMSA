@@ -3,22 +3,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include
-        android:id="@+id/chat_option"
-        layout="@layout/layout_chat_fragment_option">
-    </include>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray">
-    </View>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:paddingLeft="16dp"
-        android:id="@+id/recycleView_chat_list"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/chat_gray">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/chat_fragment_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_icon_back_black"/>
+        <TextView
+            android:id="@+id/chat_fragment_chat_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/chat_background"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/chat_fragment_chat_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:paddingTop="15dp">
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/chat_gray_input"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/chat_input_audio"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_icon_audio" />
+
+            <EditText
+                android:layout_width="220dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/chat_edit_frame" />
+
+            <ImageView
+                android:id="@+id/chat_input_emotion"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/ic_icon_emotion" />
+
+            <ImageView
+                android:id="@+id/chat_input_other"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/ic_icon_other_input" />
+
+        </LinearLayout>
 
 </LinearLayout>

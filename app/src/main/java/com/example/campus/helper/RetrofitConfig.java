@@ -27,7 +27,7 @@ public class RetrofitConfig {
     //上传超时时间
     private static final int DEFAULT_WRITE_TIMEOUT = 5 * 60;
     //请求地址
-    private static final String host = "http://192.168.0.103:8080/";
+    private static final String host = "http://av7dq03r.shenzhuo.vip:22459/";
 
     /**
      * 创建拦截器

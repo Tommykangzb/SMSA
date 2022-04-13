@@ -1,0 +1,18 @@
+syntax = "proto3";
+package tutorial;
+
+message LoginRequest {
+  string account   = 1;
+  string password  = 2;
+  int64  timeStamp = 3;
+}
+
+message LoginResponse {
+  // -1:账户不存在  0：密码错误  1：登录成功
+  int32  loginResult  = 1;
+  int64  timeStamp    = 2;
+  string userName     = 3;
+  string userSchool   = 4;
+  string userGrade    = 5;
+  string userImageUrl = 6;
+}

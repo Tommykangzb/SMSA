@@ -9,10 +9,14 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow_top_home">#FFFFEB3B</color>
     <color name="gray">#FFE5E5E5</color>
+    <color name="chat_gray_input">#FFF7F5F5</color>
+    <color name="chat_background">#FFFAF0F0</color>
     <color name="gray_user_center">#FFF5F7F9</color>
     <color name="chat_gray">#FFEEEEEE</color>
     <color name="setting_gray">#FFC1C1C1</color>
     <color name="deep_blue">#FF00264B</color>
     <color name="light_blue">#FF54A2EF</color>
+    <color name="light_green">#FF00BAAD</color>
     <color name="price_yellow">#FFD0906D</color>
+    <color name="wechat_agree_green">#FF07C160</color>
 </resources>

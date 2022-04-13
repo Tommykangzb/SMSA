@@ -1,10 +1,14 @@
 package com.example.campus.view.navigate;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTabHost;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -52,12 +56,9 @@ public class FragmentTabHostActivity extends AppCompatActivity implements TabHos
         mTabHost.setCurrentTab(0);
     }
 
-
-
     @Override
     public void onTabChanged(String tabId) {
         updateTabState();
-
     }
 
     /**
@@ -78,4 +79,5 @@ public class FragmentTabHostActivity extends AppCompatActivity implements TabHos
             }
         }
     }
+
 }

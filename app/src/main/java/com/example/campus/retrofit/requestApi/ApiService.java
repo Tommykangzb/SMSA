@@ -11,12 +11,10 @@ import retrofit2.http.POST;
 
 
 public interface ApiService {
-    @GET("bookDeal/index")
-    Call<HelloResponse> getTest();
 
-    @GET("bookDeal/index")
+    @GET("courseMessage/index")
     Call<CategoryResponseOuterClass.CategoryResponse> getCategoryView();
 
-    @POST("bookDeal/courseContain")
+    @POST("courseMessage/courseContent")
     Call<CategoryContain.CategoryContainResponse> getCourseContain(@Body CategoryContain.CategoryContainRequest categoryContainRequest);
 }

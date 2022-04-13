@@ -4,71 +4,74 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/chat_contain_avatar"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_gravity="center_vertical"
-        app:shapeAppearance="@style/circleStyle"
-        android:src="@drawable/avatar">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/chat_contain_avatar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/avatar"
+            app:shapeAppearance="@style/circleStyle">
 
-    </com.google.android.material.imageview.ShapeableImageView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="5dp">
+        </com.google.android.material.imageview.ShapeableImageView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="5dp">
-            <TextView
-                android:id="@+id/chat_contain_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:textSize="16sp"
-                android:textColor="@color/black">
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
 
-            </TextView>
-            <TextView
-                android:id="@+id/chat_contain_date"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="12sp"
-                android:textColor="@color/black"/>
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+                <TextView
+                    android:id="@+id/chat_contain_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:textColor="@color/black"
+                    android:textSize="16sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/chat_contain_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/setting_gray"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/chat_contain_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:layout_marginTop="5dp"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:textColor="@color/black">
-            </TextView>
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
         </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray">
-    </View>
+        android:layout_marginStart="40dp"
+        android:background="@color/gray"/>
 
 </LinearLayout>

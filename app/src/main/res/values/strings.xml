@@ -5,4 +5,27 @@
     <string name="user_center_account">Account</string>
     <string name="user_name_over_length">名字过长，请重新设置！</string>
     <string name="current_popular_text">当前热门商品</string>
+    <string name="course_detail_comment_hint">写下我的评论···</string>
+    <string name="course_detail_comment_frequency">考勤频率</string>
+    <string name="course_detail_comment_attendance_way">考勤方式</string>
+    <string name="course_detail_comment_exam_way">考核方式</string>
+    <string name="course_detail_comment_given">给分情况</string>
+    <string name="course_detail_comment_credit">学分</string>
+    <string name="course_detail_comment_score">我给它的评分(0~100)</string>
+    <string name="course_detail_comment_evaluate_word">我的总体评价</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="login">登录</string>
+    <string name="sign_up">注册</string>
+    <string name="is_stored">是否保存草稿？</string>
+    <string name="user_center_login_welcome_text">你好，欢迎加入Campus!</string>
+    <string name="user_center_login_create_text">请创建一个账号</string>
+    <string name="user_center_login_input_text">请输入账号</string>
+    <string name="user_center_login_hint_email_text">请输入您的邮箱</string>
+    <string name="user_center_login_hint_password_text">请输入密码</string>
+    <string name="user_center_login_exchange_login_text">已有账号？</string>
+    <string name="user_center_login_exchange_sign_text">没有账号？</string>
+    <string name="user_center_account_mention">账号长度至少为6位，由字母、数字和特殊字符组成,且第一个字符必须是字母</string>
+    <string name="user_center_password_mention">密码长度至少为8位，由字母、数字和特殊字符组成，且必须包含数字和字母</string>
+    <string name="user_center_email_mention">邮箱有误！</string>
 </resources>

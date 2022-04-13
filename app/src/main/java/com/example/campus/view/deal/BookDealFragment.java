@@ -1,4 +1,4 @@
-package com.example.campus.view.navigate;
+package com.example.campus.view.deal;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;

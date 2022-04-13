@@ -1,4 +1,4 @@
-package com.example.campus.view.navigate;
+package com.example.campus.view.message;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campus.R;
 import com.example.campus.helper.ScreenHelp;
-import com.example.campus.adaptar.ChatFragmentContainAdapter;
+import com.example.campus.adaptar.MessageFragmentContainAdapter;
 
 import java.util.Objects;
 
-public class ChatFragment extends Fragment {
-    private static ChatFragment fragment;
+public class MessageFragment extends Fragment {
+    private static MessageFragment fragment;
 
-    public static ChatFragment newInstance(){
+    public static MessageFragment newInstance(){
         if (fragment == null) {
-            fragment = new ChatFragment();
+            fragment = new MessageFragment();
             Bundle bundle = new Bundle();
             fragment.setArguments(bundle);
         }
@@ -36,10 +36,10 @@ public class ChatFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_chat_fragment,null);
+        View view = inflater.inflate(R.layout.layout_message_fragment,null);
         RecyclerView recyclerView = view.findViewById(R.id.recycleView_chat_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        recyclerView.setAdapter(new ChatFragmentContainAdapter());
+        recyclerView.setAdapter(new MessageFragmentContainAdapter());
         ScreenHelp.setStatusBarColor(Objects.requireNonNull(getActivity()), ScreenHelp.stateBarColorValueWhite);
         ScreenHelp.setAndroidNativeLightStatusBar(Objects.requireNonNull(getActivity()),true);
         return view;

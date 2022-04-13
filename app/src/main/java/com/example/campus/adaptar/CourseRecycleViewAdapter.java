@@ -2,7 +2,7 @@ package com.example.campus.adaptar;
 
 import static com.example.campus.view.RecyclerViewHelper.setViewText;
 
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.campus.R;
 import com.example.campus.model.CourseModel;
 import com.example.campus.protoModel.CategoryContain.CategoryResult;
+import com.example.campus.view.Constance;
+import com.example.campus.view.course.CourseDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CourseRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final String TAG = "CourseAdapter";
+    //private  final String TAG = "CourseAdapter";
     private int mSize = 0;
-    private List<CategoryResult> dataList = new ArrayList<>();
+    private final List<CategoryResult> dataList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -32,12 +34,27 @@ public class CourseRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        //ImageView imageView = holder.itemView.findViewById(R.id.chat_contain_avatar);
-        //imageView.setImageBitmap();
-        setViewText(holder, R.id.contain_subject_name, dataList.get(position).getCourseName());
-        setViewText(holder, R.id.contain_subject_grades, dataList.get(position).getCourseGrades());
-        setViewText(holder, R.id.contain_subject_teacher, dataList.get(position).getCourseTeacher());
-        setViewText(holder, R.id.contain_subject_category, dataList.get(position).getCourseType());
+        String COURSE_NAME = "课程名字：";
+        setViewText(holder, R.id.contain_subject_name,
+                COURSE_NAME + dataList.get(position).getCourseName());
+        String COURSE_GRADE = "评分：";
+        setViewText(holder, R.id.contain_subject_grades,
+                COURSE_GRADE + dataList.get(position).getCourseGrades());
+        String COURSE_TEACHER = "开课教师：";
+        setViewText(holder, R.id.contain_subject_teacher,
+                COURSE_TEACHER + dataList.get(position).getCourseTeacher());
+        String COURSE_TYPE = "课程分类：";
+        setViewText(holder, R.id.contain_subject_category,
+                COURSE_TYPE + dataList.get(position).getCourseType());
+        holder.itemView.setOnClickListener(v ->{
+            if (v.getContext() == null){
+                return;
+            }
+            Intent intent = new Intent(v.getContext(), CourseDetailActivity.class);
+            intent.putExtra(Constance.KEY_COURSE_NAME,dataList.get(position).getCourseName());
+            intent.putExtra(Constance.KEY_COURSE_TEACHER_NAME,dataList.get(position).getCourseTeacher());
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override
@@ -50,7 +67,6 @@ public class CourseRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.
         mSize += courseModel.getCount();
         dataList.addAll(courseModel.getCategory());
         notifyItemRangeChanged(courseModel.getStartIndex(), courseModel.getCount());
-        Log.e(TAG, "dataSize: " + dataList.size() + " startIndex: " + courseModel.getStartIndex() + " count: " + courseModel.getCount());
     }
 
 }

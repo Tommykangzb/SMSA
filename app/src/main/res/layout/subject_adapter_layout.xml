@@ -24,8 +24,7 @@
                 android:ellipsize="end"
                 android:textSize="20sp"
                 android:text="酒文化鉴赏与啤酒的酿造工艺讲解11222222"
-                android:textColor="@color/black">
-            </TextView>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/contain_subject_grades"
@@ -36,8 +35,7 @@
                 android:paddingStart="200dp"
                 android:text="评分:95"
                 android:textColor="@color/black"
-                android:textSize="20sp">
-            </TextView>
+                android:textSize="20sp" />
 
         </RelativeLayout>
 

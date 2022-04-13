@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.campus.view.navigate.BookDealFragment;
-import com.example.campus.view.navigate.ChatFragment;
-import com.example.campus.view.navigate.HomeFragment;
-import com.example.campus.view.navigate.UserCenterFragment;
+import com.example.campus.view.deal.BookDealFragment;
+import com.example.campus.view.message.MessageFragment;
+import com.example.campus.view.course.HomeFragment;
+import com.example.campus.view.profile.UserCenterFragment;
 
 
 /**
@@ -27,7 +27,7 @@ public class DataGenerator {
         Fragment[] fragments = new Fragment[4];
         fragments[0] = HomeFragment.newInstance(from);
         fragments[1] = BookDealFragment.newInstance();
-        fragments[2] = ChatFragment.newInstance();
+        fragments[2] = MessageFragment.newInstance();
         fragments[3] = new UserCenterFragment();
         return fragments;
     }

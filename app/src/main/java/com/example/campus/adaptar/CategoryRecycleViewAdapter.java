@@ -72,6 +72,10 @@ public class CategoryRecycleViewAdapter extends RecyclerView.Adapter<RecyclerVie
         Log.i(TAG, "updateData" + count);
     }
 
+    public List<String> getDataList(){
+        return dataList;
+    }
+
     private void changeTextFont(TextView v, int size, boolean bold) {
         v.setTextSize(size);
         v.getPaint().setFakeBoldText(bold);

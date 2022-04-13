@@ -1,0 +1,31 @@
+syntax = "proto3";
+package tutorial;
+
+message CourseDetailResponse {
+  string                            backgroundUrl     = 1;
+  int32                             watchCount        = 2;
+  repeated CourseDetailResponseItem courseDetailItems = 3;
+}
+
+message CourseDetailResponseItem {
+  int64  courseId            = 1;
+  string evaluatorName       = 2;
+  string attendanceFrequency = 3;
+  string attendanceWay       = 4;
+  string examWay             = 5;
+  string examGivenGrades     = 6;
+  float  credit              = 7;
+  int32  courseScore         = 8;
+  int32  likeCount           = 9;
+  string courseEvaluateWords = 10;
+  string date                = 11;
+  string avatarUrl           = 12;
+}
+
+message CourseDetailRequest {
+  string courseName = 1;
+  int32  startIndex = 2;
+  int32  limitCount = 3;
+  int64  courseId   = 4;
+}
+

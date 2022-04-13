@@ -1,10 +1,13 @@
-package com.example.campus.view.navigate;
+package com.example.campus.view.profile;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -21,6 +24,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.campus.R;
 import com.example.campus.helper.ScreenHelp;
+import com.example.campus.view.Constance;
+import com.example.campus.view.course.CommentDialog;
 
 import java.util.Objects;
 
@@ -32,11 +37,16 @@ public class UserCenterFragment extends Fragment {
     private LinearLayout accountLinearLayout;
     private TextView textViewName;
     private TextView textViewUniversity;
+    private TextView loginText;
+    private CommentDialog commentDialog;
+    private Bundle bundle;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate");
+        bundle = new Bundle();
+        bundle.putString("123","hello");
     }
 
     @Nullable
@@ -49,6 +59,7 @@ public class UserCenterFragment extends Fragment {
         accountLinearLayout = view.findViewById(R.id.user_center_layout_account);
         textViewName = view.findViewById(R.id.userName);
         textViewUniversity = view.findViewById(R.id.userUniversityAndGrade);
+        loginText = view.findViewById(R.id.login);
         initView();
         ScreenHelp.setStatusBarColor(Objects.requireNonNull(getActivity()), ScreenHelp.stateBarColorValueBlue);
         ScreenHelp.setAndroidNativeLightStatusBar(getActivity(), true);
@@ -56,11 +67,17 @@ public class UserCenterFragment extends Fragment {
     }
 
     private void initView() {
-        addContent("修改密码", accountLinearLayout, getActivity(), (v -> Log.e(TAG, "click")));
+        addContent("修改密码", accountLinearLayout, getActivity(), clickListener);
         addContent("绑定邮箱", accountLinearLayout, getActivity(), (v -> Log.e(TAG, "click")));
-        addContent("个人信息", settingLinearLayout, getActivity(), (v -> Log.e(TAG, "click")));
-        updateName("康智波");
-        updateUniversity("华南理工大学", "2018级");
+        addContent("个人信息", settingLinearLayout, getActivity(), clickListenerLogin);
+        addContent("修改IP", settingLinearLayout, getActivity(), (v -> Log.e(TAG, "click")));
+        SharedPreferences spf = Objects.requireNonNull(getActivity()).getSharedPreferences("data",Context.MODE_PRIVATE);
+        String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT,"");
+        if (TextUtils.isEmpty(account)) {
+            notLogin();
+        } else {
+            initViewLogin(spf);
+        }
     }
 
 
@@ -125,17 +142,41 @@ public class UserCenterFragment extends Fragment {
         linearLayout.addView(line);
     }
 
-    public void updateName(@NonNull String name) {
-        if (name.length() > 20) {
-            Toast.makeText(getActivity(), R.string.user_name_over_length, Toast.LENGTH_SHORT).show();
-            return;
-        }
-        textViewName.setText(name);
+    private void notLogin() {
+        textViewName.setVisibility(View.GONE);
+        textViewUniversity.setVisibility(View.GONE);
+        loginText.setVisibility(View.VISIBLE);
+        loginText.setText("未登录");
+        loginText.setOnClickListener(clickListenerLogin);
     }
 
     @SuppressLint("SetTextI18n")
-    public void updateUniversity(@NonNull String university, @NonNull String grades) {
+    private void initViewLogin(SharedPreferences spf) {
+        String name = spf.getString(Constance.KEY_USER_CENTER_USER_NAME, "");
+        String university = spf.getString(Constance.KEY_USER_CENTER_USER_UNIVERSITY, "");
+        String grades = spf.getString(Constance.KEY_USER_CENTER_USER_GRADES, "");
+        textViewName.setVisibility(View.VISIBLE);
+        textViewUniversity.setVisibility(View.VISIBLE);
+        textViewName.setText(name);
         textViewUniversity.setText(university + " | " + grades);
+        loginText.setVisibility(View.GONE);
     }
 
+    private final View.OnClickListener clickListener = v -> {
+        commentDialog = new CommentDialog(bundle);
+        commentDialog.showDialog(getActivity());
+    };
+
+    private final View.OnClickListener clickListenerLogin = v -> {
+        Intent intent = new Intent(v.getContext(),LoginActivity.class);
+        v.getContext().startActivity(intent);
+    };
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (commentDialog != null) {
+            commentDialog.hideDialog();
+        }
+    }
 }

@@ -36,7 +36,7 @@ public class CourseViewModel extends ViewModel {
         return categoryModelLiveData;
     }
 
-    public MutableLiveData<Boolean> getIsLoadAll(){
+    public MutableLiveData<Boolean> getIsLoadAll() {
         return isLoadAll;
     }
 
@@ -44,15 +44,23 @@ public class CourseViewModel extends ViewModel {
         public int limitCount;
         public int startIndex;
         public String type;
+        public boolean isInitLoad = false;
 
         public RequestBuilder(String type, int limitCount, int startIndex) {
             this.type = type;
             this.limitCount = limitCount;
             this.startIndex = startIndex;
         }
+
+        public RequestBuilder(String type, int limitCount, int startIndex, boolean firstLoad) {
+            this.type = type;
+            this.limitCount = limitCount;
+            this.startIndex = startIndex;
+            isInitLoad = firstLoad;
+        }
     }
 
-    public void loadData(RequestBuilder requestBuilder){
+    public void loadData(RequestBuilder requestBuilder) {
         CategoryContain.CategoryContainRequest.Builder builder = CategoryContain.CategoryContainRequest.newBuilder();
         builder.setType(requestBuilder.type)
                 .setLimitCount(requestBuilder.limitCount)
@@ -60,12 +68,13 @@ public class CourseViewModel extends ViewModel {
         ApiService courseApi = RetrofitConfig.getInstance().getService(ApiService.class);
         Call<CategoryContainResponse> courseRequest = courseApi.getCourseContain(builder.build());
         currentType = requestBuilder.type;
+        boolean isInitLoad = requestBuilder.isInitLoad;
         courseRequest.enqueue(new Callback<CategoryContainResponse>() {
             @Override
             public void onResponse(@NonNull Call<CategoryContainResponse> call,
                                    @NonNull Response<CategoryContainResponse> response) {
                 try {
-                    updateData(response);
+                    updateData(response,isInitLoad);
                 } catch (CloneNotSupportedException e) {
                     e.printStackTrace();
                 }
@@ -78,13 +87,13 @@ public class CourseViewModel extends ViewModel {
         });
     }
 
-    private <T> void updateData(Response<T> response) throws CloneNotSupportedException {
+    private <T> void updateData(Response<T> response, boolean isInitLoad) throws CloneNotSupportedException {
         if (response == null || response.body() == null) {
             Log.e(TAG, "response is null");
             return;
         }
         boolean loadAll = ((CategoryContainResponse) response.body()).getIsLoadAll();
-        if (loadAll) {
+        if (loadAll && !isInitLoad) {
             isLoadAll.postValue(true);
             return;
         }
@@ -94,7 +103,7 @@ public class CourseViewModel extends ViewModel {
         categoryModelLiveData.postValue(newModel);
     }
 
-    public static class Factory implements ViewModelProvider.Factory{
+    public static class Factory implements ViewModelProvider.Factory {
         @NonNull
         @Override
         public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
