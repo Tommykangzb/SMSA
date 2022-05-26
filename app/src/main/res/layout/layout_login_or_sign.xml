@@ -29,10 +29,36 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"/>
     <LinearLayout
+        android:id="@+id/login_input_email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_input_shape"
+        android:padding="15dp"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_icon_name_text"
+            android:layout_gravity="center_vertical"/>
+        <EditText
+            android:id="@+id/login_input_input_email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/input_no_frame"
+            android:hint="@string/user_center_login_hint_user_name"
+            android:layout_marginStart="5dp"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/email_mention"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_input_shape">
         <ImageView
             android:layout_width="20dp"
@@ -63,7 +89,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_icon_mail"
+            android:src="@drawable/ic_icon_password"
             android:layout_gravity="center_vertical"/>
         <EditText
             android:id="@+id/login_input_create_password"
@@ -89,32 +115,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp" />
-    <LinearLayout
-        android:id="@+id/login_input_email_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/login_input_shape"
-        android:padding="15dp"
-        android:layout_marginTop="10dp">
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_icon_mail"
-            android:layout_gravity="center_vertical"/>
-        <EditText
-            android:id="@+id/login_input_input_email"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/input_no_frame"
-            android:hint="@string/user_center_login_hint_email_text"
-            android:layout_marginStart="5dp"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/email_mention"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"/>
     <Button
         android:id="@+id/login_btn"
         android:layout_width="200dp"

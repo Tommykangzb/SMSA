@@ -5,30 +5,45 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.text.method.HideReturnsTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.campus.R;
 import com.example.campus.helper.InputHandleUtil;
+import com.example.campus.helper.RetrofitConfig;
 import com.example.campus.helper.ScreenHelp;
+import com.example.campus.protoModel.Login;
+import com.example.campus.retrofit.requestApi.ApiService;
+import com.example.campus.view.Constance;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
+    private static final char[] hex = "0123456789abcdef".toCharArray();
     private EditText accountEdit;
-    private EditText emailEdit;
+    private EditText nameEdit;
     private EditText passwordEdit;
     private Button btnLogin;
     private TextView accountMention;
     private TextView passwordMention;
     private TextView emailMention;
+    private ApiService loginService;
     // loginState is true when need to create an account.
     // if have an account, loginState will be false
     private boolean loginState = false;
@@ -39,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ScreenHelp.enableTranslucentStatusBar(this);
         setContentView(R.layout.layout_login_or_sign);
+        loginService = RetrofitConfig.getInstance().getService(ApiService.class);
         initView();
     }
 
@@ -46,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btn_login_back).setOnClickListener(clickListenerBtnBack);
         accountEdit = findViewById(R.id.login_input_create_account);
         accountEdit.setOnFocusChangeListener(accountListener);
-        emailEdit = findViewById(R.id.login_input_input_email);
+        nameEdit = findViewById(R.id.login_input_input_email);
         passwordEdit = findViewById(R.id.login_input_create_password);
         passwordEdit.setOnFocusChangeListener(passwordListener);
         accountMention = findViewById(R.id.account_mention);
@@ -86,11 +102,81 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
+    private final Callback<Login.LoginResponse> callbackLogin = new Callback<Login.LoginResponse>() {
+        @Override
+        public void onResponse(@NonNull Call<Login.LoginResponse> call, Response<Login.LoginResponse> response) {
+            if (response.body() == null) {
+                toastInMain(R.string.request_error, Toast.LENGTH_SHORT);
+                Log.e(TAG, "response is null");
+                return;
+            }
+            Login.LoginResponse responseBody = response.body();
+            switch (responseBody.getLoginResult()){
+                case -3:
+                    toastInMain(R.string.request_error, Toast.LENGTH_SHORT);
+                    break;
+                case -2:
+                    toastInMain(R.string.login_request_account_exist, Toast.LENGTH_SHORT);
+                    break;
+                case -1:
+                    toastInMain(R.string.login_request_no_such_account, Toast.LENGTH_SHORT);
+                    break;
+                case 0:
+                    toastInMain(R.string.login_request_password_error, Toast.LENGTH_SHORT);
+                    break;
+                case 1:
+                    SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
+                    editor.putString(Constance.KEY_USER_CENTER_USER_ACCOUNT,accountEdit.getText().toString());
+                    editor.putString(Constance.KEY_USER_CENTER_USER_NAME, responseBody.getUserName());
+                    editor.putString(Constance.KEY_USER_CENTER_USER_GRADES, responseBody.getUserGrade());
+                    editor.putString(Constance.KEY_USER_CENTER_USER_AVATAR_URL, responseBody.getUserImageUrl());
+                    editor.putString(Constance.KEY_USER_CENTER_USER_UNIVERSITY, responseBody.getUserSchool());
+                    editor.apply();
+                    finish();
+                    break;
+                case 2:
+                    SharedPreferences.Editor editorSignUp = getSharedPreferences("data", MODE_PRIVATE).edit();
+                    editorSignUp.putString(Constance.KEY_USER_CENTER_USER_ACCOUNT,accountEdit.getText().toString());
+                    editorSignUp.putString(Constance.KEY_USER_CENTER_USER_NAME, nameEdit.getText().toString());
+                    editorSignUp.apply();
+                    finish();
+                    break;
+                case 3:
+                    //toastInMain(R.string.login_request_delete_account_succeed, Toast.LENGTH_SHORT);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        @Override
+        public void onFailure(@NonNull Call<Login.LoginResponse> call, @NonNull Throwable t) {
+            toastInMain(R.string.request_error, Toast.LENGTH_SHORT);
+        }
+    };
+
     private final View.OnClickListener clickListenerBtnLogin = v -> {
         Log.e(TAG, "loginState: " + loginState);
         if (!loginState) {
-            //登录态 todo
-            finish();
+            //登录态
+            String account = accountEdit.getText().toString();
+            if (TextUtils.isEmpty(account)) {
+                setMentionText(accountMention, R.string.user_center_account_mention_null);
+                return;
+            }
+            String password = passwordEdit.getText().toString();
+            if (TextUtils.isEmpty(password)) {
+                setMentionText(passwordMention, R.string.user_center_password_mention_null);
+                return;
+            }
+            password = sha256Encrypt(password);
+            Login.LoginRequest.Builder builder = Login.LoginRequest.newBuilder();
+            builder.setAccount(account)
+                    .setPassword(password)
+                    .setTimeStamp(System.currentTimeMillis());
+            Call<Login.LoginResponse> call = loginService.loginRequest(builder.build());
+            call.enqueue(callbackLogin);
             return;
         }
         String account = accountEdit.getText().toString();
@@ -103,15 +189,20 @@ public class LoginActivity extends AppCompatActivity {
             setMentionText(passwordMention, R.string.user_center_password_mention);
             return;
         }
-        String email = emailEdit.getText().toString();
+        String email = nameEdit.getText().toString();
         if (!InputHandleUtil.Companion.checkEmail(email)) {
-            setMentionText(emailMention, R.string.user_center_email_mention);
+            setMentionText(emailMention, R.string.user_center_user_name_mention);
             return;
         }
-        SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
-
-        //editor.putString(Constance.KEY_USER_CENTER_USER_ACCOUNT,account);
-        finish();
+        password = sha256Encrypt(password);
+        Login.LoginRequest.Builder builder = Login.LoginRequest.newBuilder();
+        builder.setAccount(account)
+                .setPassword(password)
+                .setTimeStamp(System.currentTimeMillis());
+        Call<Login.LoginResponse> call = loginService.signUpRequest(builder.build());
+        call.enqueue(callbackLogin);
+        //SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
+        //finish();
     };
 
     private final View.OnClickListener clickListenerExchangeState = v -> {
@@ -159,4 +250,34 @@ public class LoginActivity extends AppCompatActivity {
         textView.setText(textId);
         textView.postDelayed(() -> textView.setVisibility(View.INVISIBLE), 3000);
     }
+
+    private void toastInMain(int id, int length) {
+        Toast.makeText(this, id, length).show();
+    }
+
+    public static String sha256Encrypt(String password) {
+        byte[] result;
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            result = messageDigest.digest(password.getBytes(StandardCharsets.UTF_8));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return toHexString(result);
+    }
+
+    public static String toHexString(byte[] bytes) {
+        if (null == bytes) {
+            return null;
+        } else {
+            StringBuilder sb = new StringBuilder(bytes.length << 1);
+            for (byte aByte : bytes) {
+                sb.append(hex[(aByte & 240) >> 4]).append(hex[aByte & 15]);
+            }
+            return sb.toString();
+        }
+    }
+
+
 }

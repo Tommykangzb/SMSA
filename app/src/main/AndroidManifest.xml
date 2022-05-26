@@ -32,7 +32,7 @@
         <activity
             android:name=".view.message.ChatActivity"
             android:exported="true"
-            android:launchMode="singleTop"
+            android:launchMode="standard"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,6 +46,30 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.profile.UserMessageModifyActivity"
+            android:launchMode="singleTop">
+        </activity>
+        <activity
+            android:name=".view.deal.BookDetailActivity"
+            android:launchMode="singleTop">
+        </activity>
+        <activity
+            android:name=".view.profile.PasswordEditActivity"
+            android:launchMode="singleTop">
+        </activity>
+        <activity
+            android:name=".view.profile.LogoutActivity"
+            android:launchMode="singleTop">
+        </activity>
+        <activity
+            android:name=".view.course.DetailManagerActivity"
+            android:launchMode="singleTop">
+        </activity>
+        <activity
+            android:name=".view.message.FriendsManager"
+            android:launchMode="singleTop">
         </activity>
     </application>
 

@@ -13,15 +13,25 @@
             android:id="@+id/course_details_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg"/>
 
         <ImageView
             android:id="@+id/course_detail_btn_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/ic_icon_back" />
+
+        <ImageView
+            android:id="@+id/course_detail_btn_review_mng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_icon_ios_more_w" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -75,12 +85,45 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:id="@+id/course_detail_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
+        <LinearLayout
+            android:id="@+id/content_change_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_icon_chat_option_setting"
+                android:layout_marginEnd="5dp"/>
+            <TextView
+                android:id="@+id/tx_change_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView_course_details"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="520dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp" />
 
     <LinearLayout
@@ -102,6 +145,5 @@
             tools:ignore="RtlSymmetry" />
 
     </LinearLayout>
-
 
 </LinearLayout>

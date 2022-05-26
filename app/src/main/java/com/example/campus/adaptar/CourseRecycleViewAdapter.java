@@ -1,8 +1,9 @@
 package com.example.campus.adaptar;
 
-import static com.example.campus.view.RecyclerViewHelper.setViewText;
+import static com.example.campus.view.ImageHelper.setViewText;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campus.R;
+import com.example.campus.helper.RetrofitConfig;
 import com.example.campus.model.CourseModel;
-import com.example.campus.protoModel.CategoryContain.CategoryResult;
+import com.example.campus.protoModel.CourseContain.CategoryResult;
+import com.example.campus.protoModel.CourseDetail;
+import com.example.campus.retrofit.requestApi.ApiService;
 import com.example.campus.view.Constance;
 import com.example.campus.view.course.CourseDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CourseRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     //private  final String TAG = "CourseAdapter";
@@ -51,8 +59,13 @@ public class CourseRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.
                 return;
             }
             Intent intent = new Intent(v.getContext(), CourseDetailActivity.class);
-            intent.putExtra(Constance.KEY_COURSE_NAME,dataList.get(position).getCourseName());
-            intent.putExtra(Constance.KEY_COURSE_TEACHER_NAME,dataList.get(position).getCourseTeacher());
+            Bundle bundle = new Bundle();
+            bundle.putString(Constance.KEY_COURSE_NAME,dataList.get(position).getCourseName());
+            bundle.putString(Constance.KEY_COURSE_TEACHER_NAME,dataList.get(position).getCourseTeacher());
+            bundle.putString(Constance.KEY_COURSE_DETAIL_GROUND_URL,dataList.get(position).getBackgroundURL());
+            bundle.putInt(Constance.KEY_COURSE_WATCH_COUNT,dataList.get(position).getWatcherCount());
+            bundle.putLong(Constance.KEY_COURSE_ID,dataList.get(position).getCourseId());
+            intent.putExtras(bundle);
             v.getContext().startActivity(intent);
         });
     }

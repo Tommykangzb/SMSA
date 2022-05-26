@@ -22,6 +22,7 @@ public class DataGenerator {
     public static final int []mTabRes = new int[]{R.drawable.tab_home_selector,R.drawable.tab_deal_selector,R.drawable.tab_chat_selector,R.drawable.tab_profile_selector};
     public static final int []mTabResPressed = new int[]{R.drawable.ic_icon_tab_sub_on,R.drawable.ic_icon_tab_deal_on,R.drawable.ic_icon_tab_chat_on,R.drawable.ic_icon_tab_profile_on};
     public static final String []mTabTitle = new String[]{"选课","市场","消息","我的"};
+    public static final String []mReviewSortSetting = new String[]{"时间","热度"};
 
     public static Fragment[] getFragments(String from){
         Fragment[] fragments = new Fragment[4];

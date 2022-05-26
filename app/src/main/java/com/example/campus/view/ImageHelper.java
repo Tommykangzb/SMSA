@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.campus.API.IBitmapLoadAdapter;
 import com.example.campus.adaptar.CourseDetailAdapter;
 import com.google.android.material.imageview.ShapeableImageView;
 
@@ -23,24 +25,19 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewHelper extends Thread{
+public class ImageHelper extends Thread{
     private String imageUrl = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2Ftp03%2F1Z92210320C612-0-lp.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651893102&t=cccb72041660c03dea897643b02137bf";
     private ShapeableImageView shapeableImageView;
     private Handler handler;
-    CourseDetailAdapter adapter;
+    IBitmapLoadAdapter adapter;
 
-    public RecyclerViewHelper(CourseDetailAdapter adapter,Handler handler){
+    public ImageHelper(IBitmapLoadAdapter adapter, Handler handler, @Nullable String Url) {
         this.adapter = adapter;
         this.handler = handler;
-    }
-    public static void setViewText(RecyclerView.ViewHolder holder, int id, @NonNull String str) {
-        View v = holder.itemView.findViewById(id);
-        if (v instanceof TextView) {
-            ((TextView) v).setText(str);
+        if (!TextUtils.isEmpty(Url)) {
+            imageUrl = Url;
         }
     }
-
-
 
     @Override
     public void run(){
@@ -60,11 +57,19 @@ public class RecyclerViewHelper extends Thread{
             InputStream input = connection.getInputStream();
             Bitmap bitmap = BitmapFactory.decodeStream(input);
             Message msg = new Message();
-            adapter.setAvatar(bitmap);
+            adapter.setBitmap(bitmap);
             handler.sendMessage(msg);
         } catch (IOException e) {
             e.printStackTrace();
             Log.e("Exception", e.getMessage());
+        }
+    }
+
+
+    public static void setViewText(RecyclerView.ViewHolder holder, int id, @NonNull String str) {
+        View v = holder.itemView.findViewById(id);
+        if (v instanceof TextView) {
+            ((TextView) v).setText(str);
         }
     }
 }

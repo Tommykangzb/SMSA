@@ -17,14 +17,26 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.example.campus.R;
+import com.example.campus.helper.RetrofitConfig;
+import com.example.campus.retrofit.requestApi.ApiService;
 import com.example.campus.view.BaseDialog;
 import com.example.campus.view.Constance;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import tutorial.CourseDetailCreate;
+import tutorial.ResponseOuterClass;
 
 public class CommentDialog extends BaseDialog {
     private static final String TAG = "CommentDialog";
@@ -57,6 +69,7 @@ public class CommentDialog extends BaseDialog {
 
 
     @SuppressLint("InflateParams")
+    @Override
     public void showDialog(Activity activity) {
         this.activity = activity;
         //创建一个dialog实例
@@ -101,12 +114,11 @@ public class CommentDialog extends BaseDialog {
         if (dialog == null || bundle == null) {
             return;
         }
-        if (bundle.getBoolean(Constance.KEY_SAVE_FALSE_OR_TRUE)) {
+        if (bundle.getBoolean(Constance.KEY_CHOSE_FALSE_OR_TRUE)) {
             saveText(true);
         } else {
             clearText();
         }
-        Log.e(TAG, " " + bundle.getBoolean(Constance.KEY_SAVE_FALSE_OR_TRUE));
         dialog.dismiss();
     }
 
@@ -163,6 +175,7 @@ public class CommentDialog extends BaseDialog {
     };
 
     private final View.OnClickListener clickListenerConfirm = v -> {
+        //if (typeKey == Constance.KEY_DIALOG_TYPE_ADD_COMMENT)
         saveText(false);
         Log.e(TAG,"click");
         dialog.dismiss();
@@ -246,28 +259,75 @@ public class CommentDialog extends BaseDialog {
     }
 
     private void saveCommentText(SharedPreferences.Editor editor,boolean loadNextTime){
+        CourseDetailCreate.CourseDetailCreateRequest.Builder builder = CourseDetailCreate.
+                CourseDetailCreateRequest.newBuilder();
         if (!TextUtils.isEmpty(frequencyText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_FREQUENCY, frequencyText.getText().toString());
+            builder.setAttendanceFrequency(frequencyText.getText().toString());
         }
         if (!TextUtils.isEmpty(evaluateText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_EVALUATE, evaluateText.getText().toString());
+            builder.setCourseEvaluateWords(evaluateText.getText().toString());
         }
         if (!TextUtils.isEmpty(attendanceWayText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_ATTENDANCE_WAY, attendanceWayText.getText().toString());
+            builder.setAttendanceWay(attendanceWayText.getText().toString());
         }
         if (!TextUtils.isEmpty(examWayText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_EXAM_WAY, examWayText.getText().toString());
+            builder.setExamWay(examWayText.getText().toString());
         }
         if (!TextUtils.isEmpty(givenText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_GIVEN, givenText.getText().toString());
+            builder.setExamGivenGrades(givenText.getText().toString());
         }
         if (!TextUtils.isEmpty(scoreText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_SCORE, scoreText.getText().toString());
+            builder.setCourseScore(Integer.parseInt(scoreText.getText().toString()));
         }
         if (!TextUtils.isEmpty(creditText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_CREDIT, creditText.getText().toString());
+            builder.setCredit(Float.parseFloat(creditText.getText().toString()));
         }
         editor.putBoolean(Constance.KEY_LOAD_NEXT_TIME, loadNextTime);
+        SharedPreferences spf = activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+        String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, "");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date(System.currentTimeMillis());
+        if (TextUtils.isEmpty(account)) {
+            Toast.makeText(activity, R.string.user_center_not_login_text, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        builder.setCourseId(Long.parseLong(bundle.getString(Constance.KEY_COURSE_ID, "0")))
+                .setUserId(bundle.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, ""))
+                .setLikeCount(0)
+                .setDate(simpleDateFormat.format(date));
+        ApiService service = RetrofitConfig.getInstance().getService(ApiService.class);
+        Call<ResponseOuterClass.Response> call = service.publishReview(builder.build());
+        call.enqueue(new Callback<ResponseOuterClass.Response>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseOuterClass.Response> call,
+                                   @NonNull Response<ResponseOuterClass.Response> response) {
+                if (response.body() == null) {
+                    return;
+                }
+                if (response.body().getResponseState() == 1) {
+                    Toast.makeText(activity, R.string.course_detail_review_publish_succeed,
+                            Toast.LENGTH_LONG).show();
+                }
+                if (response.body().getResponseState() == -5) {
+                    Toast.makeText(activity, R.string.course_detail_review_has_published,
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseOuterClass.Response> call,
+                                  @NonNull Throwable t) {
+                Toast.makeText(activity, R.string.request_net_error,
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void saveAddCourseText(SharedPreferences.Editor editor){

@@ -16,6 +16,7 @@ import android.view.*;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.campus.R;
 import com.example.campus.helper.RetrofitConfig;
@@ -123,13 +124,13 @@ public class HomeFragment extends Fragment {
                 //schoolTextView.setText(categoryResponse.getCurrentSchool());
                 if (!TextUtils.isEmpty(categoryResponse.getCurrentSchool())){
                     spinner.setSelection(2);
-                    Log.e(TAG,"spinner content: " + spinner.getSelectedItem());
                 }
                 categoryRecycleViewAdapter.updateData(categoryResponse.getCount(), categoryResponse.getCategoryList());
             }
 
             @Override
             public void onFailure(@NonNull Call<CategoryResponse> call, @NonNull Throwable t) {
+                Toast.makeText(getActivity(), R.string.request_net_error, Toast.LENGTH_SHORT).show();
                 Log.e(TAG, "fail " + t);
             }
         });

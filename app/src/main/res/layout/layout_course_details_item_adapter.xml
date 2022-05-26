@@ -16,7 +16,6 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             app:shapeAppearance="@style/circleStylePadding"
-            android:src="@drawable/avatar"
             android:scaleType="centerCrop"/>
 
         <TextView
@@ -41,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:singleLine="true"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/course_detail_attendance_way"
@@ -65,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:singleLine="true"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/course_detail_exam_given"
@@ -118,26 +117,28 @@
 
         <TextView
             android:id="@+id/course_detail_date"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:singleLine="true"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_gravity="center_vertical"/>
 
         <ImageView
+            android:id="@+id/course_detail_like_image"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_weight="0"
-            android:src="@drawable/ic_icon_like" />
+            android:src="@drawable/ic_like_selector"
+            android:layout_gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/course_detail_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_weight="0"
             android:singleLine="true"
-            android:textSize="14sp" />
+            android:textSize="15sp"
+            android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
     <View

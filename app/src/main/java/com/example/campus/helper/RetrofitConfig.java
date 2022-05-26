@@ -27,7 +27,8 @@ public class RetrofitConfig {
     //上传超时时间
     private static final int DEFAULT_WRITE_TIMEOUT = 5 * 60;
     //请求地址
-    private static final String host = "http://av7dq03r.shenzhuo.vip:22459/";
+    public static final String host = "http://t51z536412.qicp.vip:80";
+    public static final String avatarHost = host + "/upload/";
 
     /**
      * 创建拦截器
@@ -66,9 +67,6 @@ public class RetrofitConfig {
                     //.addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
                     .build();
         }
-
-        //Method []methods = clz.getDeclaredMethods();
-        //clz
         return retrofit.create(clz);
     }
 

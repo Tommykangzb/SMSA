@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/top_friend"
+        android:title="@string/menu_top_friend" />
+    <item
+        android:id="@+id/delete_chat"
+        android:title="@string/menu_delete_chat" />
+    <item
+        android:id="@+id/delete_friend"
+        android:title="@string/menu_delete_friend" />
+</menu>

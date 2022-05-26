@@ -1,6 +1,6 @@
 package com.example.campus.adaptar;
 
-import static com.example.campus.view.RecyclerViewHelper.setViewText;
+import static com.example.campus.view.ImageHelper.setViewText;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,16 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campus.R;
 import com.example.campus.view.Constance;
 import com.example.campus.view.message.ChatActivity;
-import com.example.campus.view.navigate.FragmentTabHostActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,6 +58,10 @@ public class MessageFragmentContainAdapter extends RecyclerView.Adapter<Recycler
                 Intent intent = new Intent(context, ChatActivity.class);
                 intent.putExtra(Constance.KEY_INTENT_CHAT_NAME, dataListName.get(position));
                 context.startActivity(intent);
+            });
+            holder.itemView.setOnLongClickListener(v -> {
+                //PopupMenu
+                return true;
             });
         } else {
             int type = (int) payloads.get(0);

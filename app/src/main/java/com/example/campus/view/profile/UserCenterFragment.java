@@ -1,6 +1,7 @@
 package com.example.campus.view.profile;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,19 +19,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.campus.R;
+import com.example.campus.helper.PswVerifyHelper;
+import com.example.campus.helper.RetrofitConfig;
 import com.example.campus.helper.ScreenHelp;
+import com.example.campus.view.BaseDialog;
 import com.example.campus.view.Constance;
-import com.example.campus.view.course.CommentDialog;
+import com.example.campus.view.course.DetailManagerActivity;
+import com.example.campus.view.course.SaveDialog;
+import com.example.campus.view.message.FriendsManager;
+import com.google.android.material.imageview.ShapeableImageView;
 
-import java.util.Objects;
 
 public class UserCenterFragment extends Fragment {
 
+    private static final String url = RetrofitConfig.avatarHost;
     private static final String TAG = "UserCenterFragment";
 
     private LinearLayout settingLinearLayout;
@@ -38,8 +45,10 @@ public class UserCenterFragment extends Fragment {
     private TextView textViewName;
     private TextView textViewUniversity;
     private TextView loginText;
-    private CommentDialog commentDialog;
+    private BaseDialog commentDialog;
     private Bundle bundle;
+    private ShapeableImageView avatar;
+    private Activity activity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,11 +56,13 @@ public class UserCenterFragment extends Fragment {
         Log.i(TAG, "onCreate");
         bundle = new Bundle();
         bundle.putString("123","hello");
+        activity = getActivity();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.e(TAG,"onCreateView ");
         View view = inflater.inflate(R.layout.layout_user_center_fragment, null);
         //设置部分的容器
         settingLinearLayout = view.findViewById(R.id.user_center_layout_setting);
@@ -60,23 +71,45 @@ public class UserCenterFragment extends Fragment {
         textViewName = view.findViewById(R.id.userName);
         textViewUniversity = view.findViewById(R.id.userUniversityAndGrade);
         loginText = view.findViewById(R.id.login);
+        avatar = view.findViewById(R.id.userCenterAvatar);
         initView();
-        ScreenHelp.setStatusBarColor(Objects.requireNonNull(getActivity()), ScreenHelp.stateBarColorValueBlue);
-        ScreenHelp.setAndroidNativeLightStatusBar(getActivity(), true);
+        ScreenHelp.setStatusBarColor(activity, ScreenHelp.stateBarColorValueBlue);
+        ScreenHelp.setAndroidNativeLightStatusBar(activity, true);
         return view;
     }
 
     private void initView() {
-        addContent("修改密码", accountLinearLayout, getActivity(), clickListener);
-        addContent("绑定邮箱", accountLinearLayout, getActivity(), (v -> Log.e(TAG, "click")));
-        addContent("个人信息", settingLinearLayout, getActivity(), clickListenerLogin);
-        addContent("修改IP", settingLinearLayout, getActivity(), (v -> Log.e(TAG, "click")));
-        SharedPreferences spf = Objects.requireNonNull(getActivity()).getSharedPreferences("data",Context.MODE_PRIVATE);
-        String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT,"");
-        if (TextUtils.isEmpty(account)) {
+        addContent("修改密码", accountLinearLayout, activity, clickListenerEditPsw);
+        //addContent("绑定邮箱", accountLinearLayout, activity, clickListener);
+        addContent("退出登录", accountLinearLayout, activity, clickListenerSignOut);
+        addContent("注销账号", accountLinearLayout, activity, clickListenerLogout);
+        addContent("个人信息", settingLinearLayout, activity, clickListenerLoginEditMsg);
+        addContent("修改IP", settingLinearLayout, activity,
+                (v -> startActivity(new Intent(activity, DetailManagerActivity.class))));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setLoginMsg();
+        Log.e(TAG, "onResume");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (commentDialog != null) {
+            commentDialog.hideDialog();
+        }
+    }
+
+    private void setLoginMsg(){
+        if (isNotLogin()) {
             notLogin();
+            Log.e(TAG, "not login");
         } else {
-            initViewLogin(spf);
+            initViewLogin(activity.getSharedPreferences("data", Context.MODE_PRIVATE));
+            Log.e(TAG, "login");
         }
     }
 
@@ -145,6 +178,7 @@ public class UserCenterFragment extends Fragment {
     private void notLogin() {
         textViewName.setVisibility(View.GONE);
         textViewUniversity.setVisibility(View.GONE);
+        avatar.setImageResource(R.drawable.image_unload);
         loginText.setVisibility(View.VISIBLE);
         loginText.setText("未登录");
         loginText.setOnClickListener(clickListenerLogin);
@@ -160,10 +194,46 @@ public class UserCenterFragment extends Fragment {
         textViewName.setText(name);
         textViewUniversity.setText(university + " | " + grades);
         loginText.setVisibility(View.GONE);
+        String avatarUrl = url + spf.getString(Constance.KEY_USER_CENTER_USER_AVATAR_URL, "");
+        Glide.with(activity)
+                .load(avatarUrl)
+                .placeholder(R.drawable.image_unload)
+                .into(avatar);
     }
 
-    private final View.OnClickListener clickListener = v -> {
-        commentDialog = new CommentDialog(bundle);
+    private boolean isNotLogin(){
+        SharedPreferences spf = activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+        String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, "");
+        return TextUtils.isEmpty(account);
+    }
+
+    private final View.OnClickListener clickListenerEditPsw = v -> {
+        if (isNotLogin()) {
+            Toast.makeText(activity,R.string.user_center_not_login_text,Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(v.getContext(),PasswordEditActivity.class);
+        v.getContext().startActivity(intent);
+    };
+
+    private final View.OnClickListener clickListenerSignOut = v -> {
+        if (isNotLogin()) {
+            Toast.makeText(activity,R.string.user_center_not_login_text,Toast.LENGTH_SHORT).show();
+            return;
+        }
+        commentDialog = new SaveDialog(bundle,null,"是否退出登录");
+        ((SaveDialog)commentDialog).setSaveCallBack(new SaveDialog.SaveCallBack() {
+            @Override
+            public void choseTrue() {
+                PswVerifyHelper.clearUserSpf(activity);
+                setLoginMsg();
+            }
+
+            @Override
+            public void choseFalse() {
+
+            }
+        });
         commentDialog.showDialog(getActivity());
     };
 
@@ -172,11 +242,35 @@ public class UserCenterFragment extends Fragment {
         v.getContext().startActivity(intent);
     };
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if (commentDialog != null) {
-            commentDialog.hideDialog();
+    private final View.OnClickListener clickListenerLoginEditMsg = v -> {
+        if (isNotLogin()) {
+            Toast.makeText(activity,R.string.user_center_not_login_text,Toast.LENGTH_SHORT).show();
+            return;
         }
-    }
+        Intent intent = new Intent(v.getContext(), UserMessageModifyActivity.class);
+        v.getContext().startActivity(intent);
+    };
+
+    private final View.OnClickListener clickListenerLogout = v -> {
+        if (isNotLogin()) {
+            Toast.makeText(activity,R.string.user_center_not_login_text,Toast.LENGTH_SHORT).show();
+            return;
+        }
+        commentDialog = new SaveDialog(bundle,null,"是否注销账号");
+        ((SaveDialog)commentDialog).setSaveCallBack(new SaveDialog.SaveCallBack() {
+            @Override
+            public void choseTrue() {
+                Intent intent = new Intent(v.getContext(), LogoutActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void choseFalse() {
+
+            }
+        });
+        commentDialog.showDialog(getActivity());
+    };
+
+
 }

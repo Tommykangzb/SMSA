@@ -16,7 +16,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/avatar"
             app:shapeAppearance="@style/circleStylePadding" />
 
         <TextView

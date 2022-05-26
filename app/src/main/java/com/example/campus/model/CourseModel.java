@@ -2,8 +2,8 @@ package com.example.campus.model;
 
 import android.util.Log;
 
-import com.example.campus.protoModel.CategoryContain.CategoryResult;
-import com.example.campus.protoModel.CategoryContain.CategoryContainResponse;
+import com.example.campus.protoModel.CourseContain.CategoryResult;
+import com.example.campus.protoModel.CourseContain.CategoryContainResponse;
 
 import java.util.ArrayList;
 import java.util.List;

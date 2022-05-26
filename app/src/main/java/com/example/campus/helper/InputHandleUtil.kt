@@ -5,6 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ScrollView
+import java.nio.charset.StandardCharsets
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 import java.util.regex.Pattern
 
 class InputHandleUtil {
@@ -21,6 +24,9 @@ class InputHandleUtil {
     private var scrollViewParams: ViewGroup.MarginLayoutParams? = null
     private var scrollViewMargin = 0
     private var ignoreViewParams: ViewGroup.MarginLayoutParams? = null
+
+
+
 
     /**
      * 处理包含输入框的容器方法
@@ -90,7 +96,10 @@ class InputHandleUtil {
         return r.bottom
     }
 
-    companion object{
+    companion object {
+
+        private val hex = "0123456789abcdef".toCharArray()
+
         fun checkAccount(account: String): Boolean {
             if (account.isEmpty() || account.length < 6) {
                 return false
@@ -115,12 +124,9 @@ class InputHandleUtil {
             return true
         }
 
-        fun checkEmail(email: String): Boolean {
-            if (email.isNotEmpty()) {
-                return Pattern.matches(
-                    "^(\\w+([-.][A-Za-z0-9]+)*){3,18}@\\w+([-.][A-Za-z0-9]+)*\\.\\w+([-.][A-Za-z0-9]+)*$",
-                    email
-                )
+        fun checkEmail(name: String): Boolean {
+            if (name.isNotEmpty()) {
+                return name.length <= 20
             }
             return false
         }

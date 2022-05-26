@@ -1,0 +1,11 @@
+syntax = "proto3";
+package tutorial;
+
+message UserMsgEditRequest {
+  string userName    = 1;
+  int32  userSchool  = 2;
+  string userGrade   = 3;
+  string userSelfDes = 4;
+  string email       = 5;
+  bytes  avatarSrc   = 6;
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+package tutorial;
+
+message BookDetailReviewRequest{
+  string bookId   = 1;
+  int32  limit    = 2;
+  string sellerId = 3;
+}
+
+message BookDetailReviewResponse{
+  int64                       timeStamp = 1;
+  int32                       size      = 2;
+  bool                        isLoadAll = 3;
+  repeated ReviewResponseItem reviews   = 4;
+}
+
+message ReviewResponseItem{
+  string             reviewerName      = 1;
+  string             reviewerAvatarUrl = 2;
+  string             reviewTime        = 3;
+  string             reviewContent     = 4;
+  ReviewResponseItem review            = 5;
+}

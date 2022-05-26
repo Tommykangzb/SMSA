@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.campus.helper.RetrofitConfig;
 import com.example.campus.model.CourseModel;
-import com.example.campus.protoModel.CategoryContain;
-import com.example.campus.protoModel.CategoryContain.CategoryContainResponse;
+import com.example.campus.protoModel.CourseContain;
+import com.example.campus.protoModel.CourseContain.CategoryContainResponse;
 import com.example.campus.retrofit.requestApi.ApiService;
 
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ public class CourseViewModel extends ViewModel {
     }
 
     public void loadData(RequestBuilder requestBuilder) {
-        CategoryContain.CategoryContainRequest.Builder builder = CategoryContain.CategoryContainRequest.newBuilder();
+        CourseContain.CategoryContainRequest.Builder builder = CourseContain.CategoryContainRequest.newBuilder();
         builder.setType(requestBuilder.type)
                 .setLimitCount(requestBuilder.limitCount)
                 .setStartIndex(requestBuilder.startIndex);
@@ -79,7 +79,6 @@ public class CourseViewModel extends ViewModel {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<CategoryContainResponse> call, @NonNull Throwable t) {
                 Log.e(TAG, "fail: " + t);

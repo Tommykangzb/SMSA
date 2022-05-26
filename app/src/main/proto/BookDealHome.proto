@@ -1,0 +1,31 @@
+syntax = "proto3";
+package tutorial;
+
+message BookDealRequest{
+  uint64 userId     = 1;
+  int32  limitCount = 2;
+}
+
+message BookDealResponse{
+  repeated BookMessage hotBook        = 1;
+  repeated BookMessage commodity      = 2;
+  int32                hotBookCount   = 3;
+  int32                commodityCount = 4;
+  bool                 loadAll        = 5;
+}
+
+message BookMessage{
+  string          bookImageUrl    = 1;
+  string          bookName        = 2;
+  float           price           = 3;
+  string          sellerName      = 4;
+  string          sellerAvatarUrl = 5;
+  int32           likeCount       = 6;
+  string          description     = 7;
+  repeated string bookMsgImage    = 8;
+  uint64          sellerId        = 9;
+  uint64          bookId          = 10;
+  string          sellMsg         = 11;
+  int32           collectCount    = 12;
+  int32           reviewCount     = 13;
+}

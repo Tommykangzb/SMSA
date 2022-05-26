@@ -19,4 +19,7 @@ message CategoryResult{
   string courseGrades  = 2;
   string courseTeacher = 3;
   string courseType    = 4;
+  int64  courseId      = 5;
+  int32  watcherCount  = 6;
+  string backgroundURL = 7;
 }

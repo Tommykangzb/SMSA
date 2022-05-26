@@ -3,8 +3,8 @@
 
 package com.example.campus.protoModel;
 
-public final class CategoryContain {
-  private CategoryContain() {}
+public final class CourseContain {
+  private CourseContain() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -31,7 +31,7 @@ public final class CategoryContain {
     /**
      * <code>optional string type = 3;</code>
      */
-    java.lang.String getType();
+    String getType();
     /**
      * <code>optional string type = 3;</code>
      */
@@ -55,7 +55,7 @@ public final class CategoryContain {
       type_ = "";
     }
 
-    @java.lang.Override
+    @Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
@@ -91,7 +91,7 @@ public final class CategoryContain {
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               type_ = s;
               break;
@@ -109,14 +109,14 @@ public final class CategoryContain {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return CategoryContain.internal_static_tutorial_CategoryContainRequest_descriptor;
+      return CourseContain.internal_static_tutorial_CategoryContainRequest_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return CategoryContain.internal_static_tutorial_CategoryContainRequest_fieldAccessorTable
+      return CourseContain.internal_static_tutorial_CategoryContainRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              CategoryContain.CategoryContainRequest.class, CategoryContain.CategoryContainRequest.Builder.class);
+              CategoryContainRequest.class, Builder.class);
     }
 
     public static final int STARTINDEX_FIELD_NUMBER = 1;
@@ -138,18 +138,18 @@ public final class CategoryContain {
     }
 
     public static final int TYPE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object type_;
+    private volatile Object type_;
     /**
      * <code>optional string type = 3;</code>
      */
-    public java.lang.String getType() {
-      java.lang.Object ref = type_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getType() {
+      Object ref = type_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         type_ = s;
         return s;
       }
@@ -159,11 +159,11 @@ public final class CategoryContain {
      */
     public com.google.protobuf.ByteString
         getTypeBytes() {
-      java.lang.Object ref = type_;
-      if (ref instanceof java.lang.String) {
+      Object ref = type_;
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         type_ = b;
         return b;
       } else {
@@ -215,15 +215,15 @@ public final class CategoryContain {
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
+    @Override
+    public boolean equals(final Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof CategoryContain.CategoryContainRequest)) {
+      if (!(obj instanceof CategoryContainRequest)) {
         return super.equals(obj);
       }
-      CategoryContain.CategoryContainRequest other = (CategoryContain.CategoryContainRequest) obj;
+      CategoryContainRequest other = (CategoryContainRequest) obj;
 
       boolean result = true;
       result = result && (getStartIndex()
@@ -235,7 +235,7 @@ public final class CategoryContain {
       return result;
     }
 
-    @java.lang.Override
+    @Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -253,58 +253,58 @@ public final class CategoryContain {
       return hash;
     }
 
-    public static CategoryContain.CategoryContainRequest parseFrom(
+    public static CategoryContainRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static CategoryContain.CategoryContainRequest parseFrom(
+    public static CategoryContainRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static CategoryContain.CategoryContainRequest parseFrom(byte[] data)
+    public static CategoryContainRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static CategoryContain.CategoryContainRequest parseFrom(
+    public static CategoryContainRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static CategoryContain.CategoryContainRequest parseFrom(java.io.InputStream input)
+    public static CategoryContainRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static CategoryContain.CategoryContainRequest parseFrom(
+    public static CategoryContainRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static CategoryContain.CategoryContainRequest parseDelimitedFrom(java.io.InputStream input)
+    public static CategoryContainRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static CategoryContain.CategoryContainRequest parseDelimitedFrom(
+    public static CategoryContainRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static CategoryContain.CategoryContainRequest parseFrom(
+    public static CategoryContainRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static CategoryContain.CategoryContainRequest parseFrom(
+    public static CategoryContainRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -316,7 +316,7 @@ public final class CategoryContain {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(CategoryContain.CategoryContainRequest prototype) {
+    public static Builder newBuilder(CategoryContainRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -324,9 +324,9 @@ public final class CategoryContain {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -336,26 +336,26 @@ public final class CategoryContain {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tutorial.CategoryContainRequest)
-        CategoryContain.CategoryContainRequestOrBuilder {
+        CategoryContainRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return CategoryContain.internal_static_tutorial_CategoryContainRequest_descriptor;
+        return CourseContain.internal_static_tutorial_CategoryContainRequest_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return CategoryContain.internal_static_tutorial_CategoryContainRequest_fieldAccessorTable
+        return CourseContain.internal_static_tutorial_CategoryContainRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                CategoryContain.CategoryContainRequest.class, CategoryContain.CategoryContainRequest.Builder.class);
+                CategoryContainRequest.class, Builder.class);
       }
 
-      // Construct using com.example.campus.protoModel.CategoryContain.CategoryContainRequest.newBuilder()
+      // Construct using tutorial.CourseContain.CategoryContainRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -377,23 +377,23 @@ public final class CategoryContain {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return CategoryContain.internal_static_tutorial_CategoryContainRequest_descriptor;
+        return CourseContain.internal_static_tutorial_CategoryContainRequest_descriptor;
       }
 
-      public CategoryContain.CategoryContainRequest getDefaultInstanceForType() {
-        return CategoryContain.CategoryContainRequest.getDefaultInstance();
+      public CategoryContainRequest getDefaultInstanceForType() {
+        return CategoryContainRequest.getDefaultInstance();
       }
 
-      public CategoryContain.CategoryContainRequest build() {
-        CategoryContain.CategoryContainRequest result = buildPartial();
+      public CategoryContainRequest build() {
+        CategoryContainRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public CategoryContain.CategoryContainRequest buildPartial() {
-        CategoryContain.CategoryContainRequest result = new CategoryContain.CategoryContainRequest(this);
+      public CategoryContainRequest buildPartial() {
+        CategoryContainRequest result = new CategoryContainRequest(this);
         result.startIndex_ = startIndex_;
         result.limitCount_ = limitCount_;
         result.type_ = type_;
@@ -428,16 +428,16 @@ public final class CategoryContain {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof CategoryContain.CategoryContainRequest) {
-          return mergeFrom((CategoryContain.CategoryContainRequest)other);
+        if (other instanceof CategoryContainRequest) {
+          return mergeFrom((CategoryContainRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(CategoryContain.CategoryContainRequest other) {
-        if (other == CategoryContain.CategoryContainRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(CategoryContainRequest other) {
+        if (other == CategoryContainRequest.getDefaultInstance()) return this;
         if (other.getStartIndex() != 0) {
           setStartIndex(other.getStartIndex());
         }
@@ -460,11 +460,11 @@ public final class CategoryContain {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        CategoryContain.CategoryContainRequest parsedMessage = null;
+        CategoryContainRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (CategoryContain.CategoryContainRequest) e.getUnfinishedMessage();
+          parsedMessage = (CategoryContainRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -526,20 +526,20 @@ public final class CategoryContain {
         return this;
       }
 
-      private java.lang.Object type_ = "";
+      private Object type_ = "";
       /**
        * <code>optional string type = 3;</code>
        */
-      public java.lang.String getType() {
-        java.lang.Object ref = type_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getType() {
+        Object ref = type_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           type_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -547,11 +547,11 @@ public final class CategoryContain {
        */
       public com.google.protobuf.ByteString
           getTypeBytes() {
-        java.lang.Object ref = type_;
+        Object ref = type_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           type_ = b;
           return b;
         } else {
@@ -562,7 +562,7 @@ public final class CategoryContain {
        * <code>optional string type = 3;</code>
        */
       public Builder setType(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -609,12 +609,12 @@ public final class CategoryContain {
     }
 
     // @@protoc_insertion_point(class_scope:tutorial.CategoryContainRequest)
-    private static final CategoryContain.CategoryContainRequest DEFAULT_INSTANCE;
+    private static final CategoryContainRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new CategoryContain.CategoryContainRequest();
+      DEFAULT_INSTANCE = new CategoryContainRequest();
     }
 
-    public static CategoryContain.CategoryContainRequest getDefaultInstance() {
+    public static CategoryContainRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -632,12 +632,12 @@ public final class CategoryContain {
       return PARSER;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Parser<CategoryContainRequest> getParserForType() {
       return PARSER;
     }
 
-    public CategoryContain.CategoryContainRequest getDefaultInstanceForType() {
+    public CategoryContainRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -665,12 +665,12 @@ public final class CategoryContain {
     /**
      * <code>repeated .tutorial.CategoryResult results = 4;</code>
      */
-    java.util.List<CategoryContain.CategoryResult>
+    java.util.List<CategoryResult>
         getResultsList();
     /**
      * <code>repeated .tutorial.CategoryResult results = 4;</code>
      */
-    CategoryContain.CategoryResult getResults(int index);
+    CategoryResult getResults(int index);
     /**
      * <code>repeated .tutorial.CategoryResult results = 4;</code>
      */
@@ -678,12 +678,12 @@ public final class CategoryContain {
     /**
      * <code>repeated .tutorial.CategoryResult results = 4;</code>
      */
-    java.util.List<? extends CategoryContain.CategoryResultOrBuilder>
+    java.util.List<? extends CategoryResultOrBuilder>
         getResultsOrBuilderList();
     /**
      * <code>repeated .tutorial.CategoryResult results = 4;</code>
      */
-    CategoryContain.CategoryResultOrBuilder getResultsOrBuilder(
+    CategoryResultOrBuilder getResultsOrBuilder(
         int index);
   }
   /**
@@ -704,7 +704,7 @@ public final class CategoryContain {
       results_ = java.util.Collections.emptyList();
     }
 
-    @java.lang.Override
+    @Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
@@ -746,11 +746,11 @@ public final class CategoryContain {
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                results_ = new java.util.ArrayList<CategoryContain.CategoryResult>();
+                results_ = new java.util.ArrayList<CategoryResult>();
                 mutable_bitField0_ |= 0x00000008;
               }
               results_.add(
-                  input.readMessage(CategoryContain.CategoryResult.parser(), extensionRegistry));
+                  input.readMessage(CategoryResult.parser(), extensionRegistry));
               break;
             }
           }
@@ -769,14 +769,14 @@ public final class CategoryContain {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return CategoryContain.internal_static_tutorial_CategoryContainResponse_descriptor;
+      return CourseContain.internal_static_tutorial_CategoryContainResponse_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return CategoryContain.internal_static_tutorial_CategoryContainResponse_fieldAccessorTable
+      return CourseContain.internal_static_tutorial_CategoryContainResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              CategoryContain.CategoryContainResponse.class, CategoryContain.CategoryContainResponse.Builder.class);
+              CategoryContainResponse.class, Builder.class);
     }
 
     private int bitField0_;
@@ -808,17 +808,17 @@ public final class CategoryContain {
     }
 
     public static final int RESULTS_FIELD_NUMBER = 4;
-    private java.util.List<CategoryContain.CategoryResult> results_;
+    private java.util.List<CategoryResult> results_;
     /**
      * <code>repeated .tutorial.CategoryResult results = 4;</code>
      */
-    public java.util.List<CategoryContain.CategoryResult> getResultsList() {
+    public java.util.List<CategoryResult> getResultsList() {
       return results_;
     }
     /**
      * <code>repeated .tutorial.CategoryResult results = 4;</code>
      */
-    public java.util.List<? extends CategoryContain.CategoryResultOrBuilder>
+    public java.util.List<? extends CategoryResultOrBuilder>
         getResultsOrBuilderList() {
       return results_;
     }
@@ -831,13 +831,13 @@ public final class CategoryContain {
     /**
      * <code>repeated .tutorial.CategoryResult results = 4;</code>
      */
-    public CategoryContain.CategoryResult getResults(int index) {
+    public CategoryResult getResults(int index) {
       return results_.get(index);
     }
     /**
      * <code>repeated .tutorial.CategoryResult results = 4;</code>
      */
-    public CategoryContain.CategoryResultOrBuilder getResultsOrBuilder(
+    public CategoryResultOrBuilder getResultsOrBuilder(
         int index) {
       return results_.get(index);
     }
@@ -894,15 +894,15 @@ public final class CategoryContain {
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
+    @Override
+    public boolean equals(final Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof CategoryContain.CategoryContainResponse)) {
+      if (!(obj instanceof CategoryContainResponse)) {
         return super.equals(obj);
       }
-      CategoryContain.CategoryContainResponse other = (CategoryContain.CategoryContainResponse) obj;
+      CategoryContainResponse other = (CategoryContainResponse) obj;
 
       boolean result = true;
       result = result && (getStartIndex()
@@ -916,7 +916,7 @@ public final class CategoryContain {
       return result;
     }
 
-    @java.lang.Override
+    @Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -939,58 +939,58 @@ public final class CategoryContain {
       return hash;
     }
 
-    public static CategoryContain.CategoryContainResponse parseFrom(
+    public static CategoryContainResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static CategoryContain.CategoryContainResponse parseFrom(
+    public static CategoryContainResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static CategoryContain.CategoryContainResponse parseFrom(byte[] data)
+    public static CategoryContainResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static CategoryContain.CategoryContainResponse parseFrom(
+    public static CategoryContainResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static CategoryContain.CategoryContainResponse parseFrom(java.io.InputStream input)
+    public static CategoryContainResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static CategoryContain.CategoryContainResponse parseFrom(
+    public static CategoryContainResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static CategoryContain.CategoryContainResponse parseDelimitedFrom(java.io.InputStream input)
+    public static CategoryContainResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static CategoryContain.CategoryContainResponse parseDelimitedFrom(
+    public static CategoryContainResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static CategoryContain.CategoryContainResponse parseFrom(
+    public static CategoryContainResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static CategoryContain.CategoryContainResponse parseFrom(
+    public static CategoryContainResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1002,7 +1002,7 @@ public final class CategoryContain {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(CategoryContain.CategoryContainResponse prototype) {
+    public static Builder newBuilder(CategoryContainResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -1010,9 +1010,9 @@ public final class CategoryContain {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1022,26 +1022,26 @@ public final class CategoryContain {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tutorial.CategoryContainResponse)
-        CategoryContain.CategoryContainResponseOrBuilder {
+        CategoryContainResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return CategoryContain.internal_static_tutorial_CategoryContainResponse_descriptor;
+        return CourseContain.internal_static_tutorial_CategoryContainResponse_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return CategoryContain.internal_static_tutorial_CategoryContainResponse_fieldAccessorTable
+        return CourseContain.internal_static_tutorial_CategoryContainResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                CategoryContain.CategoryContainResponse.class, CategoryContain.CategoryContainResponse.Builder.class);
+                CategoryContainResponse.class, Builder.class);
       }
 
-      // Construct using com.example.campus.protoModel.CategoryContain.CategoryContainResponse.newBuilder()
+      // Construct using tutorial.CourseContain.CategoryContainResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1070,23 +1070,23 @@ public final class CategoryContain {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return CategoryContain.internal_static_tutorial_CategoryContainResponse_descriptor;
+        return CourseContain.internal_static_tutorial_CategoryContainResponse_descriptor;
       }
 
-      public CategoryContain.CategoryContainResponse getDefaultInstanceForType() {
-        return CategoryContain.CategoryContainResponse.getDefaultInstance();
+      public CategoryContainResponse getDefaultInstanceForType() {
+        return CategoryContainResponse.getDefaultInstance();
       }
 
-      public CategoryContain.CategoryContainResponse build() {
-        CategoryContain.CategoryContainResponse result = buildPartial();
+      public CategoryContainResponse build() {
+        CategoryContainResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public CategoryContain.CategoryContainResponse buildPartial() {
-        CategoryContain.CategoryContainResponse result = new CategoryContain.CategoryContainResponse(this);
+      public CategoryContainResponse buildPartial() {
+        CategoryContainResponse result = new CategoryContainResponse(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.startIndex_ = startIndex_;
@@ -1133,16 +1133,16 @@ public final class CategoryContain {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof CategoryContain.CategoryContainResponse) {
-          return mergeFrom((CategoryContain.CategoryContainResponse)other);
+        if (other instanceof CategoryContainResponse) {
+          return mergeFrom((CategoryContainResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(CategoryContain.CategoryContainResponse other) {
-        if (other == CategoryContain.CategoryContainResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(CategoryContainResponse other) {
+        if (other == CategoryContainResponse.getDefaultInstance()) return this;
         if (other.getStartIndex() != 0) {
           setStartIndex(other.getStartIndex());
         }
@@ -1190,11 +1190,11 @@ public final class CategoryContain {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        CategoryContain.CategoryContainResponse parsedMessage = null;
+        CategoryContainResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (CategoryContain.CategoryContainResponse) e.getUnfinishedMessage();
+          parsedMessage = (CategoryContainResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1283,22 +1283,22 @@ public final class CategoryContain {
         return this;
       }
 
-      private java.util.List<CategoryContain.CategoryResult> results_ =
+      private java.util.List<CategoryResult> results_ =
         java.util.Collections.emptyList();
       private void ensureResultsIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          results_ = new java.util.ArrayList<CategoryContain.CategoryResult>(results_);
+          results_ = new java.util.ArrayList<CategoryResult>(results_);
           bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          CategoryContain.CategoryResult, CategoryContain.CategoryResult.Builder, CategoryContain.CategoryResultOrBuilder> resultsBuilder_;
+          CategoryResult, CategoryResult.Builder, CategoryResultOrBuilder> resultsBuilder_;
 
       /**
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
-      public java.util.List<CategoryContain.CategoryResult> getResultsList() {
+      public java.util.List<CategoryResult> getResultsList() {
         if (resultsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(results_);
         } else {
@@ -1318,7 +1318,7 @@ public final class CategoryContain {
       /**
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
-      public CategoryContain.CategoryResult getResults(int index) {
+      public CategoryResult getResults(int index) {
         if (resultsBuilder_ == null) {
           return results_.get(index);
         } else {
@@ -1329,7 +1329,7 @@ public final class CategoryContain {
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
       public Builder setResults(
-          int index, CategoryContain.CategoryResult value) {
+          int index, CategoryResult value) {
         if (resultsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1346,7 +1346,7 @@ public final class CategoryContain {
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
       public Builder setResults(
-          int index, CategoryContain.CategoryResult.Builder builderForValue) {
+          int index, CategoryResult.Builder builderForValue) {
         if (resultsBuilder_ == null) {
           ensureResultsIsMutable();
           results_.set(index, builderForValue.build());
@@ -1359,7 +1359,7 @@ public final class CategoryContain {
       /**
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
-      public Builder addResults(CategoryContain.CategoryResult value) {
+      public Builder addResults(CategoryResult value) {
         if (resultsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1376,7 +1376,7 @@ public final class CategoryContain {
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
       public Builder addResults(
-          int index, CategoryContain.CategoryResult value) {
+          int index, CategoryResult value) {
         if (resultsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1393,7 +1393,7 @@ public final class CategoryContain {
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
       public Builder addResults(
-          CategoryContain.CategoryResult.Builder builderForValue) {
+          CategoryResult.Builder builderForValue) {
         if (resultsBuilder_ == null) {
           ensureResultsIsMutable();
           results_.add(builderForValue.build());
@@ -1407,7 +1407,7 @@ public final class CategoryContain {
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
       public Builder addResults(
-          int index, CategoryContain.CategoryResult.Builder builderForValue) {
+          int index, CategoryResult.Builder builderForValue) {
         if (resultsBuilder_ == null) {
           ensureResultsIsMutable();
           results_.add(index, builderForValue.build());
@@ -1421,7 +1421,7 @@ public final class CategoryContain {
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
       public Builder addAllResults(
-          java.lang.Iterable<? extends CategoryContain.CategoryResult> values) {
+          Iterable<? extends CategoryResult> values) {
         if (resultsBuilder_ == null) {
           ensureResultsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -1461,14 +1461,14 @@ public final class CategoryContain {
       /**
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
-      public CategoryContain.CategoryResult.Builder getResultsBuilder(
+      public CategoryResult.Builder getResultsBuilder(
           int index) {
         return getResultsFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
-      public CategoryContain.CategoryResultOrBuilder getResultsOrBuilder(
+      public CategoryResultOrBuilder getResultsOrBuilder(
           int index) {
         if (resultsBuilder_ == null) {
           return results_.get(index);  } else {
@@ -1478,7 +1478,7 @@ public final class CategoryContain {
       /**
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
-      public java.util.List<? extends CategoryContain.CategoryResultOrBuilder>
+      public java.util.List<? extends CategoryResultOrBuilder>
            getResultsOrBuilderList() {
         if (resultsBuilder_ != null) {
           return resultsBuilder_.getMessageOrBuilderList();
@@ -1489,31 +1489,31 @@ public final class CategoryContain {
       /**
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
-      public CategoryContain.CategoryResult.Builder addResultsBuilder() {
+      public CategoryResult.Builder addResultsBuilder() {
         return getResultsFieldBuilder().addBuilder(
-            CategoryContain.CategoryResult.getDefaultInstance());
+            CategoryResult.getDefaultInstance());
       }
       /**
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
-      public CategoryContain.CategoryResult.Builder addResultsBuilder(
+      public CategoryResult.Builder addResultsBuilder(
           int index) {
         return getResultsFieldBuilder().addBuilder(
-            index, CategoryContain.CategoryResult.getDefaultInstance());
+            index, CategoryResult.getDefaultInstance());
       }
       /**
        * <code>repeated .tutorial.CategoryResult results = 4;</code>
        */
-      public java.util.List<CategoryContain.CategoryResult.Builder>
+      public java.util.List<CategoryResult.Builder>
            getResultsBuilderList() {
         return getResultsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          CategoryContain.CategoryResult, CategoryContain.CategoryResult.Builder, CategoryContain.CategoryResultOrBuilder>
+          CategoryResult, CategoryResult.Builder, CategoryResultOrBuilder>
           getResultsFieldBuilder() {
         if (resultsBuilder_ == null) {
           resultsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              CategoryContain.CategoryResult, CategoryContain.CategoryResult.Builder, CategoryContain.CategoryResultOrBuilder>(
+              CategoryResult, CategoryResult.Builder, CategoryResultOrBuilder>(
                   results_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
@@ -1537,12 +1537,12 @@ public final class CategoryContain {
     }
 
     // @@protoc_insertion_point(class_scope:tutorial.CategoryContainResponse)
-    private static final CategoryContain.CategoryContainResponse DEFAULT_INSTANCE;
+    private static final CategoryContainResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new CategoryContain.CategoryContainResponse();
+      DEFAULT_INSTANCE = new CategoryContainResponse();
     }
 
-    public static CategoryContain.CategoryContainResponse getDefaultInstance() {
+    public static CategoryContainResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1560,12 +1560,12 @@ public final class CategoryContain {
       return PARSER;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Parser<CategoryContainResponse> getParserForType() {
       return PARSER;
     }
 
-    public CategoryContain.CategoryContainResponse getDefaultInstanceForType() {
+    public CategoryContainResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1578,7 +1578,7 @@ public final class CategoryContain {
     /**
      * <code>optional string courseName = 1;</code>
      */
-    java.lang.String getCourseName();
+    String getCourseName();
     /**
      * <code>optional string courseName = 1;</code>
      */
@@ -1588,7 +1588,7 @@ public final class CategoryContain {
     /**
      * <code>optional string courseGrades = 2;</code>
      */
-    java.lang.String getCourseGrades();
+    String getCourseGrades();
     /**
      * <code>optional string courseGrades = 2;</code>
      */
@@ -1598,7 +1598,7 @@ public final class CategoryContain {
     /**
      * <code>optional string courseTeacher = 3;</code>
      */
-    java.lang.String getCourseTeacher();
+    String getCourseTeacher();
     /**
      * <code>optional string courseTeacher = 3;</code>
      */
@@ -1608,12 +1608,32 @@ public final class CategoryContain {
     /**
      * <code>optional string courseType = 4;</code>
      */
-    java.lang.String getCourseType();
+    String getCourseType();
     /**
      * <code>optional string courseType = 4;</code>
      */
     com.google.protobuf.ByteString
         getCourseTypeBytes();
+
+    /**
+     * <code>optional int64 courseId = 5;</code>
+     */
+    long getCourseId();
+
+    /**
+     * <code>optional int32 watcherCount = 6;</code>
+     */
+    int getWatcherCount();
+
+    /**
+     * <code>optional string backgroundURL = 7;</code>
+     */
+    String getBackgroundURL();
+    /**
+     * <code>optional string backgroundURL = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getBackgroundURLBytes();
   }
   /**
    * Protobuf type {@code tutorial.CategoryResult}
@@ -1631,9 +1651,12 @@ public final class CategoryContain {
       courseGrades_ = "";
       courseTeacher_ = "";
       courseType_ = "";
+      courseId_ = 0L;
+      watcherCount_ = 0;
+      backgroundURL_ = "";
     }
 
-    @java.lang.Override
+    @Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
@@ -1659,27 +1682,43 @@ public final class CategoryContain {
               break;
             }
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               courseName_ = s;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               courseGrades_ = s;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               courseTeacher_ = s;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
+              String s = input.readStringRequireUtf8();
 
               courseType_ = s;
+              break;
+            }
+            case 40: {
+
+              courseId_ = input.readInt64();
+              break;
+            }
+            case 48: {
+
+              watcherCount_ = input.readInt32();
+              break;
+            }
+            case 58: {
+              String s = input.readStringRequireUtf8();
+
+              backgroundURL_ = s;
               break;
             }
           }
@@ -1695,29 +1734,29 @@ public final class CategoryContain {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return CategoryContain.internal_static_tutorial_CategoryResult_descriptor;
+      return CourseContain.internal_static_tutorial_CategoryResult_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return CategoryContain.internal_static_tutorial_CategoryResult_fieldAccessorTable
+      return CourseContain.internal_static_tutorial_CategoryResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              CategoryContain.CategoryResult.class, CategoryContain.CategoryResult.Builder.class);
+              CategoryResult.class, Builder.class);
     }
 
     public static final int COURSENAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object courseName_;
+    private volatile Object courseName_;
     /**
      * <code>optional string courseName = 1;</code>
      */
-    public java.lang.String getCourseName() {
-      java.lang.Object ref = courseName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getCourseName() {
+      Object ref = courseName_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         courseName_ = s;
         return s;
       }
@@ -1727,11 +1766,11 @@ public final class CategoryContain {
      */
     public com.google.protobuf.ByteString
         getCourseNameBytes() {
-      java.lang.Object ref = courseName_;
-      if (ref instanceof java.lang.String) {
+      Object ref = courseName_;
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         courseName_ = b;
         return b;
       } else {
@@ -1740,18 +1779,18 @@ public final class CategoryContain {
     }
 
     public static final int COURSEGRADES_FIELD_NUMBER = 2;
-    private volatile java.lang.Object courseGrades_;
+    private volatile Object courseGrades_;
     /**
      * <code>optional string courseGrades = 2;</code>
      */
-    public java.lang.String getCourseGrades() {
-      java.lang.Object ref = courseGrades_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getCourseGrades() {
+      Object ref = courseGrades_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         courseGrades_ = s;
         return s;
       }
@@ -1761,11 +1800,11 @@ public final class CategoryContain {
      */
     public com.google.protobuf.ByteString
         getCourseGradesBytes() {
-      java.lang.Object ref = courseGrades_;
-      if (ref instanceof java.lang.String) {
+      Object ref = courseGrades_;
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         courseGrades_ = b;
         return b;
       } else {
@@ -1774,18 +1813,18 @@ public final class CategoryContain {
     }
 
     public static final int COURSETEACHER_FIELD_NUMBER = 3;
-    private volatile java.lang.Object courseTeacher_;
+    private volatile Object courseTeacher_;
     /**
      * <code>optional string courseTeacher = 3;</code>
      */
-    public java.lang.String getCourseTeacher() {
-      java.lang.Object ref = courseTeacher_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getCourseTeacher() {
+      Object ref = courseTeacher_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         courseTeacher_ = s;
         return s;
       }
@@ -1795,11 +1834,11 @@ public final class CategoryContain {
      */
     public com.google.protobuf.ByteString
         getCourseTeacherBytes() {
-      java.lang.Object ref = courseTeacher_;
-      if (ref instanceof java.lang.String) {
+      Object ref = courseTeacher_;
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         courseTeacher_ = b;
         return b;
       } else {
@@ -1808,18 +1847,18 @@ public final class CategoryContain {
     }
 
     public static final int COURSETYPE_FIELD_NUMBER = 4;
-    private volatile java.lang.Object courseType_;
+    private volatile Object courseType_;
     /**
      * <code>optional string courseType = 4;</code>
      */
-    public java.lang.String getCourseType() {
-      java.lang.Object ref = courseType_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+    public String getCourseType() {
+      Object ref = courseType_;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
+        String s = bs.toStringUtf8();
         courseType_ = s;
         return s;
       }
@@ -1829,12 +1868,64 @@ public final class CategoryContain {
      */
     public com.google.protobuf.ByteString
         getCourseTypeBytes() {
-      java.lang.Object ref = courseType_;
-      if (ref instanceof java.lang.String) {
+      Object ref = courseType_;
+      if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+                (String) ref);
         courseType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int COURSEID_FIELD_NUMBER = 5;
+    private long courseId_;
+    /**
+     * <code>optional int64 courseId = 5;</code>
+     */
+    public long getCourseId() {
+      return courseId_;
+    }
+
+    public static final int WATCHERCOUNT_FIELD_NUMBER = 6;
+    private int watcherCount_;
+    /**
+     * <code>optional int32 watcherCount = 6;</code>
+     */
+    public int getWatcherCount() {
+      return watcherCount_;
+    }
+
+    public static final int BACKGROUNDURL_FIELD_NUMBER = 7;
+    private volatile Object backgroundURL_;
+    /**
+     * <code>optional string backgroundURL = 7;</code>
+     */
+    public String getBackgroundURL() {
+      Object ref = backgroundURL_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        backgroundURL_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string backgroundURL = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getBackgroundURLBytes() {
+      Object ref = backgroundURL_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        backgroundURL_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1865,6 +1956,15 @@ public final class CategoryContain {
       if (!getCourseTypeBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, courseType_);
       }
+      if (courseId_ != 0L) {
+        output.writeInt64(5, courseId_);
+      }
+      if (watcherCount_ != 0) {
+        output.writeInt32(6, watcherCount_);
+      }
+      if (!getBackgroundURLBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, backgroundURL_);
+      }
     }
 
     public int getSerializedSize() {
@@ -1884,20 +1984,31 @@ public final class CategoryContain {
       if (!getCourseTypeBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, courseType_);
       }
+      if (courseId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, courseId_);
+      }
+      if (watcherCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, watcherCount_);
+      }
+      if (!getBackgroundURLBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, backgroundURL_);
+      }
       memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
+    @Override
+    public boolean equals(final Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof CategoryContain.CategoryResult)) {
+      if (!(obj instanceof CategoryResult)) {
         return super.equals(obj);
       }
-      CategoryContain.CategoryResult other = (CategoryContain.CategoryResult) obj;
+      CategoryResult other = (CategoryResult) obj;
 
       boolean result = true;
       result = result && getCourseName()
@@ -1908,10 +2019,16 @@ public final class CategoryContain {
           .equals(other.getCourseTeacher());
       result = result && getCourseType()
           .equals(other.getCourseType());
+      result = result && (getCourseId()
+          == other.getCourseId());
+      result = result && (getWatcherCount()
+          == other.getWatcherCount());
+      result = result && getBackgroundURL()
+          .equals(other.getBackgroundURL());
       return result;
     }
 
-    @java.lang.Override
+    @Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -1926,63 +2043,70 @@ public final class CategoryContain {
       hash = (53 * hash) + getCourseTeacher().hashCode();
       hash = (37 * hash) + COURSETYPE_FIELD_NUMBER;
       hash = (53 * hash) + getCourseType().hashCode();
+      hash = (37 * hash) + COURSEID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getCourseId());
+      hash = (37 * hash) + WATCHERCOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getWatcherCount();
+      hash = (37 * hash) + BACKGROUNDURL_FIELD_NUMBER;
+      hash = (53 * hash) + getBackgroundURL().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static CategoryContain.CategoryResult parseFrom(
+    public static CategoryResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static CategoryContain.CategoryResult parseFrom(
+    public static CategoryResult parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static CategoryContain.CategoryResult parseFrom(byte[] data)
+    public static CategoryResult parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static CategoryContain.CategoryResult parseFrom(
+    public static CategoryResult parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static CategoryContain.CategoryResult parseFrom(java.io.InputStream input)
+    public static CategoryResult parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static CategoryContain.CategoryResult parseFrom(
+    public static CategoryResult parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static CategoryContain.CategoryResult parseDelimitedFrom(java.io.InputStream input)
+    public static CategoryResult parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static CategoryContain.CategoryResult parseDelimitedFrom(
+    public static CategoryResult parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static CategoryContain.CategoryResult parseFrom(
+    public static CategoryResult parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static CategoryContain.CategoryResult parseFrom(
+    public static CategoryResult parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1994,7 +2118,7 @@ public final class CategoryContain {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(CategoryContain.CategoryResult prototype) {
+    public static Builder newBuilder(CategoryResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -2002,9 +2126,9 @@ public final class CategoryContain {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @java.lang.Override
+    @Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2014,26 +2138,26 @@ public final class CategoryContain {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:tutorial.CategoryResult)
-        CategoryContain.CategoryResultOrBuilder {
+        CategoryResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return CategoryContain.internal_static_tutorial_CategoryResult_descriptor;
+        return CourseContain.internal_static_tutorial_CategoryResult_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return CategoryContain.internal_static_tutorial_CategoryResult_fieldAccessorTable
+        return CourseContain.internal_static_tutorial_CategoryResult_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                CategoryContain.CategoryResult.class, CategoryContain.CategoryResult.Builder.class);
+                CategoryResult.class, Builder.class);
       }
 
-      // Construct using com.example.campus.protoModel.CategoryContain.CategoryResult.newBuilder()
+      // Construct using tutorial.CourseContain.CategoryResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2052,32 +2176,41 @@ public final class CategoryContain {
 
         courseType_ = "";
 
+        courseId_ = 0L;
+
+        watcherCount_ = 0;
+
+        backgroundURL_ = "";
+
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return CategoryContain.internal_static_tutorial_CategoryResult_descriptor;
+        return CourseContain.internal_static_tutorial_CategoryResult_descriptor;
       }
 
-      public CategoryContain.CategoryResult getDefaultInstanceForType() {
-        return CategoryContain.CategoryResult.getDefaultInstance();
+      public CategoryResult getDefaultInstanceForType() {
+        return CategoryResult.getDefaultInstance();
       }
 
-      public CategoryContain.CategoryResult build() {
-        CategoryContain.CategoryResult result = buildPartial();
+      public CategoryResult build() {
+        CategoryResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public CategoryContain.CategoryResult buildPartial() {
-        CategoryContain.CategoryResult result = new CategoryContain.CategoryResult(this);
+      public CategoryResult buildPartial() {
+        CategoryResult result = new CategoryResult(this);
         result.courseName_ = courseName_;
         result.courseGrades_ = courseGrades_;
         result.courseTeacher_ = courseTeacher_;
         result.courseType_ = courseType_;
+        result.courseId_ = courseId_;
+        result.watcherCount_ = watcherCount_;
+        result.backgroundURL_ = backgroundURL_;
         onBuilt();
         return result;
       }
@@ -2109,16 +2242,16 @@ public final class CategoryContain {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof CategoryContain.CategoryResult) {
-          return mergeFrom((CategoryContain.CategoryResult)other);
+        if (other instanceof CategoryResult) {
+          return mergeFrom((CategoryResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(CategoryContain.CategoryResult other) {
-        if (other == CategoryContain.CategoryResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(CategoryResult other) {
+        if (other == CategoryResult.getDefaultInstance()) return this;
         if (!other.getCourseName().isEmpty()) {
           courseName_ = other.courseName_;
           onChanged();
@@ -2135,6 +2268,16 @@ public final class CategoryContain {
           courseType_ = other.courseType_;
           onChanged();
         }
+        if (other.getCourseId() != 0L) {
+          setCourseId(other.getCourseId());
+        }
+        if (other.getWatcherCount() != 0) {
+          setWatcherCount(other.getWatcherCount());
+        }
+        if (!other.getBackgroundURL().isEmpty()) {
+          backgroundURL_ = other.backgroundURL_;
+          onChanged();
+        }
         onChanged();
         return this;
       }
@@ -2147,11 +2290,11 @@ public final class CategoryContain {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        CategoryContain.CategoryResult parsedMessage = null;
+        CategoryResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (CategoryContain.CategoryResult) e.getUnfinishedMessage();
+          parsedMessage = (CategoryResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2161,20 +2304,20 @@ public final class CategoryContain {
         return this;
       }
 
-      private java.lang.Object courseName_ = "";
+      private Object courseName_ = "";
       /**
        * <code>optional string courseName = 1;</code>
        */
-      public java.lang.String getCourseName() {
-        java.lang.Object ref = courseName_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getCourseName() {
+        Object ref = courseName_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           courseName_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -2182,11 +2325,11 @@ public final class CategoryContain {
        */
       public com.google.protobuf.ByteString
           getCourseNameBytes() {
-        java.lang.Object ref = courseName_;
+        Object ref = courseName_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           courseName_ = b;
           return b;
         } else {
@@ -2197,7 +2340,7 @@ public final class CategoryContain {
        * <code>optional string courseName = 1;</code>
        */
       public Builder setCourseName(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2230,20 +2373,20 @@ public final class CategoryContain {
         return this;
       }
 
-      private java.lang.Object courseGrades_ = "";
+      private Object courseGrades_ = "";
       /**
        * <code>optional string courseGrades = 2;</code>
        */
-      public java.lang.String getCourseGrades() {
-        java.lang.Object ref = courseGrades_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getCourseGrades() {
+        Object ref = courseGrades_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           courseGrades_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -2251,11 +2394,11 @@ public final class CategoryContain {
        */
       public com.google.protobuf.ByteString
           getCourseGradesBytes() {
-        java.lang.Object ref = courseGrades_;
+        Object ref = courseGrades_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           courseGrades_ = b;
           return b;
         } else {
@@ -2266,7 +2409,7 @@ public final class CategoryContain {
        * <code>optional string courseGrades = 2;</code>
        */
       public Builder setCourseGrades(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2299,20 +2442,20 @@ public final class CategoryContain {
         return this;
       }
 
-      private java.lang.Object courseTeacher_ = "";
+      private Object courseTeacher_ = "";
       /**
        * <code>optional string courseTeacher = 3;</code>
        */
-      public java.lang.String getCourseTeacher() {
-        java.lang.Object ref = courseTeacher_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getCourseTeacher() {
+        Object ref = courseTeacher_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           courseTeacher_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -2320,11 +2463,11 @@ public final class CategoryContain {
        */
       public com.google.protobuf.ByteString
           getCourseTeacherBytes() {
-        java.lang.Object ref = courseTeacher_;
+        Object ref = courseTeacher_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           courseTeacher_ = b;
           return b;
         } else {
@@ -2335,7 +2478,7 @@ public final class CategoryContain {
        * <code>optional string courseTeacher = 3;</code>
        */
       public Builder setCourseTeacher(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2368,20 +2511,20 @@ public final class CategoryContain {
         return this;
       }
 
-      private java.lang.Object courseType_ = "";
+      private Object courseType_ = "";
       /**
        * <code>optional string courseType = 4;</code>
        */
-      public java.lang.String getCourseType() {
-        java.lang.Object ref = courseType_;
-        if (!(ref instanceof java.lang.String)) {
+      public String getCourseType() {
+        Object ref = courseType_;
+        if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
+          String s = bs.toStringUtf8();
           courseType_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
       /**
@@ -2389,11 +2532,11 @@ public final class CategoryContain {
        */
       public com.google.protobuf.ByteString
           getCourseTypeBytes() {
-        java.lang.Object ref = courseType_;
+        Object ref = courseType_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+                  (String) ref);
           courseType_ = b;
           return b;
         } else {
@@ -2404,7 +2547,7 @@ public final class CategoryContain {
        * <code>optional string courseType = 4;</code>
        */
       public Builder setCourseType(
-          java.lang.String value) {
+          String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2436,6 +2579,127 @@ public final class CategoryContain {
         onChanged();
         return this;
       }
+
+      private long courseId_ ;
+      /**
+       * <code>optional int64 courseId = 5;</code>
+       */
+      public long getCourseId() {
+        return courseId_;
+      }
+      /**
+       * <code>optional int64 courseId = 5;</code>
+       */
+      public Builder setCourseId(long value) {
+        
+        courseId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 courseId = 5;</code>
+       */
+      public Builder clearCourseId() {
+        
+        courseId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int watcherCount_ ;
+      /**
+       * <code>optional int32 watcherCount = 6;</code>
+       */
+      public int getWatcherCount() {
+        return watcherCount_;
+      }
+      /**
+       * <code>optional int32 watcherCount = 6;</code>
+       */
+      public Builder setWatcherCount(int value) {
+        
+        watcherCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 watcherCount = 6;</code>
+       */
+      public Builder clearWatcherCount() {
+        
+        watcherCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private Object backgroundURL_ = "";
+      /**
+       * <code>optional string backgroundURL = 7;</code>
+       */
+      public String getBackgroundURL() {
+        Object ref = backgroundURL_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          backgroundURL_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>optional string backgroundURL = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getBackgroundURLBytes() {
+        Object ref = backgroundURL_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          backgroundURL_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string backgroundURL = 7;</code>
+       */
+      public Builder setBackgroundURL(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        backgroundURL_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string backgroundURL = 7;</code>
+       */
+      public Builder clearBackgroundURL() {
+        
+        backgroundURL_ = getDefaultInstance().getBackgroundURL();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string backgroundURL = 7;</code>
+       */
+      public Builder setBackgroundURLBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        backgroundURL_ = value;
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -2451,12 +2715,12 @@ public final class CategoryContain {
     }
 
     // @@protoc_insertion_point(class_scope:tutorial.CategoryResult)
-    private static final CategoryContain.CategoryResult DEFAULT_INSTANCE;
+    private static final CategoryResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new CategoryContain.CategoryResult();
+      DEFAULT_INSTANCE = new CategoryResult();
     }
 
-    public static CategoryContain.CategoryResult getDefaultInstance() {
+    public static CategoryResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2474,12 +2738,12 @@ public final class CategoryContain {
       return PARSER;
     }
 
-    @java.lang.Override
+    @Override
     public com.google.protobuf.Parser<CategoryResult> getParserForType() {
       return PARSER;
     }
 
-    public CategoryContain.CategoryResult getDefaultInstanceForType() {
+    public CategoryResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2508,16 +2772,18 @@ public final class CategoryContain {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    java.lang.String[] descriptorData = {
-      "\n\025CategoryContain.proto\022\010tutorial\"N\n\026Cat" +
-      "egoryContainRequest\022\022\n\nstartIndex\030\001 \001(\005\022" +
-      "\022\n\nlimitCount\030\002 \001(\005\022\014\n\004type\030\003 \001(\t\"z\n\027Cat" +
-      "egoryContainResponse\022\022\n\nstartIndex\030\001 \001(\005" +
-      "\022\r\n\005count\030\002 \001(\005\022\021\n\tisLoadAll\030\003 \001(\010\022)\n\007re" +
-      "sults\030\004 \003(\0132\030.tutorial.CategoryResult\"e\n" +
-      "\016CategoryResult\022\022\n\ncourseName\030\001 \001(\t\022\024\n\014c" +
-      "ourseGrades\030\002 \001(\t\022\025\n\rcourseTeacher\030\003 \001(\t" +
-      "\022\022\n\ncourseType\030\004 \001(\tb\006proto3"
+    String[] descriptorData = {
+      "\n\023CourseContain.proto\022\010tutorial\"N\n\026Categ" +
+      "oryContainRequest\022\022\n\nstartIndex\030\001 \001(\005\022\022\n" +
+      "\nlimitCount\030\002 \001(\005\022\014\n\004type\030\003 \001(\t\"z\n\027Categ" +
+      "oryContainResponse\022\022\n\nstartIndex\030\001 \001(\005\022\r" +
+      "\n\005count\030\002 \001(\005\022\021\n\tisLoadAll\030\003 \001(\010\022)\n\007resu" +
+      "lts\030\004 \003(\0132\030.tutorial.CategoryResult\"\244\001\n\016" +
+      "CategoryResult\022\022\n\ncourseName\030\001 \001(\t\022\024\n\014co" +
+      "urseGrades\030\002 \001(\t\022\025\n\rcourseTeacher\030\003 \001(\t\022" +
+      "\022\n\ncourseType\030\004 \001(\t\022\020\n\010courseId\030\005 \001(\003\022\024\n" +
+      "\014watcherCount\030\006 \001(\005\022\025\n\rbackgroundURL\030\007 \001",
+      "(\tb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2536,19 +2802,19 @@ public final class CategoryContain {
     internal_static_tutorial_CategoryContainRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tutorial_CategoryContainRequest_descriptor,
-        new java.lang.String[] { "StartIndex", "LimitCount", "Type", });
+        new String[] { "StartIndex", "LimitCount", "Type", });
     internal_static_tutorial_CategoryContainResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_tutorial_CategoryContainResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tutorial_CategoryContainResponse_descriptor,
-        new java.lang.String[] { "StartIndex", "Count", "IsLoadAll", "Results", });
+        new String[] { "StartIndex", "Count", "IsLoadAll", "Results", });
     internal_static_tutorial_CategoryResult_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_tutorial_CategoryResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tutorial_CategoryResult_descriptor,
-        new java.lang.String[] { "CourseName", "CourseGrades", "CourseTeacher", "CourseType", });
+        new String[] { "CourseName", "CourseGrades", "CourseTeacher", "CourseType", "CourseId", "WatcherCount", "BackgroundURL", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
