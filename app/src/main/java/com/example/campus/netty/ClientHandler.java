@@ -37,6 +37,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Object> {
         }
         return clientHandler;
     }
+
     /**
      * 连接成功
      */
@@ -96,6 +97,15 @@ public class ClientHandler extends SimpleChannelInboundHandler<Object> {
         //listener.onServiceStatusConnectChanged(ChatListener.STATUS_CONNECT_ERROR);
         cause.printStackTrace();
         ctx.close();
+        Message handlerMsg = new Message();
+        Bundle bundle = new Bundle();
+        bundle.putString("IMESSAGE_STRING", cause.toString());
+        handlerMsg.setData(bundle);
+        handlerMsg.what = WHAT_WS_MESSAGE_FAIL;
+        if (messageHandler == null) {
+            messageHandler = MessageManager.INSTANCE;
+        }
+        messageHandler.sendMessage(handlerMsg);
     }
 
     public void addListener(IMessage message) {
