@@ -1,6 +1,7 @@
 package com.example.campus.adaptar;
 
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +59,11 @@ public class CourseDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             setViewText(holder, R.id.course_detail_course_score, "评分：" + dataList.get(position).getCourseScore());
             setViewText(holder, R.id.course_detail_credit, "学分：" + dataList.get(position).getCredit());
             setViewText(holder, R.id.course_evaluate_words, "整体评价： " + dataList.get(position).getCourseEvaluateWords());
-            setViewText(holder, R.id.course_detail_date, dataList.get(position).getDate());
+            if (TextUtils.isEmpty(dataList.get(position).getDate())){
+                setViewText(holder, R.id.course_detail_date, "刚刚！");
+            } else {
+                setViewText(holder, R.id.course_detail_date, dataList.get(position).getDate());
+            }
             Log.e(TAG, "2: position: " + position + "  likeSize: " + likeCountList.size());
             if (position >= likeCountList.size()) {
                 likeCountList.add(dataList.get(position).getLikeCount());
@@ -99,6 +104,13 @@ public class CourseDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         mSize += response.getCourseDetailItemsList().size();
         dataList.addAll(response.getCourseDetailItemsList());
         notifyItemRangeChanged(startIndex, response.getCourseDetailItemsList().size());
+    }
+
+    public void addList(CourseDetail.CourseDetailResponseItem item) {
+        int startIndex = mSize;
+        mSize += 1;
+        dataList.add(item);
+        notifyDataSetChanged();
     }
 
     @Override

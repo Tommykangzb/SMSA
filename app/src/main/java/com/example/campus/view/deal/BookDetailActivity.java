@@ -289,8 +289,12 @@ public class BookDetailActivity extends AppCompatActivity implements IBitmapLoad
     private final View.OnClickListener chatBtnClickListener = v -> {
         Intent intent = new Intent(this, ChatActivity.class);
         String name = bundle.getString(Constance.KEY_BOOK_DEAL_SELLER, "");
-        bundle.putString(Constance.KEY_INTENT_CHAT_NAME, name);
-        bundle.putBoolean(Constance.KEY_CHAT_IS_FROM_BOOK_DEAL,true);
+        bundle.putString(Constance.KEY_REMOTE_NAME, name);
+        long remoteId = bundle.getLong(Constance.KEY_BOOK_DEAL_SELLER_ID, -1L);
+        String avatar = bundle.getString(Constance.KEY_BOOK_DEAL_AVATAR_URL, "");
+        bundle.putString(Constance.KEY_REMOTE_AVATAR, avatar);
+        bundle.putString(Constance.KEY_REMOTE_UID, String.valueOf(remoteId));
+        bundle.putBoolean(Constance.KEY_CHAT_IS_FROM_BOOK_DEAL, true);
         intent.putExtras(new Bundle(bundle));
         startActivity(intent);
     };

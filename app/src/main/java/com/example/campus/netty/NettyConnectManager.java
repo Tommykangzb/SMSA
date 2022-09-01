@@ -6,7 +6,7 @@ import com.example.campus.protoModel.MessageBase;
 import com.google.protobuf.ByteString;
 
 public class NettyConnectManager {
-    private static final int port = 36874;
+    private static final int port = 51811;
 
     private static volatile NettyConnectManager instance;
     private final NettyClient client;
@@ -29,7 +29,7 @@ public class NettyConnectManager {
 
     public void connect(){
         new Thread(()->{
-            if (!client.getConnectState()){
+            if (client.getConnectState()){
                 Log.e("NettyConnectManager"," connect");
                 client.connect();
             }
@@ -38,7 +38,7 @@ public class NettyConnectManager {
 
     public void reConnect(){
         new Thread(()->{
-            if (!client.getConnectState()){
+            if (client.getConnectState()){
                 client.reconnect();
             }
         }).start();
@@ -52,7 +52,7 @@ public class NettyConnectManager {
                 .setTimeStamp(System.currentTimeMillis())
                 .setAckMsgId("123")
                 .setMsgId("123")
-                .setSource(1)
+                .setType(1)
                 .setSource(1);
         client.sendMsg(builder.build());
     }

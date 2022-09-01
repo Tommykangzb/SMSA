@@ -46,6 +46,7 @@ public class CourseDetailActivity extends AppCompatActivity implements IBitmapLo
     private Intent intent;
     private boolean isFirst = false;
 
+
     @Override
     public void notifyLoadImage() {
         ShapeableImageView bgView = findViewById(R.id.course_details_bg);
@@ -98,7 +99,6 @@ public class CourseDetailActivity extends AppCompatActivity implements IBitmapLo
         recyclerView.setAdapter(courseDetailAdapter);
         TextView addEvaluateWordText = findViewById(R.id.course_detail_hint);
         addEvaluateWordText.setOnClickListener(clickListenerAddEvaluate);
-
     }
 
     private void loadViewData(){
@@ -138,7 +138,8 @@ public class CourseDetailActivity extends AppCompatActivity implements IBitmapLo
     private final View.OnClickListener clickListenerAddEvaluate = v -> {
       CommentDialog commentDialog = new CommentDialog(intent.getExtras());
       commentDialog.showDialog(this);
-      v.setVisibility(View.GONE);
+      commentDialog.setAdapter(courseDetailAdapter);
+      //v.setVisibility(View.GONE);
     };
     private final AdapterView.OnItemSelectedListener spinnerListener = new AdapterView.OnItemSelectedListener() {
         @Override

@@ -6,30 +6,49 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.campus.R;
+import com.example.campus.helper.RetrofitConfig;
+import com.example.campus.netty.ClientHandler;
+import com.example.campus.protoModel.AccessUserMessage;
+import com.example.campus.protoModel.FriendsList;
+import com.example.campus.retrofit.requestApi.ApiService;
 import com.example.campus.view.Constance;
 import com.example.campus.view.message.ChatActivity;
+import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MessageFragmentContainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = "MessageFragmentAdapter";
-    private final int mSize = 7;
-    private List<String> dataList = new ArrayList<>(Arrays.asList("酒文化鉴赏与啤酒的酿造工艺讲解", "现代小说选集", "水利工程概论", "计算机概论", "医学解剖", "材料力学基础", "天体物理"));
-    private List<String> dataListName = new ArrayList<>(Arrays.asList("刘墉", "方猪猪", "海盗狗", "海盗猪", "Aadsa", "Ddidae", "Mhala"));
-    private List<String> dataListDate = new ArrayList<>(Arrays.asList("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"));
+    private int mSize;
+    private final List<String> dataListDate = new ArrayList<>(Arrays.asList("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"));
+    private Set<String> friendSet;
+    private List<FriendsList.AccessUserMsgModel> friendList;
+    private String curAccount;
 
     @NonNull
     @Override
@@ -42,56 +61,117 @@ public class MessageFragmentContainAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        setViewText(holder, R.id.chat_contain_name, dataListName.get(position));
+        setViewText(holder, R.id.chat_contain_name, friendList.get(position).getName());
         setViewText(holder, R.id.chat_contain_date, dataListDate.get(position));
-        setViewText(holder, R.id.chat_contain_message, dataList.get(position));
+        setViewText(holder, R.id.chat_contain_message, friendList.get(position).getUserSelfDes());
+        ShapeableImageView avatar = holder.itemView.findViewById(R.id.chat_contain_avatar);
+        Glide.with(holder.itemView.getContext())
+                .load(RetrofitConfig.avatarHost + friendList.get(position).getUserAvatarUrl())
+                .placeholder(R.drawable.image_unload)
+                .into(avatar);
+        holder.itemView.setOnClickListener(v -> {
+//                if (friendList == null || friendList.size() <= position){
+//                    return;
+//                }
+            Context context = v.getContext();
+            Intent intent = new Intent(context, ChatActivity.class);
+            Bundle bundle = new Bundle();
+            SharedPreferences spf = holder.itemView.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+            String uid = spf.getString(Constance.KEY_USER_CENTER_USER_UID,"");
+            bundle.putString(Constance.KEY_INTENT_CHAT_NAME, friendList.get(position).getName());
+            bundle.putString(Constance.KEY_USER_CENTER_USER_ACCOUNT, curAccount);
+            bundle.putString(Constance.KEY_USER_CENTER_USER_UID, uid);
+            bundle.putString(Constance.KEY_REMOTE_UID, friendList.get(position).getUid());
+            bundle.putString(Constance.KEY_REMOTE_NAME, friendList.get(position).getName());
+            bundle.putString(Constance.KEY_REMOTE_AVATAR, friendList.get(position).getUserAvatarUrl());
+            bundle.putString(Constance.KEY_USER_CENTER_USER_AVATAR_URL,"");
+            intent.putExtras(bundle);
+            context.startActivity(intent);
+        });
+        holder.itemView.setOnLongClickListener(v -> {
+            //PopupMenu
+            return true;
+        });
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") final int position, @NonNull List payloads) {
-        if (payloads.isEmpty()) {
-            setViewText(holder, R.id.chat_contain_name, dataListName.get(position));
-            setViewText(holder, R.id.chat_contain_date, dataListDate.get(position));
-            setViewText(holder, R.id.chat_contain_message, dataList.get(position));
-            holder.itemView.setOnClickListener(v -> {
-                Context context = v.getContext();
-                Intent intent = new Intent(context, ChatActivity.class);
-                intent.putExtra(Constance.KEY_INTENT_CHAT_NAME, dataListName.get(position));
-                context.startActivity(intent);
-            });
-            holder.itemView.setOnLongClickListener(v -> {
-                //PopupMenu
-                return true;
-            });
-        } else {
-            int type = (int) payloads.get(0);
-            updateItem(position, type, holder);
-        }
-    }
-
+//    @Override
+//    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") final int position, @NonNull List payloads) {
+//        if (payloads.isEmpty()) {
+//            setViewText(holder, R.id.chat_contain_name, dataListName.get(position));
+//            setViewText(holder, R.id.chat_contain_date, dataListDate.get(position));
+//            setViewText(holder, R.id.chat_contain_message, dataList.get(position));
+//            holder.itemView.setOnClickListener(v -> {
+////                if (friendList == null || friendList.size() <= position){
+////                    return;
+////                }
+//                Context context = v.getContext();
+//                Intent intent = new Intent(context, ChatActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putString(Constance.KEY_INTENT_CHAT_NAME,friendList.get(position).getName());
+//                bundle.putString(Constance.KEY_USER_CENTER_USER_ACCOUNT,curAccount);
+//                bundle.putString(Constance.KEY_REMOTE_UID,friendList.get(position).getUid());
+//                bundle.putString(Constance.KEY_REMOTE_NAME,friendList.get(position).getName());
+//                bundle.putString(Constance.KEY_REMOTE_AVATAR,friendList.get(position).getUserAvatarUrl());
+//                intent.putExtras(bundle);
+//                context.startActivity(intent);
+//            });
+//            holder.itemView.setOnLongClickListener(v -> {
+//                //PopupMenu
+//                return true;
+//            });
+//        } else {
+//            int type = (int) payloads.get(0);
+//            updateItem(position, type, holder);
+//        }
+//    }
 
     @Override
     public int getItemCount() {
         return mSize;
     }
 
-    private void updateItem(final int position, int type, RecyclerView.ViewHolder holder) {
-        switch (type) {
-            //更新消息内容
-            case 0:
-                setViewText(holder, R.id.chat_contain_message, dataList.get(position));
-                break;
-            //更新消息人名字
-            case 1:
-                setViewText(holder, R.id.chat_contain_name, dataListName.get(position));
-                break;
-            //更新日期
-            case 2:
-                setViewText(holder, R.id.chat_contain_date, dataListDate.get(position));
-                break;
-            default:
-                break;
+
+    public void requestFriendList(View view) {
+        SharedPreferences spf = view.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+        curAccount = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, "");
+        if (TextUtils.isEmpty(curAccount)) {
+            return;
         }
+        if (friendSet == null) {
+            friendSet = new LinkedHashSet<>();
+        }
+        if (friendList == null) {
+            friendList = new ArrayList<>();
+        }
+        FriendsList.FriendsListRequest.Builder builder = FriendsList.FriendsListRequest.newBuilder();
+        builder.setCount(-1)
+                .setCurrAccount(curAccount);
+        ApiService service = RetrofitConfig.getInstance().getService(ApiService.class);
+        Call<FriendsList.FriendsListResponse> request = service.accessFriendList(builder.build());
+        request.enqueue(new Callback<FriendsList.FriendsListResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<FriendsList.FriendsListResponse> call,
+                                   @NonNull Response<FriendsList.FriendsListResponse> response) {
+                if (response.body() == null) {
+                    return;
+                }
+                FriendsList.FriendsListResponse rsp = response.body();
+                for (FriendsList.AccessUserMsgModel model : rsp.getFriendsList()) {
+                    if (!friendSet.contains(model.getUid())) {
+                        friendSet.add(model.getUid());
+                        friendList.add(model);
+                    }
+                }
+                int lastSize = mSize;
+                mSize = friendList.size();
+                notifyItemRangeChanged(lastSize, mSize);
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<FriendsList.FriendsListResponse> call,
+                                  @NonNull Throwable t) {
+            }
+        });
     }
 
     private final View.OnClickListener messageClickListener = v -> {

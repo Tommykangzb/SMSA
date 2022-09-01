@@ -24,6 +24,7 @@ object Constance {
     const val KEY_INTENT_CHAT_NAME = "key_intent_chat_name"
     const val KEY_USER_CENTER_USER_ACCOUNT = "key_user_center_user_account"
     const val KEY_USER_CENTER_USER_NAME = "key_user_center_user_name"
+    const val KEY_USER_CENTER_USER_DES = "key_user_center_user_des"
     const val KEY_USER_CENTER_USER_UNIVERSITY = "key_user_center_user_university"
     const val KEY_USER_CENTER_USER_GRADES = "key_user_center_user_grades"
     const val KEY_USER_CENTER_USER_AVATAR_URL = "key_user_center_user_avatar_url"
@@ -39,4 +40,8 @@ object Constance {
     const val KEY_BOOK_DEAL_SELL_PRICE = "key_book_deal_sell_price"
     const val KEY_BOOK_DEAL_SELL_DES = "key_book_deal_sell_des"
     const val KEY_STATE_OF_LOGIN_OR_SIGN_UP = "key_state_of_login_of_sign_sign_up"
+    const val KEY_REMOTE_UID = "key_remote_uid"
+    const val KEY_USER_CENTER_USER_UID = "key_user_center_user_uid"
+    const val KEY_REMOTE_NAME = "key_remote_NAME"
+    const val KEY_REMOTE_AVATAR = "key_remote_AVATAR"
 }

@@ -27,7 +27,7 @@ public class RetrofitConfig {
     //上传超时时间
     private static final int DEFAULT_WRITE_TIMEOUT = 5 * 60;
     //请求地址
-    public static final String host = "http://t51z536412.qicp.vip:80";
+    public static final String host = "https://5y15h36412.oicp.vip:443";
     public static final String avatarHost = host + "/upload/";
 
     /**

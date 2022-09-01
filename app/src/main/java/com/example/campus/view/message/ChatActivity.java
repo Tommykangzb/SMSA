@@ -1,9 +1,9 @@
 package com.example.campus.view.message;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -25,14 +25,19 @@ import com.bumptech.glide.Glide;
 import com.example.campus.R;
 import com.example.campus.helper.InputHandleUtil;
 import com.example.campus.helper.RetrofitConfig;
+import com.example.campus.message.MessageManager;
+import com.example.campus.netty.ClientHandler;
+import com.example.campus.netty.IMessage;
 import com.example.campus.netty.NettyConnectManager;
+import com.example.campus.protoModel.MessageBase;
 import com.example.campus.view.Constance;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.protobuf.ByteString;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.lang.ref.WeakReference;
 
-public class ChatActivity extends AppCompatActivity {
+
+public class ChatActivity extends AppCompatActivity implements IMessage {
     private static final String TAG = "ChatActivity";
     private int imageIndex = 100000;
     //private boolean isSendModel;
@@ -48,12 +53,15 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.layout_chat_fragment);
         InputHandleUtil inputHandleUtil = new InputHandleUtil();
         inputHandleUtil.handleInputView(findViewById(android.R.id.content), null, null);
+        bundle = getIntent().getExtras();
+        ClientHandler.getInstance().setMessageHandler(MessageManager.INSTANCE);
+        MessageManager.INSTANCE.addListener(this);
         initView();
     }
 
     private void initView() {
         TextView nameView = findViewById(R.id.chat_fragment_chat_name);
-        nameView.setText(getIntent().getStringExtra(Constance.KEY_INTENT_CHAT_NAME));
+        nameView.setText(bundle.getString(Constance.KEY_INTENT_CHAT_NAME, ""));
         msgLayout = findViewById(R.id.chat_fragment_chat_message);
         inputView = findViewById(R.id.chat_input_edit);
         inputView.addTextChangedListener(watcher);
@@ -63,14 +71,19 @@ public class ChatActivity extends AppCompatActivity {
             if (inputView == null || TextUtils.isEmpty(inputView.getText().toString())) {
                 return;
             }
+            String remoteId = bundle.getString(Constance.KEY_REMOTE_UID, "");
+            String senderId = bundle.getString(Constance.KEY_USER_CENTER_USER_UID, "");
+            if (TextUtils.isEmpty(remoteId) || TextUtils.isEmpty(senderId)) {
+                Log.e(TAG, "id is null " + "remoteId: " + remoteId + "senderId: " + senderId);
+                return;
+            }
             String text = inputView.getText().toString();
-            Log.e(TAG,"send msg btn click");
-            NettyConnectManager.getInstance().sendTextMsg("123","456",text);
+            Log.e(TAG, "send msg btn click");
+            NettyConnectManager.getInstance().sendTextMsg(senderId, remoteId, text);
             inputView.setText("");
             addChatContainViewSelf(text, msgLayout, v1 -> Log.e(TAG, "click"));
         });
         sendBtn.setVisibility(View.GONE);
-        bundle = getIntent().getExtras();
         if (bundle.getBoolean(Constance.KEY_CHAT_IS_FROM_BOOK_DEAL, false)) {
             String avatarUrl = bundle.getString(Constance.KEY_BOOK_IMAGE_URL, "");
             float price = bundle.getFloat(Constance.KEY_BOOK_DEAL_SELL_PRICE, 0);
@@ -80,7 +93,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         }
         //连接服务器
-        NettyConnectManager.getInstance().connect();
+        //NettyConnectManager.getInstance().connect();
     }
 
     private final TextWatcher watcher = new TextWatcher() {
@@ -136,7 +149,6 @@ public class ChatActivity extends AppCompatActivity {
         imageParam.addRule(RelativeLayout.ALIGN_PARENT_END);
         imageView.setLayoutParams(imageParam);
         // 设置属性
-        imageView.setImageResource(R.drawable.avatar);
         imageView.setId(imageIndex);
         layout.addView(imageView);
 
@@ -195,15 +207,15 @@ public class ChatActivity extends AppCompatActivity {
         RelativeLayout.LayoutParams textParam = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        textParam.addRule(RelativeLayout.END_OF,imageView.getId());
-        textParam.setMargins(24,0,0,0);
+        textParam.addRule(RelativeLayout.END_OF, imageView.getId());
+        textParam.setMargins(24, 0, 0, 0);
         textView.setLayoutParams(textParam);
         // 设置属性
         textView.setGravity(Gravity.START);
         textView.setTextSize(22);
         textView.setText(msg);
         textView.setTextColor(Color.BLACK);
-        textView.setPadding(40,40,40,40);
+        textView.setPadding(40, 40, 40, 40);
         textView.setBackgroundResource(R.drawable.chat_message_shape);
         // 将TextView放到LinearLayout里
         layout.addView(textView);
@@ -247,7 +259,7 @@ public class ChatActivity extends AppCompatActivity {
         rootLayout.addView(layout);
     }
 
-    private void addBookMsgView(String avatarUrl,String price,String bookName){
+    private void addBookMsgView(String avatarUrl, String price, String bookName) {
         RelativeLayout layout = new RelativeLayout(this);
         RelativeLayout.LayoutParams lLayoutParams = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -304,4 +316,44 @@ public class ChatActivity extends AppCompatActivity {
 
         msgLayout.addView(layout);
     }
+
+    @Override
+    public void onMessage(MessageBase.Message msg) {
+        if (msg == null || msg.getData().isEmpty()) {
+            return;
+        }
+        String str = msg.getData().toStringUtf8();
+        addChatContainViewPassive(str, msgLayout, v1 -> Log.e(TAG, "click"));
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        MessageManager.INSTANCE.removeListener(this);
+    }
+
+
+    public static class MessageHandler extends Handler {
+        WeakReference<IMessage> loader;
+
+        public MessageHandler(IMessage ld) {
+            loader = new WeakReference<>(ld);
+        }
+
+        @Override
+        public void handleMessage(@Nullable Message message) {
+            String msg = message.getData().getString("IMESSAGE_STRING", "");
+            MessageBase.Message.Builder builder = MessageBase.Message.newBuilder();
+            builder.setSenderId("1234")
+                    .setReceiverId("1234")
+                    .setTimeStamp(System.currentTimeMillis())
+                    .setData(ByteString.copyFrom(msg.getBytes()))
+                    .setAckMsgId("123")
+                    .setMsgId("123")
+                    .setType(2)
+                    .setSource(1);
+            loader.get().onMessage(builder.build());
+        }
+    }
+
 }

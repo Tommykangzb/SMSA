@@ -15,4 +15,5 @@ message LoginResponse {
   string userSchool   = 4;
   string userGrade    = 5;
   string userImageUrl = 6;
+  string userId       = 7;
 }

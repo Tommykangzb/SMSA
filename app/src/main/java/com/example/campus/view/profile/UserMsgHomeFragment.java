@@ -1,6 +1,8 @@
 package com.example.campus.view.profile;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,11 +23,16 @@ import androidx.fragment.app.Fragment;
 import com.example.campus.R;
 import com.example.campus.helper.ScreenHelp;
 import com.example.campus.view.BaseFragmentActivity;
+import com.example.campus.view.Constance;
 
 import java.util.Objects;
 
 public class UserMsgHomeFragment extends Fragment {
-    BaseFragmentActivity activity;
+    private BaseFragmentActivity activity;
+    private EditText editTextName;
+    private EditText editTextDes;
+    private EditText editTextSchool;
+    private EditText editTextGrade;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,13 +47,39 @@ public class UserMsgHomeFragment extends Fragment {
     private void initView(View view) {
         view.findViewById(R.id.user_message_home_back).setOnClickListener(clickListenerBtnBack);
         LinearLayout layout = view.findViewById(R.id.user_message_modify_content);
+        SharedPreferences spf = activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+        String name = spf.getString(Constance.KEY_USER_CENTER_USER_NAME,"");
+        String des = spf.getString(Constance.KEY_USER_CENTER_USER_DES,"");
+        String school = spf.getString(Constance.KEY_USER_CENTER_USER_UNIVERSITY,"");
+        String grade = spf.getString(Constance.KEY_USER_CENTER_USER_GRADES,"");
         addContent("头像", null, layout, v -> activity.changeFragment(new UserMsgAvatarFragment()));
-        addContent("昵称", "kzb", layout, null);
+        addContent("昵称", name, layout, null);
         addDividingLine(layout, 20);
-        addContent("签名", "明天会更好", layout, null);
+        addContent("签名", des, layout, null);
+        addContent("学校", school, layout, null);
+        addContent("入学时间", grade, layout, null);
+        TextView saveBtn = view.findViewById(R.id.edit_msg_save);
+        saveBtn.setOnClickListener(v -> {
+            SharedPreferences.Editor editor = activity.getSharedPreferences("data",Context.MODE_PRIVATE).edit();
+            if (!name.equals(editTextName.getText().toString())){
+                editor.putString(Constance.KEY_USER_CENTER_USER_NAME,editTextName.getText().toString());
+            }
+            if (!des.equals(editTextDes.getText().toString())){
+                editor.putString(Constance.KEY_USER_CENTER_USER_DES,editTextDes.getText().toString());
+            }
+            if (!school.equals(editTextSchool.getText().toString())){
+                editor.putString(Constance.KEY_USER_CENTER_USER_UNIVERSITY,editTextSchool.getText().toString());
+            }
+            if (!grade.equals(editTextGrade.getText().toString())){
+                editor.putString(Constance.KEY_USER_CENTER_USER_GRADES,editTextGrade.getText().toString());
+            }
+            editor.apply();
+            Toast.makeText(activity,R.string.mention_save_success,Toast.LENGTH_SHORT).show();
+        });
     }
 
-    private void addContent(String setting, @Nullable String str, LinearLayout llContentView, @Nullable View.OnClickListener clickListener) {
+    private void addContent(String setting,String str, LinearLayout llContentView,
+                            View.OnClickListener clickListener) {
         // 1.创建外围LinearLayout控件
         LinearLayout layout = new LinearLayout(activity);
         LinearLayout.LayoutParams lLayoutParams = new LinearLayout.LayoutParams(
@@ -64,14 +98,14 @@ public class UserMsgHomeFragment extends Fragment {
             addImageContent(layout);
         } else {
             addTextContent(layout, setting, 0);
-            addEditContent(layout, str == null ? "" : str);
+            addEditContent(layout, str == null ? "" : str,setting);
         }
         // 4.将layout同它内部的所有控件加到最外围的llContentView容器里
         llContentView.addView(layout);
         addDividingLine(llContentView, 2);
     }
 
-    private void addEditContent(LinearLayout layout, String str) {
+    private void addEditContent(LinearLayout layout, String str,String tag) {
         EditText editText = new EditText(activity);
         LinearLayout.LayoutParams textParam = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -85,6 +119,22 @@ public class UserMsgHomeFragment extends Fragment {
         editText.setTextSize(17);
         editText.setText(str);
         editText.setBackground(activity.getDrawable(R.drawable.input_no_frame));
+        switch (tag){
+            case "昵称":
+                editTextName = editText;
+                break;
+            case "签名":
+                editTextDes = editText;
+                break;
+            case "学校":
+                editTextSchool = editText;
+                break;
+            case "入学时间":
+                editTextGrade = editText;
+                break;
+            default:
+                break;
+        }
         // 将TextView放到LinearLayout里
         layout.addView(editText);
     }

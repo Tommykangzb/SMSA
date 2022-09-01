@@ -27,6 +27,7 @@ import com.example.campus.R;
 import com.example.campus.helper.PswVerifyHelper;
 import com.example.campus.helper.RetrofitConfig;
 import com.example.campus.helper.ScreenHelp;
+import com.example.campus.view.ActivityViewTest;
 import com.example.campus.view.BaseDialog;
 import com.example.campus.view.Constance;
 import com.example.campus.view.course.DetailManagerActivity;
@@ -86,6 +87,8 @@ public class UserCenterFragment extends Fragment {
         addContent("个人信息", settingLinearLayout, activity, clickListenerLoginEditMsg);
         addContent("修改IP", settingLinearLayout, activity,
                 (v -> startActivity(new Intent(activity, DetailManagerActivity.class))));
+        addContent("测试View", settingLinearLayout, activity,
+                (v -> startActivity(new Intent(activity, ActivityViewTest.class))));
     }
 
     @Override

@@ -18,6 +18,7 @@
     <string name="login">登录</string>
     <string name="sign_up">注册</string>
     <string name="search">搜索</string>
+    <string name="add">添加</string>
     <string name="is_stored">是否保存草稿？</string>
     <string name="user_center_login_welcome_text">你好，欢迎加入Campus!</string>
     <string name="user_center_login_create_text">请创建一个账号</string>
@@ -35,6 +36,7 @@
     <string name="user_center_email_mention">邮箱有误！</string>
     <string name="user_center_user_name_mention">昵称有误，最长不超过20个字符！</string>
     <string name="user_center_home_edit_msg">编辑资料</string>
+    <string name="save">保存</string>
     <string name="book_deal_detail_chat">私聊</string>
     <string name="request_error">发生未知错误，请重试！</string>
     <string name="request_net_error">网络错误，请重试！</string>
@@ -56,5 +58,8 @@
     <string name="menu_delete_friend">删除该好友</string>
     <string name="menu_top_friend">置顶该好友</string>
     <string name="add_friends_input_type">🔍 用户名/昵称</string>
+    <string name="mention_save_success">保存成功！</string>
+    <string name="find_friend_error_account">输入的用户名有误，请重新输入！</string>
+    <string name="find_friend_error_account_not_exist">输入的用户名不存在</string>
 
 </resources>

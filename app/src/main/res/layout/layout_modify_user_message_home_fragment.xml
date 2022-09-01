@@ -23,6 +23,15 @@
             android:layout_weight="1"
             android:textSize="16sp"
             android:gravity="center" />
+        <TextView
+            android:id="@+id/edit_msg_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:layout_marginEnd="15dp"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/white"/>
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"

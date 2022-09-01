@@ -1,6 +1,7 @@
 package com.example.campus.adaptar;
 
 import android.annotation.SuppressLint;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -12,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.campus.R;
+import com.example.campus.protoModel.CourseContain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -21,6 +24,7 @@ public class CategoryRecycleViewAdapter extends RecyclerView.Adapter<RecyclerVie
     private int lastSize = 0;
     private List<String> dataList;
     TextView lastToughView;
+    private CourseRecycleViewAdapter adapter;
 
 
     @NonNull
@@ -79,6 +83,31 @@ public class CategoryRecycleViewAdapter extends RecyclerView.Adapter<RecyclerVie
     private void changeTextFont(TextView v, int size, boolean bold) {
         v.setTextSize(size);
         v.getPaint().setFakeBoldText(bold);
+        if (adapter == null || !bold){
+            return;
+        }
+        List<CourseContain.CategoryResult> list = adapter.getOriginDataList();
+        List<CourseContain.CategoryResult> newList = new ArrayList<>();
+        String str = v.getText().toString();
+        if (TextUtils.isEmpty(str)){
+            return;
+        }
+        if (str.equals("热门")){
+            adapter.updateList(new ArrayList<>());
+            return;
+        }
+        for (CourseContain.CategoryResult item: list) {
+            if (str.equals(item.getCourseType())){
+                newList.add(item);
+            }
+        }
+
+        if (newList.size() != 0){
+            adapter.updateList(newList);
+        }
+    }
+    public void setAdapter(CourseRecycleViewAdapter adapter){
+        this.adapter = adapter;
     }
 
 }

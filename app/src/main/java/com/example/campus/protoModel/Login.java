@@ -775,6 +775,16 @@ public final class Login {
      */
     com.google.protobuf.ByteString
         getUserImageUrlBytes();
+
+    /**
+     * <code>optional string userId = 7;</code>
+     */
+    String getUserId();
+    /**
+     * <code>optional string userId = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserIdBytes();
   }
   /**
    * Protobuf type {@code tutorial.LoginResponse}
@@ -794,6 +804,7 @@ public final class Login {
       userSchool_ = "";
       userGrade_ = "";
       userImageUrl_ = "";
+      userId_ = "";
     }
 
     @Override
@@ -853,6 +864,12 @@ public final class Login {
               String s = input.readStringRequireUtf8();
 
               userImageUrl_ = s;
+              break;
+            }
+            case 58: {
+              String s = input.readStringRequireUtf8();
+
+              userId_ = s;
               break;
             }
           }
@@ -1036,6 +1053,40 @@ public final class Login {
       }
     }
 
+    public static final int USERID_FIELD_NUMBER = 7;
+    private volatile Object userId_;
+    /**
+     * <code>optional string userId = 7;</code>
+     */
+    public String getUserId() {
+      Object ref = userId_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        userId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string userId = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserIdBytes() {
+      Object ref = userId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        userId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1066,6 +1117,9 @@ public final class Login {
       if (!getUserImageUrlBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, userImageUrl_);
       }
+      if (!getUserIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, userId_);
+      }
     }
 
     public int getSerializedSize() {
@@ -1092,6 +1146,9 @@ public final class Login {
       }
       if (!getUserImageUrlBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, userImageUrl_);
+      }
+      if (!getUserIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, userId_);
       }
       memoizedSize = size;
       return size;
@@ -1121,6 +1178,8 @@ public final class Login {
           .equals(other.getUserGrade());
       result = result && getUserImageUrl()
           .equals(other.getUserImageUrl());
+      result = result && getUserId()
+          .equals(other.getUserId());
       return result;
     }
 
@@ -1144,6 +1203,8 @@ public final class Login {
       hash = (53 * hash) + getUserGrade().hashCode();
       hash = (37 * hash) + USERIMAGEURL_FIELD_NUMBER;
       hash = (53 * hash) + getUserImageUrl().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1274,6 +1335,8 @@ public final class Login {
 
         userImageUrl_ = "";
 
+        userId_ = "";
+
         return this;
       }
 
@@ -1302,6 +1365,7 @@ public final class Login {
         result.userSchool_ = userSchool_;
         result.userGrade_ = userGrade_;
         result.userImageUrl_ = userImageUrl_;
+        result.userId_ = userId_;
         onBuilt();
         return result;
       }
@@ -1363,6 +1427,10 @@ public final class Login {
         }
         if (!other.getUserImageUrl().isEmpty()) {
           userImageUrl_ = other.userImageUrl_;
+          onChanged();
+        }
+        if (!other.getUserId().isEmpty()) {
+          userId_ = other.userId_;
           onChanged();
         }
         onChanged();
@@ -1730,6 +1798,75 @@ public final class Login {
         onChanged();
         return this;
       }
+
+      private Object userId_ = "";
+      /**
+       * <code>optional string userId = 7;</code>
+       */
+      public String getUserId() {
+        Object ref = userId_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          userId_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>optional string userId = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserIdBytes() {
+        Object ref = userId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          userId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string userId = 7;</code>
+       */
+      public Builder setUserId(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string userId = 7;</code>
+       */
+      public Builder clearUserId() {
+        
+        userId_ = getDefaultInstance().getUserId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string userId = 7;</code>
+       */
+      public Builder setUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -1800,10 +1937,11 @@ public final class Login {
     String[] descriptorData = {
       "\n\013Login.proto\022\010tutorial\"D\n\014LoginRequest\022" +
       "\017\n\007account\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\021\n\tti" +
-      "meStamp\030\003 \001(\003\"\206\001\n\rLoginResponse\022\023\n\013login" +
+      "meStamp\030\003 \001(\003\"\226\001\n\rLoginResponse\022\023\n\013login" +
       "Result\030\001 \001(\005\022\021\n\ttimeStamp\030\002 \001(\003\022\020\n\010userN" +
       "ame\030\003 \001(\t\022\022\n\nuserSchool\030\004 \001(\t\022\021\n\tuserGra" +
-      "de\030\005 \001(\t\022\024\n\014userImageUrl\030\006 \001(\tb\006proto3"
+      "de\030\005 \001(\t\022\024\n\014userImageUrl\030\006 \001(\t\022\016\n\006userId" +
+      "\030\007 \001(\tb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1828,7 +1966,7 @@ public final class Login {
     internal_static_tutorial_LoginResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tutorial_LoginResponse_descriptor,
-        new String[] { "LoginResult", "TimeStamp", "UserName", "UserSchool", "UserGrade", "UserImageUrl", });
+        new String[] { "LoginResult", "TimeStamp", "UserName", "UserSchool", "UserGrade", "UserImageUrl", "UserId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -131,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString(Constance.KEY_USER_CENTER_USER_GRADES, responseBody.getUserGrade());
                     editor.putString(Constance.KEY_USER_CENTER_USER_AVATAR_URL, responseBody.getUserImageUrl());
                     editor.putString(Constance.KEY_USER_CENTER_USER_UNIVERSITY, responseBody.getUserSchool());
+                    editor.putString(Constance.KEY_USER_CENTER_USER_UID, responseBody.getUserId());
                     editor.apply();
                     finish();
                     break;
@@ -138,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences.Editor editorSignUp = getSharedPreferences("data", MODE_PRIVATE).edit();
                     editorSignUp.putString(Constance.KEY_USER_CENTER_USER_ACCOUNT,accountEdit.getText().toString());
                     editorSignUp.putString(Constance.KEY_USER_CENTER_USER_NAME, nameEdit.getText().toString());
+                    editorSignUp.putString(Constance.KEY_USER_CENTER_USER_UID, responseBody.getUserId());
                     editorSignUp.apply();
                     finish();
                     break;

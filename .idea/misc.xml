@@ -59,6 +59,7 @@
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/corner_gray.xml" value="0.14895833333333333" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/home_fragment_layout.xml" value="0.16" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/home_tab_content.xml" value="0.1875" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_add_friend_adapter.xml" value="0.22135416666666666" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_add_friends.xml" value="0.22" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_book_deal_contain_adpatar.xml" value="0.2" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_book_deal_contain_adpater.xml" value="0.18854166666666666" />
@@ -73,7 +74,7 @@
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_course_comment_edit_dialog.xml" value="0.33" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_course_comment_store_dialog.xml" value="0.22" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_course_details.xml" value="0.16" />
-        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_course_details_item_adapter.xml" value="0.33" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_course_details_item_adapter.xml" value="0.22" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_login_or_sign.xml" value="0.2" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_message_fragment.xml" value="0.2" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_modify_user_message_activity.xml" value="0.18125" />
@@ -84,6 +85,8 @@
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_user_center_edit_psw.xml" value="0.18" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_user_center_fragment.xml" value="0.2" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_user_message_avatar_fragment.xml" value="0.18125" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_vie_test.xml" value="0.22239583333333332" />
+        <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/layout_view_test.xml" value="0.36231884057971014" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/subject_adapter_layout.xml" value="0.14" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/layout/top_navigate_layout.xml" value="0.22708333333333333" />
         <entry key="..\:/GraduationProject/Campus/app/src/main/res/menu/menu_chat_option.xml" value="0.15989583333333332" />

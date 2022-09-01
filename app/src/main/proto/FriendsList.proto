@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_package = "com.example.campus.protoModel";
+
+message FriendsListRequest{
+  string currAccount = 1;
+  int32  count       = 2;
+}
+
+message FriendsListResponse{
+  string                      currentUid = 1;
+  repeated AccessUserMsgModel friends    = 2;
+}
+
+message AccessUserMsgModel{
+  string uid           = 1;
+  string name          = 2;
+  string userGrade     = 3;
+  string userSelfDes   = 4;
+  string userSchool    = 5;
+  string userAvatarUrl = 6;
+}

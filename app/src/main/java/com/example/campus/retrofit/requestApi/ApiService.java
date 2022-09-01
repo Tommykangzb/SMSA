@@ -1,10 +1,14 @@
 package com.example.campus.retrofit.requestApi;
 
+import com.example.campus.protoModel.AccessUserMessage;
 import com.example.campus.protoModel.BookDealHome;
 import com.example.campus.protoModel.CourseContain;
 import com.example.campus.protoModel.CategoryResponseOuterClass;
 import com.example.campus.protoModel.CourseDetail;
+import com.example.campus.protoModel.FriendsList;
 import com.example.campus.protoModel.Login;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -42,5 +46,11 @@ public interface ApiService {
 
     @POST("courseMessage/publish")
     Call<ResponseOuterClass.Response> publishReview(@Body CourseDetailCreate.CourseDetailCreateRequest request);
+
+    @POST("message/accessFriendList")
+    Call<FriendsList.FriendsListResponse> accessFriendList(@Body FriendsList.FriendsListRequest request);
+
+    @POST("message/accessUserMsg")
+    Call<AccessUserMessage.AccessUserMsgResponse> accessUserMsg(@Body AccessUserMessage.AccessUserMsgRequest request);
 
 }

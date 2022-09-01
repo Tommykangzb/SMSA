@@ -22,7 +22,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.campus.R;
+import com.example.campus.adaptar.CourseDetailAdapter;
 import com.example.campus.helper.RetrofitConfig;
+import com.example.campus.protoModel.CourseDetail;
 import com.example.campus.retrofit.requestApi.ApiService;
 import com.example.campus.view.BaseDialog;
 import com.example.campus.view.Constance;
@@ -57,6 +59,7 @@ public class CommentDialog extends BaseDialog {
     private Spinner spinner;
     private ArrayAdapter<String> adapter;
     List<String> dataList = new ArrayList<>();
+    private CourseDetailAdapter courseAdapter;
 
     public CommentDialog(Bundle bundle) {
         this(bundle, Constance.KEY_DIALOG_TYPE_ADD_COMMENT);
@@ -239,6 +242,10 @@ public class CommentDialog extends BaseDialog {
         }
     }
 
+    public void setAdapter(CourseDetailAdapter adapter){
+        courseAdapter = adapter;
+    }
+
     private void saveText(boolean loadNextTime) {
         if (activity == null || bundle == null) {
             return;
@@ -261,37 +268,50 @@ public class CommentDialog extends BaseDialog {
     private void saveCommentText(SharedPreferences.Editor editor,boolean loadNextTime){
         CourseDetailCreate.CourseDetailCreateRequest.Builder builder = CourseDetailCreate.
                 CourseDetailCreateRequest.newBuilder();
+        CourseDetail.CourseDetailResponseItem.Builder item = CourseDetail.CourseDetailResponseItem.newBuilder();
         if (!TextUtils.isEmpty(frequencyText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_FREQUENCY, frequencyText.getText().toString());
             builder.setAttendanceFrequency(frequencyText.getText().toString());
+            item.setAttendanceFrequency(frequencyText.getText().toString());
         }
         if (!TextUtils.isEmpty(evaluateText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_EVALUATE, evaluateText.getText().toString());
             builder.setCourseEvaluateWords(evaluateText.getText().toString());
+            item.setCourseEvaluateWords(evaluateText.getText().toString());
         }
         if (!TextUtils.isEmpty(attendanceWayText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_ATTENDANCE_WAY, attendanceWayText.getText().toString());
             builder.setAttendanceWay(attendanceWayText.getText().toString());
+            item.setAttendanceWay(attendanceWayText.getText().toString());
         }
         if (!TextUtils.isEmpty(examWayText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_EXAM_WAY, examWayText.getText().toString());
             builder.setExamWay(examWayText.getText().toString());
+            item.setExamWay(examWayText.getText().toString());
         }
         if (!TextUtils.isEmpty(givenText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_GIVEN, givenText.getText().toString());
             builder.setExamGivenGrades(givenText.getText().toString());
+            item.setExamGivenGrades(givenText.getText().toString());
         }
         if (!TextUtils.isEmpty(scoreText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_SCORE, scoreText.getText().toString());
             builder.setCourseScore(Integer.parseInt(scoreText.getText().toString()));
+            item.setCourseScore(Integer.parseInt(scoreText.getText().toString()));
         }
         if (!TextUtils.isEmpty(creditText.getText())) {
             editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_CREDIT, creditText.getText().toString());
             builder.setCredit(Float.parseFloat(creditText.getText().toString()));
+            item.setCredit(Float.parseFloat(creditText.getText().toString()));
         }
-        editor.putBoolean(Constance.KEY_LOAD_NEXT_TIME, loadNextTime);
         SharedPreferences spf = activity.getSharedPreferences("data", Context.MODE_PRIVATE);
         String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, "");
+        item.setAvatarUrl(spf.getString(Constance.KEY_USER_CENTER_USER_AVATAR_URL,""));
+        item.setEvaluatorName(spf.getString(Constance.KEY_USER_CENTER_USER_NAME,""));
+        courseAdapter.addList(item.build());
+
+        editor.putBoolean(Constance.KEY_LOAD_NEXT_TIME, loadNextTime);
+
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date(System.currentTimeMillis());
         if (TextUtils.isEmpty(account)) {

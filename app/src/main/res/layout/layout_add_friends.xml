@@ -15,16 +15,17 @@
         android:orientation="horizontal"
         android:padding="10dp">
         <EditText
+            android:id="@+id/edit_search"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:hint="@string/add_friends_input_type"
-
             android:gravity="center"
             android:background="@drawable/user_center_item"/>
         <TextView
+            android:id="@+id/add_friend_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -32,6 +33,7 @@
             android:textSize="18sp"
             android:textColor="@color/light_blue" />
     </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/add_friend_rcv"

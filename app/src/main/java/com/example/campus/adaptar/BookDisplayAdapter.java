@@ -78,7 +78,6 @@ public class BookDisplayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         ShapeableImageView v = holder.itemView.findViewById(R.id.book_deal_first_image);
         String url = dataList.get(index).getBookImageUrl();
         v.setAdjustViewBounds(true);
-        Log.e(TAG, "AvatarUrl： " + url);
         if (!TextUtils.isEmpty(url)) {
             Glide.with(activity)
                     .load(RetrofitConfig.avatarHost + url)

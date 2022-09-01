@@ -97,6 +97,7 @@ public class HomeFragment extends Fragment {
         recyclerViewContain = view.findViewById(R.id.recycleView_home_contain);
         recyclerViewContain.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         recyclerViewContain.setAdapter(courseRecycleViewAdapter);
+        categoryRecycleViewAdapter.setAdapter(courseRecycleViewAdapter);
         recyclerViewContain.addOnScrollListener(mContentScrollListener);
 
         view.findViewById(R.id.imageView_create_sub).setOnClickListener(clickListenerAddItem);

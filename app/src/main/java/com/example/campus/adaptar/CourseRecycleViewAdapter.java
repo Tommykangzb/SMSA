@@ -30,7 +30,8 @@ import retrofit2.Response;
 public class CourseRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     //private  final String TAG = "CourseAdapter";
     private int mSize = 0;
-    private final List<CategoryResult> dataList = new ArrayList<>();
+    private List<CategoryResult> dataList = new ArrayList<>();
+    private List<CategoryResult> originList;
 
     @NonNull
     @Override
@@ -79,7 +80,29 @@ public class CourseRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.
     public void updateList(CourseModel courseModel) {
         mSize += courseModel.getCount();
         dataList.addAll(courseModel.getCategory());
+        originList = new ArrayList<>(dataList);
         notifyItemRangeChanged(courseModel.getStartIndex(), courseModel.getCount());
+    }
+
+    public void updateList(List<CategoryResult> list) {
+        if (list == null){
+            return;
+        }
+        if (list.size() == 0 && originList != null){
+            dataList = new ArrayList<>(originList);
+            mSize = dataList.size();
+            notifyItemRangeChanged(0, mSize);
+            return;
+        }
+        mSize = list.size();
+        dataList.clear();
+        dataList.addAll(list);
+        notifyDataSetChanged();
+        //notifyItemRangeChanged(0, mSize);
+    }
+
+    public List<CategoryResult> getOriginDataList(){
+        return originList;
     }
 
 }
