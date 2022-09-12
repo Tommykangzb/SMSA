@@ -49,7 +49,7 @@ public class LogoutActivity extends AppCompatActivity {
     private final View.OnClickListener clickListener = v -> {
         EditText editTextOrigin = findViewById(R.id.edit_psw_origin);
         String psw = editTextOrigin.getText().toString();
-        SharedPreferences spf = getSharedPreferences("data", MODE_PRIVATE);
+        SharedPreferences spf = getSharedPreferences(Constance.USER_DATA, MODE_PRIVATE);
         String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, "");
         PswVerifyHelper.verifyPsw(account, psw, new Callback<Login.LoginResponse>() {
             @Override

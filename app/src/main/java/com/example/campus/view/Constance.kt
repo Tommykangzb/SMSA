@@ -44,4 +44,8 @@ object Constance {
     const val KEY_USER_CENTER_USER_UID = "key_user_center_user_uid"
     const val KEY_REMOTE_NAME = "key_remote_NAME"
     const val KEY_REMOTE_AVATAR = "key_remote_AVATAR"
+
+    const val SERVICE_PKG_NAME = "com.example.campus.service"
+    const val SERVICE_SUF_FIX = "service_suf_fix"
+    const val USER_DATA = "user_data"
 }

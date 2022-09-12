@@ -29,7 +29,7 @@ public class PswVerifyHelper {
     }
 
     public static void clearUserSpf(Activity activity){
-        SharedPreferences.Editor editor = activity.getSharedPreferences("data", 0).edit();
+        SharedPreferences.Editor editor = activity.getSharedPreferences(Constance.USER_DATA, 0).edit();
         editor.putString(Constance.KEY_USER_CENTER_USER_ACCOUNT, "");
         editor.putString(Constance.KEY_USER_CENTER_USER_NAME, "");
         editor.putString(Constance.KEY_USER_CENTER_USER_GRADES, "");

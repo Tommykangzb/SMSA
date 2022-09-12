@@ -188,7 +188,7 @@ public class CommentDialog extends BaseDialog {
         if (activity == null ) {
             return;
         }
-        SharedPreferences spf = activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences spf = activity.getSharedPreferences(Constance.USER_DATA, Context.MODE_PRIVATE);
         if (!spf.getBoolean(Constance.KEY_LOAD_NEXT_TIME, false)) {
             return;
         }
@@ -250,7 +250,7 @@ public class CommentDialog extends BaseDialog {
         if (activity == null || bundle == null) {
             return;
         }
-        SharedPreferences.Editor editor = activity.getSharedPreferences("data", Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = activity.getSharedPreferences(Constance.USER_DATA, Context.MODE_PRIVATE).edit();
         switch (typeKey){
             case Constance.KEY_DIALOG_TYPE_ADD_COMMENT:
                 saveCommentText(editor,loadNextTime);
@@ -304,7 +304,7 @@ public class CommentDialog extends BaseDialog {
             builder.setCredit(Float.parseFloat(creditText.getText().toString()));
             item.setCredit(Float.parseFloat(creditText.getText().toString()));
         }
-        SharedPreferences spf = activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences spf = activity.getSharedPreferences(Constance.USER_DATA, Context.MODE_PRIVATE);
         String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, "");
         item.setAvatarUrl(spf.getString(Constance.KEY_USER_CENTER_USER_AVATAR_URL,""));
         item.setEvaluatorName(spf.getString(Constance.KEY_USER_CENTER_USER_NAME,""));
@@ -365,7 +365,7 @@ public class CommentDialog extends BaseDialog {
     }
 
     private void clearText() {
-        SharedPreferences.Editor editor = activity.getSharedPreferences("data", Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = activity.getSharedPreferences(Constance.USER_DATA, Context.MODE_PRIVATE).edit();
         editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_FREQUENCY, "");
         editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_EVALUATE, "");
         editor.putString(Constance.KEY_COURSE_DETAIL_EDIT_ATTENDANCE_WAY, "");

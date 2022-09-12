@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="10dp">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,16 +13,31 @@
         android:textColor="@color/black"
         android:layout_marginStart="16dp"
         android:textSize="22sp"
-        android:layout_weight="7">
-    </TextView>
+        android:layout_weight="7"></TextView>
+
+    <ImageView
+        android:id="@+id/campus_btn_bell"
+        android:layout_width="32dp"
+        android:layout_height="27dp"
+        android:src="@drawable/campus_mail"
+        android:layout_gravity="center_vertical" />
+
+    <View
+        android:id="@+id/campus_btn_red_dat"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:visibility="gone"
+        android:background="@drawable/red_dot_mg" />
+
     <ImageView
         android:id="@+id/chat_option_add_friends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:src="@drawable/ic_icon_chat_option_add">
-    </ImageView>
+        android:layout_marginStart="4dp"
+        android:src="@drawable/ic_icon_chat_option_add"></ImageView>
+
     <ImageView
         android:id="@+id/chat_option_setting"
         android:layout_width="wrap_content"

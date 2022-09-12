@@ -5,17 +5,20 @@ import android.os.Looper
 import android.os.Message
 import android.util.Log
 import com.example.campus.netty.IMessage
-import com.example.campus.protoModel.MessageBase
-import com.google.protobuf.ByteString
+import com.example.campus.protoModel.BaseMessageOuterClass
+import java.util.concurrent.ConcurrentHashMap
 
-object MessageManager : Handler(Looper.getMainLooper()){
+object MessageManager : Handler(Looper.getMainLooper()) {
 
     const val TAG = "MessageManager"
+
     // 1xx netty message
     const val WHAT_WS_MESSAGE = 100
 
     //2xx message fetch fail
     const val WHAT_WS_MESSAGE_FAIL = 200
+
+    private var msgMap = ConcurrentHashMap<Int, MutableSet<IMessage>>()
 
 
     @Volatile
@@ -30,28 +33,11 @@ object MessageManager : Handler(Looper.getMainLooper()){
         }
         return managerSingleton
     }
-    private var listenerList = ArrayList<IMessage>()
 
     override fun handleMessage(message: Message) {
         when (message.what) {
             WHAT_WS_MESSAGE -> {
-                message.apply {
-                    data?.also {
-                        val builder = MessageBase.Message.newBuilder()
-                        builder.setSenderId("1234")
-                            .setReceiverId("1234")
-                            .setTimeStamp(System.currentTimeMillis().toFloat())
-                            .setData(
-                                ByteString.copyFrom(
-                                    it.getString("IMESSAGE_STRING")?.toByteArray()
-                                )
-                            )
-                            .setAckMsgId("123")
-                            .setMsgId("123")
-                            .setType(2).source = 1
-                        dispatchMsg(builder.build())
-                    }
-                }
+                dispatchMsg(message)
             }
             WHAT_WS_MESSAGE_FAIL -> {
                 Log.e(TAG, "webSocket message fetch failed!")
@@ -60,21 +46,23 @@ object MessageManager : Handler(Looper.getMainLooper()){
         }
     }
 
-    fun addListener(l: IMessage) {
-        if (!listenerList.contains(l)) {
-            listenerList.add(l)
+    fun addListener(type: Int, l: IMessage) {
+        if (!msgMap.contains(type)) {
+            msgMap[type] = HashSet<IMessage>().apply { add(l) }
+            return
         }
+        msgMap[type]?.add(l)
     }
 
-    fun removeListener(l: IMessage) {
-        if (listenerList.contains(l)) {
-            listenerList.remove(l)
-        }
+    fun removeListener(type: Int, l: IMessage) {
+        msgMap[type]?.remove(l)
     }
 
-    private fun dispatchMsg(message: MessageBase.Message?) {
+    private fun dispatchMsg(message: Message?) {
+        val msg = message?.obj as? BaseMessageOuterClass.BaseMessage ?: return
+        val listenerList = msgMap[msg.type] ?: return
         listenerList.forEach {
-            it.onMessage(message)
+            it.onMessage(msg)
         }
     }
 }

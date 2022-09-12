@@ -17,8 +17,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.campus.API.IBitmapLoadAdapter;
-import com.example.campus.API.IBitmapLoader;
+import com.example.campus.api.IBitmapLoadAdapter;
+import com.example.campus.api.IBitmapLoader;
 import com.example.campus.R;
 import com.example.campus.helper.RetrofitConfig;
 import com.example.campus.view.Constance;

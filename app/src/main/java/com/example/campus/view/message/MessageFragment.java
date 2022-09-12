@@ -20,16 +20,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.campus.R;
 import com.example.campus.helper.ScreenHelp;
 import com.example.campus.adaptar.MessageFragmentContainAdapter;
+import com.example.campus.message.MessageManager;
+import com.example.campus.message.MessageType;
 import com.example.campus.netty.ClientHandler;
+import com.example.campus.netty.IMessage;
 import com.example.campus.netty.NettyConnectManager;
+import com.example.campus.protoModel.BaseMessageOuterClass;
 import com.example.campus.view.Constance;
 
 import java.util.Objects;
 
-public class MessageFragment extends Fragment {
+public class MessageFragment extends Fragment implements IMessage {
     private static MessageFragment fragment;
 
-    public static MessageFragment newInstance(){
+    public static MessageFragment newInstance() {
         if (fragment == null) {
             fragment = new MessageFragment();
             Bundle bundle = new Bundle();
@@ -37,6 +41,8 @@ public class MessageFragment extends Fragment {
         }
         return fragment;
     }
+
+    private View redDot;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,19 +52,21 @@ public class MessageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_message_fragment,null);
+        View view = inflater.inflate(R.layout.layout_message_fragment, null);
         ScreenHelp.setStatusBarColor(Objects.requireNonNull(getActivity()), ScreenHelp.stateBarColorValueWhite);
         ScreenHelp.setAndroidNativeLightStatusBar(Objects.requireNonNull(getActivity()),true);
         initView(view);
+        MessageManager.INSTANCE.addListener(MessageType.ADD_FRIENDS_MESSAGE, this);
         return view;
     }
     private void initView(View view){
-        SharedPreferences spf = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
-        boolean loginState = TextUtils.isEmpty(spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT,""));
+        SharedPreferences spf = getActivity().getSharedPreferences(Constance.USER_DATA, Context.MODE_PRIVATE);
+        boolean loginState = TextUtils.isEmpty(spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, ""));
         if (loginState){
             view.findViewById(R.id.tx_un_login).setVisibility(View.VISIBLE);
             return;
         }
+        redDot = view.findViewById(R.id.chat_option).findViewById(R.id.campus_btn_red_dat);
         RecyclerView recyclerView = view.findViewById(R.id.recycleView_chat_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         MessageFragmentContainAdapter adapter = new MessageFragmentContainAdapter();
@@ -72,13 +80,19 @@ public class MessageFragment extends Fragment {
 
         adapter.requestFriendList(view);
         ImageView imageView = view.findViewById(R.id.chat_option_add_friends);
-        imageView.setOnClickListener(v -> startActivity(new Intent(getActivity(),FriendsManager.class)));
-        String uid = spf.getString(Constance.KEY_USER_CENTER_USER_UID,"");
-        if (TextUtils.isEmpty(uid)){
+        imageView.setOnClickListener(v -> startActivity(new Intent(getActivity(), FriendsManager.class)));
+        String uid = spf.getString(Constance.KEY_USER_CENTER_USER_UID, "");
+        if (TextUtils.isEmpty(uid)) {
             return;
         }
         ClientHandler.getInstance().setCurrentId(uid);
         NettyConnectManager.getInstance().connect();
     }
 
+    @Override
+    public void onMessage(BaseMessageOuterClass.BaseMessage msg) {
+        if (msg.getType() == MessageType.ADD_FRIENDS_MESSAGE) {
+            redDot.setVisibility(View.VISIBLE);
+        }
+    }
 }

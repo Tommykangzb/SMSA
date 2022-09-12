@@ -1,0 +1,10 @@
+syntax = "proto3";
+package tutorial;
+
+option java_package = "com.example.campus.protoModel";
+
+message ChatMessage {
+  //1: text; 2:image; 3:link
+  int32 dataType = 1;
+  bytes data     = 2;
+}

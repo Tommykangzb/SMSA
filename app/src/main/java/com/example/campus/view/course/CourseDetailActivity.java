@@ -5,11 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,12 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.campus.DataGenerator;
 import com.example.campus.R;
 import com.example.campus.adaptar.CourseDetailAdapter;
 import com.example.campus.helper.RetrofitConfig;
 import com.example.campus.helper.ScreenHelp;
-import com.example.campus.API.IBitmapLoader;
+import com.example.campus.api.IBitmapLoader;
 import com.example.campus.protoModel.CourseDetail;
 import com.example.campus.retrofit.requestApi.ApiService;
 import com.example.campus.view.Constance;
@@ -32,8 +28,6 @@ import com.example.campus.view.ImageHelper;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import retrofit2.Call;
 import retrofit2.Callback;

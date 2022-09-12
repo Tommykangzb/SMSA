@@ -47,8 +47,8 @@ public class PasswordEditActivity extends AppCompatActivity {
     private final View.OnClickListener clickListenerPswEdit = v -> {
         EditText editTextOrigin = findViewById(R.id.edit_psw_origin);
         String psw = editTextOrigin.getText().toString();
-        SharedPreferences spf = getSharedPreferences("data",MODE_PRIVATE);
-        String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT,"");
+        SharedPreferences spf = getSharedPreferences(Constance.USER_DATA, MODE_PRIVATE);
+        String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, "");
         PswVerifyHelper.verifyPsw(account, psw, new Callback<Login.LoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<Login.LoginResponse> call,

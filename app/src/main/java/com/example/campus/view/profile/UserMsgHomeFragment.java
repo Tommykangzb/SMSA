@@ -47,8 +47,8 @@ public class UserMsgHomeFragment extends Fragment {
     private void initView(View view) {
         view.findViewById(R.id.user_message_home_back).setOnClickListener(clickListenerBtnBack);
         LinearLayout layout = view.findViewById(R.id.user_message_modify_content);
-        SharedPreferences spf = activity.getSharedPreferences("data", Context.MODE_PRIVATE);
-        String name = spf.getString(Constance.KEY_USER_CENTER_USER_NAME,"");
+        SharedPreferences spf = activity.getSharedPreferences(Constance.USER_DATA, Context.MODE_PRIVATE);
+        String name = spf.getString(Constance.KEY_USER_CENTER_USER_NAME, "");
         String des = spf.getString(Constance.KEY_USER_CENTER_USER_DES,"");
         String school = spf.getString(Constance.KEY_USER_CENTER_USER_UNIVERSITY,"");
         String grade = spf.getString(Constance.KEY_USER_CENTER_USER_GRADES,"");
@@ -60,7 +60,7 @@ public class UserMsgHomeFragment extends Fragment {
         addContent("入学时间", grade, layout, null);
         TextView saveBtn = view.findViewById(R.id.edit_msg_save);
         saveBtn.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = activity.getSharedPreferences("data",Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = activity.getSharedPreferences(Constance.USER_DATA, Context.MODE_PRIVATE).edit();
             if (!name.equals(editTextName.getText().toString())){
                 editor.putString(Constance.KEY_USER_CENTER_USER_NAME,editTextName.getText().toString());
             }

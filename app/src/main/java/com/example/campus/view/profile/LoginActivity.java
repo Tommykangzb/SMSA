@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                     toastInMain(R.string.login_request_password_error, Toast.LENGTH_SHORT);
                     break;
                 case 1:
-                    SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
+                    SharedPreferences.Editor editor = getSharedPreferences(Constance.USER_DATA, MODE_PRIVATE).edit();
                     editor.putString(Constance.KEY_USER_CENTER_USER_ACCOUNT,accountEdit.getText().toString());
                     editor.putString(Constance.KEY_USER_CENTER_USER_NAME, responseBody.getUserName());
                     editor.putString(Constance.KEY_USER_CENTER_USER_GRADES, responseBody.getUserGrade());
@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                     break;
                 case 2:
-                    SharedPreferences.Editor editorSignUp = getSharedPreferences("data", MODE_PRIVATE).edit();
+                    SharedPreferences.Editor editorSignUp = getSharedPreferences(Constance.USER_DATA, MODE_PRIVATE).edit();
                     editorSignUp.putString(Constance.KEY_USER_CENTER_USER_ACCOUNT,accountEdit.getText().toString());
                     editorSignUp.putString(Constance.KEY_USER_CENTER_USER_NAME, nameEdit.getText().toString());
                     editorSignUp.putString(Constance.KEY_USER_CENTER_USER_UID, responseBody.getUserId());

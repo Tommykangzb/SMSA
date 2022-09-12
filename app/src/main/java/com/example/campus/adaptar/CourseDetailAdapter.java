@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.campus.API.IBitmapLoadAdapter;
+import com.example.campus.api.IBitmapLoadAdapter;
 import com.example.campus.R;
 import com.example.campus.helper.RetrofitConfig;
 import com.example.campus.protoModel.CourseDetail;

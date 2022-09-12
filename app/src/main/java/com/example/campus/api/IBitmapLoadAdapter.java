@@ -1,4 +1,4 @@
-package com.example.campus.API;
+package com.example.campus.api;
 
 import android.graphics.Bitmap;
 

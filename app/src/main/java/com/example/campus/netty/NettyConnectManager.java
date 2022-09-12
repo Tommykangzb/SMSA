@@ -2,8 +2,7 @@ package com.example.campus.netty;
 
 import android.util.Log;
 
-import com.example.campus.protoModel.MessageBase;
-import com.google.protobuf.ByteString;
+import com.example.campus.protoModel.BaseMessageOuterClass;
 
 public class NettyConnectManager {
     private static final int port = 51811;
@@ -45,10 +44,9 @@ public class NettyConnectManager {
     }
 
     public void sendTextMsg(String senderId, String remoteId, String data) {
-        MessageBase.Message.Builder builder = MessageBase.Message.newBuilder();
+        BaseMessageOuterClass.BaseMessage.Builder builder = BaseMessageOuterClass.BaseMessage.newBuilder();
         builder.setSenderId(senderId)
                 .setReceiverId(remoteId)
-                .setData(ByteString.copyFrom(data.getBytes()))
                 .setTimeStamp(System.currentTimeMillis())
                 .setAckMsgId("123")
                 .setMsgId("123")

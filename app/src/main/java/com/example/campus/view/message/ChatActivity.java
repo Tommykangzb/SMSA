@@ -2,8 +2,6 @@ package com.example.campus.view.message;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -26,15 +24,15 @@ import com.example.campus.R;
 import com.example.campus.helper.InputHandleUtil;
 import com.example.campus.helper.RetrofitConfig;
 import com.example.campus.message.MessageManager;
+import com.example.campus.message.MessageType;
 import com.example.campus.netty.ClientHandler;
 import com.example.campus.netty.IMessage;
 import com.example.campus.netty.NettyConnectManager;
-import com.example.campus.protoModel.MessageBase;
+import com.example.campus.protoModel.BaseMessageOuterClass;
+import com.example.campus.protoModel.ChatMessageOuterClass;
 import com.example.campus.view.Constance;
 import com.google.android.material.imageview.ShapeableImageView;
-import com.google.protobuf.ByteString;
-
-import java.lang.ref.WeakReference;
+import com.google.protobuf.InvalidProtocolBufferException;
 
 
 public class ChatActivity extends AppCompatActivity implements IMessage {
@@ -55,7 +53,7 @@ public class ChatActivity extends AppCompatActivity implements IMessage {
         inputHandleUtil.handleInputView(findViewById(android.R.id.content), null, null);
         bundle = getIntent().getExtras();
         ClientHandler.getInstance().setMessageHandler(MessageManager.INSTANCE);
-        MessageManager.INSTANCE.addListener(this);
+        MessageManager.INSTANCE.addListener(MessageType.CHAT_MESSAGE, this);
         initView();
     }
 
@@ -318,42 +316,51 @@ public class ChatActivity extends AppCompatActivity implements IMessage {
     }
 
     @Override
-    public void onMessage(MessageBase.Message msg) {
-        if (msg == null || msg.getData().isEmpty()) {
+    public void onMessage(BaseMessageOuterClass.BaseMessage msg) {
+        if (msg == null || !msg.getData().is(ChatMessageOuterClass.ChatMessage.class)) {
             return;
         }
-        String str = msg.getData().toStringUtf8();
+        ChatMessageOuterClass.ChatMessage chatMessage = null;
+        try {
+            chatMessage = msg.getData().unpack(ChatMessageOuterClass.ChatMessage.class);
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
+        if (chatMessage == null) {
+            return;
+        }
+        String str = chatMessage.getData().toStringUtf8();
         addChatContainViewPassive(str, msgLayout, v1 -> Log.e(TAG, "click"));
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        MessageManager.INSTANCE.removeListener(this);
+        MessageManager.INSTANCE.removeListener(MessageType.CHAT_MESSAGE, this);
     }
 
 
-    public static class MessageHandler extends Handler {
-        WeakReference<IMessage> loader;
-
-        public MessageHandler(IMessage ld) {
-            loader = new WeakReference<>(ld);
-        }
-
-        @Override
-        public void handleMessage(@Nullable Message message) {
-            String msg = message.getData().getString("IMESSAGE_STRING", "");
-            MessageBase.Message.Builder builder = MessageBase.Message.newBuilder();
-            builder.setSenderId("1234")
-                    .setReceiverId("1234")
-                    .setTimeStamp(System.currentTimeMillis())
-                    .setData(ByteString.copyFrom(msg.getBytes()))
-                    .setAckMsgId("123")
-                    .setMsgId("123")
-                    .setType(2)
-                    .setSource(1);
-            loader.get().onMessage(builder.build());
-        }
-    }
+//    public static class MessageHandler extends Handler {
+//        WeakReference<IMessage> loader;
+//
+//        public MessageHandler(IMessage ld) {
+//            loader = new WeakReference<>(ld);
+//        }
+//
+//        @Override
+//        public void handleMessage(@Nullable Message message) {
+//            String msg = message.getData().getString("IMESSAGE_STRING", "");
+//            MessageBase.Message.Builder builder = MessageBase.Message.newBuilder();
+//            builder.setSenderId("1234")
+//                    .setReceiverId("1234")
+//                    .setTimeStamp(System.currentTimeMillis())
+//                    .setData(ByteString.copyFrom(msg.getBytes()))
+//                    .setAckMsgId("123")
+//                    .setMsgId("123")
+//                    .setType(2)
+//                    .setSource(1);
+//            //loader.get().onMessage(builder.build());
+//        }
+//    }
 
 }

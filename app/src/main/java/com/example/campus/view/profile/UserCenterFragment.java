@@ -111,7 +111,7 @@ public class UserCenterFragment extends Fragment {
             notLogin();
             Log.e(TAG, "not login");
         } else {
-            initViewLogin(activity.getSharedPreferences("data", Context.MODE_PRIVATE));
+            initViewLogin(activity.getSharedPreferences(Constance.USER_DATA, Context.MODE_PRIVATE));
             Log.e(TAG, "login");
         }
     }
@@ -205,7 +205,7 @@ public class UserCenterFragment extends Fragment {
     }
 
     private boolean isNotLogin(){
-        SharedPreferences spf = activity.getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences spf = activity.getSharedPreferences(Constance.USER_DATA, Context.MODE_PRIVATE);
         String account = spf.getString(Constance.KEY_USER_CENTER_USER_ACCOUNT, "");
         return TextUtils.isEmpty(account);
     }

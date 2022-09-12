@@ -19,4 +19,5 @@
     <color name="light_green">#FF00BAAD</color>
     <color name="price_yellow">#FFD0906D</color>
     <color name="wechat_agree_green">#FF07C160</color>
+    <color name="red">#FF0000</color>
 </resources>

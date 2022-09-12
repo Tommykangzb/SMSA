@@ -1,0 +1,23 @@
+syntax = "proto3";
+package tutorial;
+
+option java_package = "com.example.campus.protoModel";
+//option java_outer_classname = "BaseMessage";
+import "google/protobuf/any.proto";
+message BaseMessage {
+  float               timeStamp  = 1;
+  string              msgId      = 2;
+  //-1: system message
+  string              senderId   = 3;
+  string              receiverId = 4;
+  //1000: chat message; 1001: friends add message
+  int32               type       = 5;
+  google.protobuf.Any data       = 6;
+  int32               source     = 7;
+  string              ackMsgId   = 8;
+  enum CommandType {
+    NORMAL             = 0; //常规业务消息
+    HEARTBEAT_REQUEST  = 1; //客户端心跳消息
+    HEARTBEAT_RESPONSE = 2; //服务端心跳消息
+  }
+}

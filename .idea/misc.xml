@@ -104,6 +104,12 @@
         <entry key="..\:/NewFile/Campus/app/src/main/res/layout/home_tab_content.xml" value="0.1875" />
         <entry key="..\:/NewFile/Campus/app/src/main/res/layout/layout.xml" value="0.1875" />
         <entry key="..\:/SDK/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/drawable/ic_icon_chat_option_add.xml" value="0.124" />
+        <entry key="app/src/main/res/drawable/input_no_frame.xml" value="0.124" />
+        <entry key="app/src/main/res/drawable/login_or_sign_shape.xml" value="0.124" />
+        <entry key="app/src/main/res/drawable/red_dot_mg.xml" value="0.124" />
+        <entry key="app/src/main/res/layout/layout_chat_fragment_option.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_message_fragment.xml" value="0.17239583333333333" />
       </map>
     </option>
   </component>
