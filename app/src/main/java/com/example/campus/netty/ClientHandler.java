@@ -18,6 +18,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Object> {
     private List<IMessage> observers;
     private Handler messageHandler;
     private String currentId;
+    private Channel channel;
 
     private static volatile ClientHandler clientHandler;
     public static ClientHandler getInstance(){
@@ -36,7 +37,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Object> {
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        Channel channel = ctx.channel();
+        channel = ctx.channel();
         int port = ((InetSocketAddress) ctx.channel().remoteAddress()).getPort();
         Log.e(TAG, "local: " + channel.localAddress() + "  客户端 " + channel.remoteAddress() + "上线, port：" + port);
         super.channelActive(ctx);
@@ -82,11 +83,19 @@ public class ClientHandler extends SimpleChannelInboundHandler<Object> {
         messageHandler.sendMessage(handlerMsg);
     }
 
-    public void setMessageHandler(Handler handler){
+    public void setMessageHandler(Handler handler) {
         messageHandler = handler;
     }
 
-    public void setCurrentId(String id){
+    public void setCurrentId(String id) {
         currentId = id;
+    }
+
+    public void writeMsg(Object o) {
+        if (channel == null || !channel.isActive()) {
+            //send send_fail msg
+            return;
+        }
+        channel.writeAndFlush(o);
     }
 }

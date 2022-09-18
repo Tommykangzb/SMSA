@@ -339,28 +339,4 @@ public class ChatActivity extends AppCompatActivity implements IMessage {
         MessageManager.INSTANCE.removeListener(MessageType.CHAT_MESSAGE, this);
     }
 
-
-//    public static class MessageHandler extends Handler {
-//        WeakReference<IMessage> loader;
-//
-//        public MessageHandler(IMessage ld) {
-//            loader = new WeakReference<>(ld);
-//        }
-//
-//        @Override
-//        public void handleMessage(@Nullable Message message) {
-//            String msg = message.getData().getString("IMESSAGE_STRING", "");
-//            MessageBase.Message.Builder builder = MessageBase.Message.newBuilder();
-//            builder.setSenderId("1234")
-//                    .setReceiverId("1234")
-//                    .setTimeStamp(System.currentTimeMillis())
-//                    .setData(ByteString.copyFrom(msg.getBytes()))
-//                    .setAckMsgId("123")
-//                    .setMsgId("123")
-//                    .setType(2)
-//                    .setSource(1);
-//            //loader.get().onMessage(builder.build());
-//        }
-//    }
-
 }

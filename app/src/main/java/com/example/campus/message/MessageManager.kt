@@ -4,8 +4,10 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.util.Log
+import com.example.campus.helper.SnowFlake
+import com.example.campus.netty.ClientHandler
 import com.example.campus.netty.IMessage
-import com.example.campus.protoModel.BaseMessageOuterClass
+import com.example.campus.protoModel.BaseMessageOuterClass.BaseMessage
 import java.util.concurrent.ConcurrentHashMap
 
 object MessageManager : Handler(Looper.getMainLooper()) {
@@ -38,6 +40,7 @@ object MessageManager : Handler(Looper.getMainLooper()) {
         when (message.what) {
             WHAT_WS_MESSAGE -> {
                 dispatchMsg(message)
+                confirmReceivedMsg(message)
             }
             WHAT_WS_MESSAGE_FAIL -> {
                 Log.e(TAG, "webSocket message fetch failed!")
@@ -59,10 +62,24 @@ object MessageManager : Handler(Looper.getMainLooper()) {
     }
 
     private fun dispatchMsg(message: Message?) {
-        val msg = message?.obj as? BaseMessageOuterClass.BaseMessage ?: return
+        val msg = message?.obj as? BaseMessage ?: return
         val listenerList = msgMap[msg.type] ?: return
         listenerList.forEach {
             it.onMessage(msg)
         }
+    }
+
+    private fun confirmReceivedMsg(message: Message?) {
+        val msg = message?.obj as? BaseMessage ?: return
+        val builder = BaseMessage.newBuilder()
+        builder.setSenderId(msg.receiverId)
+            .setReceiverId(msg.senderId)
+            .setTimeStamp(System.currentTimeMillis().toFloat())
+            .setAckMsgId("-1L")
+            .setMsgId(SnowFlake.getInstance().nextMsgId())
+            .setType(MessageType.CHAT_MESSAGE)
+            .setSource(1)
+            .build()
+        ClientHandler.getInstance().writeMsg(builder.build())
     }
 }

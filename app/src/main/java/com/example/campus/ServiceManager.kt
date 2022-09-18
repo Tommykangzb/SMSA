@@ -13,7 +13,7 @@ object ServiceManager {
     private val concurrentHashMap = ConcurrentHashMap<Class<out IService?>, IService>()
 
     @JvmStatic
-    fun <T : IService?> getService(clazz: Class<T>): T? {
+    fun <T : IService> getService(clazz: Class<T>): T? {
         @Suppress("UNCHECKED_CAST")
         var impl: T? = concurrentHashMap[clazz] as T
         if (impl == null) {

@@ -42,6 +42,10 @@ public class NettyClient {
         this.port = port;
     }
 
+    public boolean connectState() {
+        return connecting == -1;
+    }
+
     public void connect() {
         Log.e(TAG, " connecting: " + connecting);
         if (connecting != -1) {

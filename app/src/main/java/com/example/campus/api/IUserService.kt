@@ -6,7 +6,7 @@ import android.content.Context
  * Created by kangzhibo on 2022/9/2
  * @author kangzhibo
  */
-interface IUserService {
+interface IUserService : IService {
     fun getCurUserId(context: Context): String
     fun getLoginState(): Boolean
 }
