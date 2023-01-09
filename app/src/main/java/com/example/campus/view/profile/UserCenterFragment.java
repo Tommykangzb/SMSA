@@ -32,7 +32,6 @@ import com.example.campus.view.BaseDialog;
 import com.example.campus.view.Constance;
 import com.example.campus.view.course.DetailManagerActivity;
 import com.example.campus.view.course.SaveDialog;
-import com.example.campus.view.message.FriendsManager;
 import com.google.android.material.imageview.ShapeableImageView;
 
 

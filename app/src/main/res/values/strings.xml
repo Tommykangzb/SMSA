@@ -59,7 +59,7 @@
     <string name="menu_top_friend">置顶该好友</string>
     <string name="add_friends_input_type">🔍 用户名/昵称</string>
     <string name="mention_save_success">保存成功！</string>
-    <string name="find_friend_error_account">输入的用户名有误，请重新输入！</string>
+    <string name="find_friend_error_account">输入的内容为空，请重新输入！</string>
     <string name="find_friend_error_account_not_exist">输入的用户名不存在</string>
 
 </resources>

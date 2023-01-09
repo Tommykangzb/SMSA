@@ -13,7 +13,7 @@
         android:textColor="@color/black"
         android:layout_marginStart="16dp"
         android:textSize="22sp"
-        android:layout_weight="7"></TextView>
+        android:layout_weight="7" />
 
     <ImageView
         android:id="@+id/campus_btn_bell"
@@ -36,7 +36,7 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:layout_marginStart="4dp"
-        android:src="@drawable/ic_icon_chat_option_add"></ImageView>
+        android:src="@drawable/ic_icon_chat_option_add" />
 
     <ImageView
         android:id="@+id/chat_option_setting"

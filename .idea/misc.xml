@@ -104,12 +104,32 @@
         <entry key="..\:/NewFile/Campus/app/src/main/res/layout/home_tab_content.xml" value="0.1875" />
         <entry key="..\:/NewFile/Campus/app/src/main/res/layout/layout.xml" value="0.1875" />
         <entry key="..\:/SDK/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/drawable/btn_shape_agree.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/btn_shape_reject.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/corner_gray.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_group.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_icon_chat_option_add.xml" value="0.124" />
         <entry key="app/src/main/res/drawable/input_no_frame.xml" value="0.124" />
         <entry key="app/src/main/res/drawable/login_or_sign_shape.xml" value="0.124" />
         <entry key="app/src/main/res/drawable/red_dot_mg.xml" value="0.124" />
+        <entry key="app/src/main/res/drawable/tab_deal_selector.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/top_corner_gray.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/user_center_item.xml" value="0.181" />
+        <entry key="app/src/main/res/layout/category_adapter_layout.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/home_fragment_layout.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/layout_adapter_search_friend_result.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/layout_add_friend_adapter.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/layout_add_friends.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/layout_book_deal_fragment.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/layout_book_detail.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/layout_book_display_contain_adpater.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/layout_chat_fragment_option.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_course_details.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/layout_course_details_item_adapter.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/layout_login_or_sign.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/layout_message_fragment.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/layout_user_center_fragment.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/layout_user_message_avatar_fragment.xml" value="0.17239583333333333" />
       </map>
     </option>
   </component>

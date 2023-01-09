@@ -12,6 +12,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import tutorial.CourseDetailCreate;
@@ -51,6 +52,6 @@ public interface ApiService {
     Call<FriendsList.FriendsListResponse> accessFriendList(@Body FriendsList.FriendsListRequest request);
 
     @POST("message/accessUserMsg")
-    Call<AccessUserMessage.AccessUserMsgResponse> accessUserMsg(@Body AccessUserMessage.AccessUserMsgRequest request);
+    Call<AccessUserMessage.AccessUserMsgResponse> accessUserMsg(@Field("searchContent") String searchContent);
 
 }
